@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from '../assets/icons/logo.png';
-import cartLogo from '../assets/icons/cart2.png';
-import { NavContainer, Image, Select, SelectOption } from '../styles/Header.styled';
+import cartLogo from '../assets/icons/cart.png';
+import { NavContainer, Image, CartIcon, Select, SelectOption } from '../styles/Header.styled';
 
 class Header extends React.Component {
   render() {
@@ -26,7 +26,7 @@ class Header extends React.Component {
               <SelectOption value="A$">A$ AUD</SelectOption>
               <SelectOption value="₽">₽ RUB</SelectOption>
             </Select>
-            <Image src={cartLogo} alt='Cart Logo' />
+            <CartIcon src={cartLogo} alt='Cart Logo' />
           </div>
         </NavContainer>
       </>

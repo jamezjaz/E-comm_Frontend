@@ -32,6 +32,12 @@ export const Image = styled.img`
   width: 1.5rem;
 `;
 
+export const CartIcon = styled.img`
+  position: relative;
+  top: 0.5rem;
+  width: 2rem;
+`;
+
 export const Select = styled.select`
   margin-right: 1rem;
   width: 2.5rem;
