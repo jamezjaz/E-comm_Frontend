@@ -5,6 +5,7 @@ export const NavContainer = styled.nav`
   justify-content: space-between;
   margin: 1rem 2.5rem 1rem 1.5rem;
   color: #1d1d22;
+  text-transform: uppercase;
   
   ul {
     list-style-type: none;
