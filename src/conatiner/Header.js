@@ -1,18 +1,26 @@
 import React from 'react';
 import logo from '../assets/icons/logo.png';
 import cartLogo from '../assets/icons/cart.png';
-import { NavContainer, Image, CartIcon, Select, SelectOption } from '../styles/Header.styled';
+import {
+  NavContainer,
+  Image,
+  CartIcon,
+  Select,
+  SelectOption,
+  FiterButtonContainer,
+  FilterButton
+} from '../styles/Header.styled';
 
 class Header extends React.Component {
   render() {
     return(
       <>
         <NavContainer>
-          <ul>
-            <li>All</li>
-            <li>Clothes</li>
-            <li>Tech</li>
-          </ul>
+          <FiterButtonContainer>
+            <FilterButton>All</FilterButton>
+            <FilterButton>Clothes</FilterButton>
+            <FilterButton>Tech</FilterButton>
+          </FiterButtonContainer>
           <ul>
             <li>
               <Image src={logo} alt='Logo' />

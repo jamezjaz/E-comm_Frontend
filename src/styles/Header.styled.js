@@ -5,26 +5,30 @@ export const NavContainer = styled.nav`
   justify-content: space-between;
   margin: 1rem 2.5rem 1rem 1.5rem;
   color: #1d1d22;
-  text-transform: uppercase;
   
   ul {
     list-style-type: none;
-    display: flex;
-    
-    li {
-      margin: 0 0.7rem;
-      cursor: pointer;
+  }
+`;
 
-      &:hover {
-        color: #5ece7b;
-        text-decoration: underline;
-      }
+export const FiterButtonContainer = styled.div`
+  display: flex;
+  margin: 0 2.5rem;
+`;
 
-      &:active {
-        color: #5ece7b;
-        text-decoration: underline;
-      }
-    }
+export const FilterButton = styled.button`
+  text-transform: uppercase;
+  background-color: #ffffff;
+  border: none;
+
+  &:hover {
+    color: #5ece7b;
+      border-bottom: 0.15rem #5ece7b solid;
+  }
+
+  &:focus {
+    color: #5ece7b;
+      border-bottom: 0.15rem #5ece7b solid;
   }
 `;
 
