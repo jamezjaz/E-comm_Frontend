@@ -4,7 +4,7 @@ import {
   productRequestSuccess
 } from '../redux/actions/actionCreators'
 import axios from 'axios';
-import * as constants from '../conatiner/constant';
+import * as constants from '../container/constant';
 
 const fetchProducts = () => dispatch => {
   dispatch(productRequest);
@@ -15,7 +15,8 @@ const fetchProducts = () => dispatch => {
   )
   .then(res => {
     const queryRes = res.data.data;
-    console.log(queryRes);
+    // console.log(queryRes); Ok
+    
     dispatch(productRequestSuccess(queryRes));
   })
   .catch(error => {

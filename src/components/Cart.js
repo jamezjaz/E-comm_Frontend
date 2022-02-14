@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '../conatiner/Header';
+import Header from '../container/Header';
 import cloth from '../assets/images/cloth.png';
 import {
   ButtonsContainer,

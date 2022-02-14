@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Cart from '../components/Cart';
-import ProductDescription from '../conatiner/ProductDescription';
-import ProductList from '../conatiner/ProductList';
+import ProductDescription from '../container/ProductDescription';
+import ProductList from '../container/ProductList';
 
 class MyRoutes extends React.Component {
   render() {
