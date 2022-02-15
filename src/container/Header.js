@@ -26,13 +26,7 @@ class Header extends React.Component {
   handleChange(event) {
     const { handleFilter } = this.props;
     const { value } = event.target;
-    if (value !== 'all') {
-      handleFilter(value);
-    } else {
-      handleFilter('all');
-    }
-
-    console.log('Filtered');
+    handleFilter(value);
   }
 
   render() {
@@ -51,17 +45,6 @@ class Header extends React.Component {
 
     // pushes category properties of products to categories var
     allCategories?.map(cate => categoryArray.push(cate.name));
-  
-    // const handleChange = event => {
-      // const { value } = event.target;
-    //   if (value === 'all') {
-    //     handleFilter(null);
-    //   } else {
-    //     handleFilter(value);
-    //   }
-
-    //   console.log('Filtered');
-    // };
 
     return(
       <>
@@ -117,9 +100,5 @@ class Header extends React.Component {
 const mapStateToProps = state => ({
   allCategories: state.product.categories.categories
 });
-
-// const mapStateToProps = state => {
-//   console.log('State', state);
-// };
 
 export default connect(mapStateToProps, null)(Header);
