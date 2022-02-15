@@ -7,6 +7,7 @@ export const Container = styled.div`
 
 export const CategoryTitle = styled.h1`
   font-weight: normal;
+  text-transform: capitalize;
 `;
 
 export const ProductContent = styled.div`
@@ -17,7 +18,7 @@ export const ProductContent = styled.div`
 export const ProductCard = styled.div`
   max-width: 600px;
   margin: 1rem 3rem 1rem 0;
-  padding: 1rem;
+  padding: 0 1rem;
 
   div {
     position: relative;
@@ -28,7 +29,7 @@ export const ProductCard = styled.div`
     padding: 0.5rem;
     border: none;
     border-radius: 50%;
-    margin-bottom: -3rem;
+    margin-bottom: -5rem;
     cursor: pointer;
     display: none;
   }
