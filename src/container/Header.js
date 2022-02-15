@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import logo from '../assets/icons/logo.png';
 import cartLogo from '../assets/icons/cart.png';
 import {
@@ -18,22 +19,25 @@ class Header extends React.Component {
     this.state = {
       overlay: false
     }
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    const { handleFilter } = this.props;
+    const { value } = event.target;
+    if (value !== 'all') {
+      handleFilter(value);
+    } else {
+      handleFilter('all');
+    }
+
+    console.log('Filtered');
   }
 
   render() {
     // Get the modal
     // const modal = document.getElementById('myModal');
-
-    // // Get the button that opens the modal
-    // const btn = document.getElementById('overlay');
-
-    // // When the user clicks on the button, open the modal
-    // window.onload = () => {
-    //   btn.onclick = () =>  {
-    //     console.log('Cart Clicked!');
-    //     modal.style.display = 'block';
-    //   }
-    // }
 
     // // When the user clicks anywhere outside of the modal, close it
     // window.onclick = function(event) {
@@ -42,13 +46,36 @@ class Header extends React.Component {
     //   }
     // }
 
+    const { allCategories } = this.props;
+    const categoryArray = [];
+
+    // pushes category properties of products to categories var
+    allCategories?.map(cate => categoryArray.push(cate.name));
+  
+    // const handleChange = event => {
+      // const { value } = event.target;
+    //   if (value === 'all') {
+    //     handleFilter(null);
+    //   } else {
+    //     handleFilter(value);
+    //   }
+
+    //   console.log('Filtered');
+    // };
+
     return(
       <>
         <NavContainer>
           <FiterButtonContainer>
-            <FilterButton>All</FilterButton>
-            <FilterButton>Clothes</FilterButton>
-            <FilterButton>Tech</FilterButton>
+           {categoryArray.map((category, i) => (
+              <FilterButton
+                key={i}
+                value={category}
+                onClick={this.handleChange}
+              >
+                {category}
+              </FilterButton>
+           ))}
           </FiterButtonContainer>
           <ul>
             <li>
@@ -87,4 +114,12 @@ class Header extends React.Component {
   }
 };
 
-export default Header;
+const mapStateToProps = state => ({
+  allCategories: state.product.categories.categories
+});
+
+// const mapStateToProps = state => {
+//   console.log('State', state);
+// };
+
+export default connect(mapStateToProps, null)(Header);
