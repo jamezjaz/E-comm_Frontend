@@ -9,15 +9,11 @@ import {
   ProductCard,
   ProductContent
 } from '../styles/Product.styled';
+import { price } from '../container/constant';
 
 class Product extends React.Component {
   render() {
     const { category, label='USD' } = this.props;
-
-    const price = (prices, label) => {
-      const price = prices.find(price => price.currency.label === label)
-      return `${price.currency.symbol}${price.amount}`  
-    };
     
     return(
       <>
