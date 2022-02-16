@@ -11,7 +11,7 @@ class MyRoutes extends React.Component {
         <Router>
           <Routes>
             <Route exact path="/" element={<ProductList />} />
-            <Route path="/description" element={<ProductDescription />} />
+            <Route path="/description/:id" element={<ProductDescription />} />
             <Route path="/cart" element={<Cart />} />
           </Routes>
         </Router>

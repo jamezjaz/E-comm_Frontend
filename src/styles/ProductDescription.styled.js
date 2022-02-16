@@ -35,6 +35,7 @@ export const MainImage = styled.img`
 
 export const DetailsContainer = styled.div`
   margin-right: 10rem;
+  max-width: 35rem;
   h3 {
     color: #1d1f22;
     font-size: 2.5rem;

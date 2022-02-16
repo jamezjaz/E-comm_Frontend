@@ -1,13 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react'; // delays the rendering of your app's UI until your persisted state has been retrieved and saved to redux
 import App from './App';
-import store from './redux/store/store';
+import store, { Persistor } from './redux/store/store';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <PersistGate loading={null} persistor={Persistor}>
+      <App />
+    </PersistGate>
   </Provider>,
   document.getElementById('root')
 );
