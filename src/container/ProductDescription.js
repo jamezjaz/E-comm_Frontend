@@ -10,7 +10,7 @@ import {
   MainImageContainer,
   MinorImage,
   MinorImageContainer,
-  SizeButton,
+  OptionButton,
   SubTitle
 } from '../styles/ProductDescription.styled';
 import { price, withRouter } from './constant';
@@ -58,14 +58,14 @@ class ProductDescription extends React.Component {
                   {product.category === 'clothes' &&
                     <div>
                       {attributes[key].items.map(clothAttr => (
-                        <SizeButton key={clothAttr.id}>{clothAttr.displayValue}</SizeButton>
+                        <OptionButton key={clothAttr.id}>{clothAttr.displayValue}</OptionButton>
                       ))}
                     </div>
                   }
                   {product.category === 'tech' &&
                     <div>
                       {attributes[key].items.map(techAttr => (
-                        <SizeButton key={techAttr.id}>{techAttr.displayValue}</SizeButton>
+                        <OptionButton key={techAttr.id}>{techAttr.displayValue}</OptionButton>
                       ))}
                     </div>
                   }
@@ -77,18 +77,7 @@ class ProductDescription extends React.Component {
               <p>{price(product.prices, label)}</p>
             </div>
             <AddToCartButton>ADD TO CART</AddToCartButton>
-            {/* <Description>
-            Find stunning women's cocktail dresses
-            <br />
-            and party dresses. Stand out in lace and
-            <br />
-            metallic cocktail dresses and party
-            <br />
-            dresses from all your favorite brands.
-            </Description> */}
-            <Description>
-              {parse(product.description)}
-            </Description>
+            <Description>{parse(product.description)}</Description>
           </DetailsContainer>
         </DescriptionContainer>
       </>

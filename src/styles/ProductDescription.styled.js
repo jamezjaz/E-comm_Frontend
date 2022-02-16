@@ -53,8 +53,9 @@ export const SubTitle = styled.p`
   margin-top: -2rem;
 `;
 
-export const SizeButton = styled.button`
-  width: 3rem;
+export const OptionButton = styled.button`
+  max-width: 6rem;
+  padding: 0.5rem;
   height: 2.5rem;
   margin-right: 0.5rem;
   background-color: #ffffff;
