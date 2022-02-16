@@ -14,6 +14,7 @@ import {
   SubTitle
 } from '../styles/ProductDescription.styled';
 import { price, withRouter } from './constant';
+import parse from 'html-react-parser';
 
 class ProductDescription extends React.Component {
 
@@ -86,7 +87,7 @@ class ProductDescription extends React.Component {
             dresses from all your favorite brands.
             </Description> */}
             <Description>
-              {product.description}
+              {parse(product.description)}
             </Description>
           </DetailsContainer>
         </DescriptionContainer>
