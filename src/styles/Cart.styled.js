@@ -34,8 +34,9 @@ export const SubTitle = styled.p`
   margin-top: -1.5rem;
 `;
 
-export const SizeButton = styled.button`
-  width: 3rem;
+export const OptionButton = styled.button`
+  max-width: 6rem;
+  padding: 0.5rem;
   height: 2.5rem;
   margin-right: 0.5rem;
   background-color: #ffffff;
@@ -72,6 +73,10 @@ export const Count = styled.p`
   margin: 2rem 0;
 `;
 
-export const ImageContainer = styled.div``;
+export const ImageContainer = styled.div`
+  max-width: 10rem;
+`;
 
-export const Image = styled.img``;
+export const Image = styled.img`
+  width: 10rem;
+`;

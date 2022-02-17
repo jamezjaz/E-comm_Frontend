@@ -13,6 +13,31 @@ export const CategoryTitle = styled.h1`
 export const ProductContent = styled.div`
   display: flex;
   flex-wrap: wrap;
+  
+  div {
+
+    button {
+      position: relative;
+      left: 22rem;
+      /* bottom: 5rem; */
+      top: -7.5rem;
+      background: #5ECE7B;
+      max-width: 3rem;
+      max-height: 3rem;
+      padding: 0.5rem;
+      border: none;
+      border-radius: 50%;
+      /* margin-bottom: -5rem; */
+      cursor: pointer;
+      display: none;
+    }
+
+    &:hover {
+      button {
+        display: block;
+      }
+    }
+  }
 `;
 
 export const ProductCard = styled.div`
@@ -20,26 +45,9 @@ export const ProductCard = styled.div`
   margin: 1rem 3rem 1rem 0;
   padding: 0 1rem;
 
-  div {
-    position: relative;
-    left: 22rem;
-    bottom: 5rem;
-    background: #5ECE7B;
-    max-width: 3rem;
-    padding: 0.5rem;
-    border: none;
-    border-radius: 50%;
-    margin-bottom: -5rem;
-    cursor: pointer;
-    display: none;
-  }
-
   &:hover {
     background: #ffffff;
     box-shadow: 0px 4px 35px rgba(168, 172, 176, 0.19);
-    div {
-      display: block;
-    }
   }
 
   p {
@@ -55,6 +63,7 @@ export const ProductCard = styled.div`
 
 export const Image = styled.img`
   width: 450px;
+  height: 450px;
 `;
 
 export const CartIcon = styled.img``;
