@@ -74,6 +74,10 @@ export const AddToCartButton = styled.button`
   border: none;
   min-width: 10rem;
   cursor: pointer;
+
+  &:hover {
+    background-color: #31a14f;
+  }
 `;
 
 export const Description = styled.p`
