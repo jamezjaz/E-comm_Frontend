@@ -5,7 +5,8 @@ import {
   FILTER_PRODUCTS,
   ADD_TO_CART,
   ADD_QUANTITY,
-  SUB_QUANTITY
+  SUB_QUANTITY,
+  REMOVE_FROM_CART
 } from './actionTypes';
 
 export const productRequest = () => ({
@@ -30,6 +31,11 @@ export const filterCategories = category => ({
 export const addToCart = id => ({
   type: ADD_TO_CART,
   id,
+});
+
+export const removeFromCart = id => ({
+  type: REMOVE_FROM_CART,
+  id
 });
 
 export const addQuantity = id => ({

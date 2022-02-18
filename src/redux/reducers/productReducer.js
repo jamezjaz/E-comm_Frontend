@@ -4,6 +4,7 @@ import {
   FETCH_PRODUCTS_FAILURE,
   FETCH_PRODUCTS_REQUEST,
   FETCH_PRODUCTS_SUCCESS,
+  REMOVE_FROM_CART,
   SUB_QUANTITY
 } from '../actions/actionTypes';
 
@@ -59,6 +60,13 @@ const productReducer = (state = initialState, action) => {
         // quantity: addedProduct.quantity
       }
     }
+    case REMOVE_FROM_CART: {
+      const newProducts = state.addedProducts.filter(prod => action.id !== prod.id);
+      return {
+        ...state,
+        addedProducts: newProducts,
+      };
+    }
     case ADD_QUANTITY: {
       const addedProduct = state.categories.categories[0].products.find(product => product.id === action.id);
       addedProduct.quantity += 1;
@@ -71,9 +79,11 @@ const productReducer = (state = initialState, action) => {
     }
     case SUB_QUANTITY: {
       const addedProduct = state.categories.categories[0].products.find(product => product.id === action.id);
-      // if the quantity > 0 then, it should be removed
+      const newProducts = state.addedProducts.filter(product => product.id !== action.id);
+      // if the quantity >= 1 then, it should be decreased
       if (addedProduct.quantity >= 1) {
-        const newProducts = state.addedProducts.filter(product => product.id !== action.id);
+        // const newProducts = state.addedProducts.filter(product => product.id !== action.id);
+        addedProduct.quantity -= 1;
         console.log('Qty Sub', addedProduct.quantity);
         console.log('Decreased', newProducts);
         return {
@@ -81,7 +91,7 @@ const productReducer = (state = initialState, action) => {
           addedProducts: newProducts,
         };
       }
-      addedProduct.quantity -= 1;
+      // addedProduct.quantity -= 1;
       return {
         ...state,
       }

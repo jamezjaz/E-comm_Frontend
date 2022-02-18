@@ -10,6 +10,10 @@ export const CartContainer = styled.div`
   margin: 3rem 5rem 0 4.5rem;
   border-top: 1px #f2f2f2 solid;
   max-width: 1400px;
+
+  @media (max-width:868px) {
+    display: block;
+  }
 `;
 
 export const LeftContent = styled.div`
@@ -74,9 +78,26 @@ export const Count = styled.p`
 `;
 
 export const ImageContainer = styled.div`
-  max-width: 10rem;
+  display: flex;
 `;
 
 export const Image = styled.img`
   width: 10rem;
+  height: 10.5rem;
+`;
+
+export const RemoveProduct = styled.button`
+  color: #ffffff;
+  background-color: rgb(156, 9, 9);
+  font-weight: bold;
+  height: 2rem;
+  margin-left: 0.5rem;
+  border: none;
+  border-radius: 2rem;
+  align-self: center;
+  cursor: pointer;
+
+  &:hover {
+    background-color: red;
+  }
 `;
