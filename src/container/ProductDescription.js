@@ -15,11 +15,12 @@ import {
 } from '../styles/ProductDescription.styled';
 import { price, withRouter } from './constant';
 import parse from 'html-react-parser';
+import { addToCart } from '../redux/actions/actionCreators';
 
 class ProductDescription extends React.Component {
 
   render() {
-    const { categories: {categories}, params, label='USD' } = this.props;
+    const { categories: {categories}, params, label='USD', addProductsToCart } = this.props;
     console.log('Desc Categoriezz', categories);
 
     const productId = params.id;
@@ -33,6 +34,11 @@ class ProductDescription extends React.Component {
       return acc
     }, {});
     console.log('Att', attributes);
+
+    const handleAddToCart = id => {
+      console.log('Added To Cart');
+      addProductsToCart(id);
+    };
 
     return(
       <>
@@ -76,7 +82,11 @@ class ProductDescription extends React.Component {
               <p>PRICE:</p>
               <p>{price(product.prices, label)}</p>
             </div>
-            <AddToCartButton>ADD TO CART</AddToCartButton>
+            <AddToCartButton
+              onClick={handleAddToCart(product.id)}
+            >
+              ADD TO CART
+            </AddToCartButton>
             <Description>{parse(product.description)}</Description>
           </DetailsContainer>
         </DescriptionContainer>
@@ -89,4 +99,8 @@ const mapStateToProps = state => ({
   categories: state.product.categories,
 });
 
-export default connect(mapStateToProps, null)(withRouter(ProductDescription));
+const mapDispatchToProps = dispatch => ({
+  addProductsToCart: id => dispatch(addToCart(id))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(ProductDescription));
