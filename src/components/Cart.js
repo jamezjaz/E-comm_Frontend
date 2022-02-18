@@ -16,8 +16,26 @@ import {
   Title
 } from '../styles/Cart.styled';
 import { price } from '../container/constant';
+import { addQuantity, subQuantity } from '../redux/actions/actionCreators';
 
 class Cart extends React.Component {
+  constructor() {
+    super();
+
+    this.handleAddQuantity = this.handleAddQuantity.bind(this);
+    this.handleSubQuantity = this.handleSubQuantity.bind(this);
+  }
+
+  handleAddQuantity(id) {
+    const { addQty } = this.props;
+    addQty(id);
+  };
+
+  handleSubQuantity(id) {
+    const { subtractQty } = this.props;
+    subtractQty(id);
+  }
+
   render() {
     const { addedProducts, label='USD' } = this.props;
     const addedProductsLen = addedProducts.length;
@@ -27,7 +45,7 @@ class Cart extends React.Component {
       <>
         <Header />
         <Title>CART</Title>
-        {addedProductsLen &&
+        {`${addedProductsLen}` &&
           (
             addedProducts.map(item => (
               <CartContainer key={item.id}>
@@ -47,9 +65,17 @@ class Cart extends React.Component {
                 </LeftContent>
                 <RightContent>
                   <ButtonsContainer>
-                    <QtyButton>+</QtyButton>
+                    <QtyButton
+                      onClick={() => { this.handleAddQuantity(item.id); }}
+                    >
+                      +
+                    </QtyButton>
                     <Count>{item.quantity}</Count>
-                    <QtyButton>-</QtyButton>
+                    <QtyButton
+                      onClick={() => { this.handleSubQuantity(item.id); }}
+                    >
+                      -
+                    </QtyButton>
                   </ButtonsContainer>
                   <ImageContainer>
                     <Image src={item.gallery[0]} alt='Product' />
@@ -66,10 +92,11 @@ class Cart extends React.Component {
 
 const mapStateToProps = state => ({
   addedProducts: state.product.addedProducts,
-})
+});
 
-// const mapStateToProps = state => {
-//   console.log('State', state);
-// };
+const mapDispatchToProps = dispatch => ({
+  addQty: id => dispatch(addQuantity(id)),
+  subtractQty: id => dispatch(subQuantity(id)),
+});
 
-export default connect(mapStateToProps, null)(Cart);
+export default connect(mapStateToProps, mapDispatchToProps)(Cart);

@@ -3,7 +3,9 @@ import {
   FETCH_PRODUCTS_REQUEST,
   FETCH_PRODUCTS_SUCCESS,
   FILTER_PRODUCTS,
-  ADD_TO_CART
+  ADD_TO_CART,
+  ADD_QUANTITY,
+  SUB_QUANTITY
 } from './actionTypes';
 
 export const productRequest = () => ({
@@ -27,5 +29,15 @@ export const filterCategories = category => ({
 
 export const addToCart = id => ({
   type: ADD_TO_CART,
+  id,
+});
+
+export const addQuantity = id => ({
+  type: ADD_QUANTITY,
+  id,
+});
+
+export const subQuantity = id => ({
+  type: SUB_QUANTITY,
   id,
 });
