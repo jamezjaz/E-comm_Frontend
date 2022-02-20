@@ -12,12 +12,18 @@ export const OverlayContainer = styled.div`
 	-webkit-transition: opacity 400ms ease-in;
 	-moz-transition: opacity 400ms ease-in;
 	transition: opacity 400ms ease-in;
+
+  h4 {
+    text-align: center;
+    padding: 1rem;
+  }
 `;
 
 export const Modal = styled.div`
   background-color: #ffffff;
   padding: 1.5rem;
   max-width: 28rem;
+  height: auto;
   border: 1px black solid;
   position: absolute;
 	top: 4rem;
@@ -54,9 +60,10 @@ export const SubTitle = styled.p`
   margin-top: -1rem;
 `;
 
-export const SizeButton = styled.button`
-  width: 2rem;
-  height: 2rem;
+export const OptionButton = styled.button`
+  max-width: 6rem;
+  padding: 0.5rem;
+  height: 2.5rem;
   margin-right: 0.5rem;
   background-color: #ffffff;
   cursor: pointer;
@@ -83,7 +90,10 @@ export const Count = styled.p`
 
 export const ImageContainer = styled.div``;
 
-export const Image = styled.img``;
+export const Image = styled.img`
+  width: 10rem;
+  height: 10.5rem;
+`;
 
 export const TotalContainer = styled(OverlayContent)`
   justify-content: space-between;

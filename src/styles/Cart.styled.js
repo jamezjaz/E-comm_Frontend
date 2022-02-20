@@ -101,3 +101,7 @@ export const RemoveProduct = styled.button`
     background-color: red;
   }
 `;
+
+export const EmptyCartHeader = styled.h2`
+  text-align: center;
+`;

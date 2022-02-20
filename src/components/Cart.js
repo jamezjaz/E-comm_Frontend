@@ -14,7 +14,8 @@ import {
   OptionButton,
   SubTitle,
   Title,
-  RemoveProduct
+  RemoveProduct,
+  EmptyCartHeader
 } from '../styles/Cart.styled';
 import { price } from '../container/constant';
 import {
@@ -56,7 +57,7 @@ class Cart extends React.Component {
       <>
         <Header />
         <Title>CART</Title>
-        {`${addedProductsLen}` &&
+        {addedProductsLen ?
           (
             addedProducts.map(item => (
               <CartContainer key={item.id}>
@@ -100,6 +101,8 @@ class Cart extends React.Component {
               </CartContainer>
             ))
           )
+          :
+          <EmptyCartHeader>You have added nothing on cart!</EmptyCartHeader>
         }
       </>
     );
