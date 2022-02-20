@@ -22,7 +22,6 @@ class ProductList extends React.Component {
 
     return(
       <>
-      {/* continue please */}
         <Header handleFilter={fiteredCategories} />
         <ContentContainer>
           {/* {!categories ? 

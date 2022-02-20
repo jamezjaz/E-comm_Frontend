@@ -41,10 +41,7 @@ class Product extends React.Component {
                   </ProductCard>
                 </Link>
                 <button
-                  onClick={() => {
-                    console.log('Added to cart')
-                    handleAddToCart(product.id);
-                  }}
+                  onClick={() => { handleAddToCart(product.id); }}
                 >
                   <CartIcon src={cart} alt="Cart" />
                 </button>

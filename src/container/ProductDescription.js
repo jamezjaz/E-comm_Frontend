@@ -35,8 +35,8 @@ class ProductDescription extends React.Component {
     }, {});
     console.log('Att', attributes);
 
-    const handleAddToCart = id => {
-      console.log('Added To Cart');
+    const addProductToCart = id => {
+      console.log('Added from description');
       addProductsToCart(id);
     };
 
@@ -83,7 +83,7 @@ class ProductDescription extends React.Component {
               <p>{price(product.prices, label)}</p>
             </div>
             <AddToCartButton
-              onClick={handleAddToCart(product.id)}
+              onClick={addProductToCart(product.id)}
             >
               ADD TO CART
             </AddToCartButton>

@@ -80,6 +80,6 @@ export const AddToCartButton = styled.button`
   }
 `;
 
-export const Description = styled.p`
+export const Description = styled.div`
   color: #1d1f22;;
 `;

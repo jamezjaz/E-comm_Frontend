@@ -60,57 +60,38 @@ class Overlay extends React.Component {
           {addedProductsLen ?
             (
               addedProducts.map(item => (
-                // <Modal isopen="true">
-                  <div key={item.id}>
-                    {/* <p><b>My Bag, </b>{addedProductsLen} items</p> */}
-                    <OverlayContent>
-                      <OverlayLeft>
-                        <h3>{item.brand}</h3>
-                        <SubTitle>{item.name}</SubTitle>
-                        <p>{price(item.prices, label)}</p>
-                        <div>
-                          {item.attributes.map(attr => attr.items.map(option => (
-                            <OptionButton key={option.id}>{option.displayValue}</OptionButton>
-                          )))}
-                          {/* <OptionButton>S</OptionButton>
-                          <OptionButton>M</OptionButton> */}
-                        </div>
-                      </OverlayLeft>
-                      <OverlayRight>
-                        <ButtonsContainer>
-                          <QtyButton
-                            onClick={() => { handleAddQuantity(item.id) }}
-                          >
-                            +
-                          </QtyButton>
-                          <Count>{item.quantity}</Count>
-                          <QtyButton
-                            onClick={() => handleSubQuantity(item.id)}
-                          >
-                            -
-                          </QtyButton>
-                        </ButtonsContainer>
-                        <ImageContainer>
-                          <Image src={item.gallery[0]} alt={item.name} />
-                        </ImageContainer>
-                      </OverlayRight>
-                    </OverlayContent>
-                    {/* <TotalContainer>
-                      <p>Total</p>
-                      <p>$100.00</p>
-                    </TotalContainer>
-                    <ButtonContainer>
-                      <ViewBagButton>VIEW BAG</ViewBagButton>
-                      <Link
-                        to='/cart'
-                      >
-                        <CheckOutButton>
-                          CHECK OUT
-                        </CheckOutButton>
-                      </Link>
-                    </ButtonContainer> */}
-                  </div>
-                // </Modal>
+                <div key={item.id}>
+                  <OverlayContent>
+                    <OverlayLeft>
+                      <h3>{item.brand}</h3>
+                      <SubTitle>{item.name}</SubTitle>
+                      <p>{price(item.prices, label)}</p>
+                      <div>
+                        {item.attributes.map(attr => attr.items.map(option => (
+                          <OptionButton key={option.id}>{option.displayValue}</OptionButton>
+                        )))}
+                      </div>
+                    </OverlayLeft>
+                    <OverlayRight>
+                      <ButtonsContainer>
+                        <QtyButton
+                          onClick={() => { handleAddQuantity(item.id) }}
+                        >
+                          +
+                        </QtyButton>
+                        <Count>{item.quantity}</Count>
+                        <QtyButton
+                          onClick={() => handleSubQuantity(item.id)}
+                        >
+                          -
+                        </QtyButton>
+                      </ButtonsContainer>
+                      <ImageContainer>
+                        <Image src={item.gallery[0]} alt={item.name} />
+                      </ImageContainer>
+                    </OverlayRight>
+                  </OverlayContent>
+                </div>
               ))
             )
             :

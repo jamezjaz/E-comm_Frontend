@@ -21,30 +21,34 @@ export const OverlayContainer = styled.div`
 
 export const Modal = styled.div`
   background-color: #ffffff;
-  padding: 1.5rem;
-  max-width: 28rem;
+  padding: 0.5rem 0.8rem;
+  max-width: 30rem;
   height: auto;
-  border: 1px black solid;
+  /* border: 1px black solid; */
   position: absolute;
-	top: 4rem;
+	/* top: 4rem; */
 	right: 3.5rem;
 `;
 
 export const OverlayContent = styled.div`
   display: flex;
+  justify-content: space-between;
 `;
 
 export const OverlayLeft = styled.div`
-  margin-right: 1.5rem;
+  margin: 0 0.5rem 0.7rem 0;
 
   h3 {
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: 300;
     color: #414142;
+    margin-top: -0.25rem;
   }
 
   p:nth-child(3) {
     font-weight: bold;
+    margin-top: -0.5rem;
+    margin-bottom: -0.01rem;
   }
 `;
 
@@ -54,30 +58,32 @@ export const OverlayRight = styled.div`
 `;
 
 export const SubTitle = styled.p`
-  font-size: 1.3rem;
+  font-size: 0.8rem;
   color: #414142;
   font-weight: 300;
   margin-top: -1rem;
 `;
 
 export const OptionButton = styled.button`
-  max-width: 6rem;
-  padding: 0.5rem;
-  height: 2.5rem;
-  margin-right: 0.5rem;
+  max-width: 5rem;
+  /* padding: 0.5rem; */
+  height: 1.5rem;
+  margin: 0 0.5rem 0.25rem 0;
   background-color: #ffffff;
+  font-size: 0.7rem;
   cursor: pointer;
 `;
 
 export const ButtonsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin-right: 1rem;
+  /* margin-right: 1rem; */
 `;
 
 export const QtyButton = styled.button`
-  width: 2rem;
-  height: 2rem;
+  /* width: 2rem; */
+  /* height: 2rem; */
+  margin-right: 0.25rem;
   background-color: #ffffff;
   cursor: pointer;
 `;
@@ -85,34 +91,39 @@ export const QtyButton = styled.button`
 export const Count = styled.p`
   font-weight: bold;
   text-align: center;
-  margin: 2.5rem 0;
+  margin: 1.5rem 0;
 `;
 
 export const ImageContainer = styled.div``;
 
 export const Image = styled.img`
-  width: 10rem;
-  height: 10.5rem;
+  width: 10.5rem;
+  height: 7rem;
 `;
 
 export const TotalContainer = styled(OverlayContent)`
   justify-content: space-between;
-  font-size: 1.3rem;
+  font-size: 1rem;
   font-weight: bold;
-  margin: 2rem 0;
+  margin: 0.5rem 0;
 `;
 
 export const ButtonContainer = styled.div`
   display: flex;
+  justify-content: center;
 `;
 
 export const ViewBagButton = styled.button`
   padding: 1rem 3rem;
-  font-size: 1rem;
+  font-size: 0.7rem;
   color: #1d1f22;
   background-color: #ffffff;
   cursor: pointer;
   margin-right: 0.5rem;
+
+  &:hover {
+    background-color: #fdfbfb;
+  }
 `;
 
 export const CheckOutButton = styled(ViewBagButton)`
@@ -121,4 +132,8 @@ export const CheckOutButton = styled(ViewBagButton)`
   border: none;
   margin-right: 0;
   margin-left: 0.5rem;
+
+  &:hover {
+    background-color: #81e69c;
+  }
 `;
