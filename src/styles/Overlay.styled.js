@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const OverlayContainer = styled.div`
   position: fixed;
-	top: 5.5rem;
+	top: 3.9rem;
 	right: 0;
 	bottom: 0;
 	left: 0;
@@ -26,7 +26,7 @@ export const Modal = styled.div`
   height: auto;
   /* border: 1px black solid; */
   position: absolute;
-	/* top: 4rem; */
+	/* top: 0; */
 	right: 3.5rem;
 `;
 

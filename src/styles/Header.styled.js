@@ -3,8 +3,13 @@ import styled from 'styled-components';
 export const NavContainer = styled.nav`
   display: flex;
   justify-content: space-between;
-  margin: 1rem 2.5rem 1rem 1.5rem;
+  /* margin: 0 1.5rem 1rem 1.5rem; */
+  padding: 0 3.5rem 0 1rem;
   color: #1d1d22;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #ffffff;
   
   ul {
     list-style-type: none;
