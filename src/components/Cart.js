@@ -23,6 +23,9 @@ import {
   removeFromCart,
   subQuantity
 } from '../redux/actions/actionCreators';
+// image slider
+import SliderBtn from './SliderBtn';
+import '../styles/Slider.css';
 
 class Cart extends React.Component {
   constructor() {
@@ -31,6 +34,7 @@ class Cart extends React.Component {
     this.handleAddQuantity = this.handleAddQuantity.bind(this);
     this.handleSubQuantity = this.handleSubQuantity.bind(this);
     this.handleRemoveProduct = this.handleRemoveProduct.bind(this);
+    this.state = { slideIndex : 1 };
   }
 
   handleRemoveProduct(id) {
@@ -52,6 +56,25 @@ class Cart extends React.Component {
     const { addedProducts, label='USD' } = this.props;
     const addedProductsLen = addedProducts.length;
     console.log('New Pro:', addedProducts, 'Count:', addedProductsLen);
+
+    // cart image slider
+    const slideIndex = this.state.slideIndex;
+
+    const nextSlide = () => {
+      if(slideIndex !== addedProductsLen) {
+        this.setState({slideIndex: slideIndex + 1});
+      } else if (slideIndex === addedProductsLen) {
+        this.setState({slideIndex: 1})
+      }
+    };
+
+    const prevSlide = () => {
+      if(slideIndex !== 1) {
+        this.setState({slideIndex: slideIndex - 1})
+      } else if (slideIndex === 1) {
+        this.setState({slideIndex: addedProductsLen})
+      }
+    };
     
     return(
       <>
@@ -90,7 +113,16 @@ class Cart extends React.Component {
                     </QtyButton>
                   </ButtonsContainer>
                   <ImageContainer>
-                  ❮<Image src={item.gallery[0]} alt='Product' />❯
+                    {item.gallery.map((img, index) => (
+                      <div
+                        key={index}
+                        className={this.state.slideIndex === index + 1 ? "slide active-anim" : "slide"}
+                      >
+                        <Image src={img} alt='Product' />
+                        <SliderBtn moveSlide={nextSlide} direction={"next"} />
+                        <SliderBtn moveSlide={prevSlide} direction={"prev"} />
+                      </div>
+                    ))}
                     <RemoveProduct
                       onClick={() => { this.handleRemoveProduct(item.id); }}
                     >

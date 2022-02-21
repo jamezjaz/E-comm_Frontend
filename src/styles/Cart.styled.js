@@ -91,7 +91,10 @@ export const RemoveProduct = styled.button`
   background-color: rgb(156, 9, 9);
   font-weight: bold;
   height: 2rem;
-  margin-left: 0.5rem;
+  /* margin-left: 0.5rem; */
+  position: relative;
+  /* right: -10.5rem; */
+  bottom: -6.5rem;
   border: none;
   border-radius: 2rem;
   align-self: center;

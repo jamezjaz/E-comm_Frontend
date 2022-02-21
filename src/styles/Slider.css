@@ -1,0 +1,34 @@
+.slide {
+  width: 10rem;
+  height: 10.5rem;
+  position: absolute;
+  opacity: 0;
+  transition: opacity ease-in-out 0.4s;
+}
+
+.active-anim {
+  opacity: 1;
+}
+  
+.btn-slide {
+  background: none;
+  color: #ffffff;
+  border: none;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+  
+.prev {
+  top: 50%;
+  left: 20px;
+  transform: translateY(-60%);
+}
+
+.next {
+  top: 50%;
+  right: 20px;
+  transform: translateY(-60%);
+}
