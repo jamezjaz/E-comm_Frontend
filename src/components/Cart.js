@@ -90,7 +90,7 @@ class Cart extends React.Component {
                     </QtyButton>
                   </ButtonsContainer>
                   <ImageContainer>
-                    <Image src={item.gallery[0]} alt='Product' />
+                  ❮<Image src={item.gallery[0]} alt='Product' />❯
                     <RemoveProduct
                       onClick={() => { this.handleRemoveProduct(item.id); }}
                     >

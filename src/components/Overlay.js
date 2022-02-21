@@ -21,6 +21,7 @@ import {
   ViewBagButton
 } from '../styles/Overlay.styled';
 import { addQuantity, subQuantity } from '../redux/actions/actionCreators';
+import DisplayTotal from './DisplayTotal';
 
 class Overlay extends React.Component {
   render() {
@@ -98,8 +99,9 @@ class Overlay extends React.Component {
             <h4>You have {addedProductsLen} item(s) on cart</h4>
           }
           <TotalContainer>
-            <p>Total</p>
-            <p>$100.00</p>
+            {/* <p>Total</p>
+            <p>$100.00</p> */}
+            <DisplayTotal />
           </TotalContainer>
           <ButtonContainer>
             <ViewBagButton>VIEW BAG</ViewBagButton>
