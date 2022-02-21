@@ -44,17 +44,17 @@ class ProductDescription extends React.Component {
       <>
         <Header />
           <DescriptionContainer>
-          <MinorImageContainer>
-            {product.gallery.map(image => (
-              <div key={image}>
-                <MinorImage src={image} alt={product.name} />
-              </div>
-            ))}
-          </MinorImageContainer>
-          <MainImageContainer>
-            <MainImage src={product.gallery[0]} alt={product.name} />
-          </MainImageContainer>
-          <DetailsContainer>
+            <MinorImageContainer>
+              {product.gallery.map(image => (
+                <div key={image}>
+                  <MinorImage src={image} alt={product.name} />
+                </div>
+              ))}
+            </MinorImageContainer>
+            <MainImageContainer>
+              <MainImage src={product.gallery[0]} alt={product.name} />
+            </MainImageContainer>
+            <DetailsContainer>
             <h3>{product.brand}</h3>
             <SubTitle>{product.name}</SubTitle>
             <div>

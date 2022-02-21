@@ -16,6 +16,11 @@ export const ProductContent = styled.div`
   
   div {
 
+    a:-webkit-any-link {
+      text-decoration: none;
+      color: inherit;
+    }
+
     button {
       position: relative;
       left: 22rem;
