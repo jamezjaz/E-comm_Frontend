@@ -83,7 +83,7 @@ class ProductDescription extends React.Component {
               <p>{price(product.prices, label)}</p>
             </div>
             <AddToCartButton
-              onClick={addProductToCart(product.id)}
+              onClick={() => { addProductToCart(product.id); }}
             >
               ADD TO CART
             </AddToCartButton>
