@@ -76,7 +76,7 @@ class Header extends React.Component {
               <SelectOption value="₽">₽ RUB</SelectOption>
             </Select>
             <>
-              <CartCounter>{addedProductsLen}</CartCounter>
+              <CartCounter>{addedProductsLen > 0 ? addedProductsLen : null}</CartCounter>
               <CartIcon
                 src={cartLogo}
                 id='overlay'
