@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { TotalDisplay } from '../styles/DisplayTotal';
 
 class DisplayTotal extends React.Component {
   render() {
@@ -8,10 +9,10 @@ class DisplayTotal extends React.Component {
 
     return (
       <>
-        <div>
+        <TotalDisplay>
           <p>Total</p>
           <p>{total}</p>
-        </div>
+        </TotalDisplay>
       </>
     );
   }
