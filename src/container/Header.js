@@ -10,6 +10,7 @@ import {
   SelectOption,
   FiterButtonContainer,
   FilterButton,
+  CartCounter,
 } from '../styles/Header.styled';
 import Overlay from '../components/Overlay';
 
@@ -40,8 +41,9 @@ class Header extends React.Component {
     //   }
     // }
 
-    const { allCategories } = this.props;
+    const { allCategories, addedProducts } = this.props;
     const categoryArray = [];
+    const addedProductsLen = addedProducts.length;
 
     // pushes category properties of products to categories var
     allCategories?.map(cate => categoryArray.push(cate.name));
@@ -73,15 +75,18 @@ class Header extends React.Component {
               <SelectOption value="A$">A$ AUD</SelectOption>
               <SelectOption value="₽">₽ RUB</SelectOption>
             </Select>
-            <CartIcon
-              src={cartLogo}
-              id='overlay'
-              alt='Cart Logo'
-              onClick={() => {
-                console.log('Clicked!');
-                this.setState({overlay: true});
-              }}
+            <>
+              <CartCounter>{addedProductsLen}</CartCounter>
+              <CartIcon
+                src={cartLogo}
+                id='overlay'
+                alt='Cart Logo'
+                onClick={() => {
+                  console.log('Clicked!');
+                  this.setState({overlay: true});
+                }}
               />
+            </>
           </div>
         </NavContainer>
 
@@ -98,7 +103,8 @@ class Header extends React.Component {
 };
 
 const mapStateToProps = state => ({
-  allCategories: state.product.categories.categories
+  allCategories: state.product.categories.categories,
+  addedProducts: state.product.addedProducts,
 });
 
 export default connect(mapStateToProps, null)(Header);

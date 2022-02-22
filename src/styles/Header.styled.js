@@ -4,7 +4,7 @@ export const NavContainer = styled.nav`
   display: flex;
   justify-content: space-between;
   /* margin: 0 1.5rem 1rem 1.5rem; */
-  padding: 0 3.5rem 0 1rem;
+  padding: 0.5rem 3.5rem 0 1rem;
   color: #1d1d22;
   position: fixed;
   top: 0;
@@ -40,6 +40,18 @@ export const FilterButton = styled.button`
 export const Image = styled.img`
   margin-left: 1rem;
   width: 1.5rem;
+`;
+
+export const CartCounter = styled.div`
+  position: absolute;
+  right: 3rem;
+  top: 0.5rem;
+  border-radius: 50%;
+  padding: 0 0.35rem;
+  background-color: #1d1f22;
+  color: #ffffff;
+  font-weight: 700;
+  z-index: 2;
 `;
 
 export const CartIcon = styled.img`
