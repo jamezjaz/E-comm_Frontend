@@ -13,7 +13,7 @@ class ProductList extends React.Component {
   };
 
   render() {
-    const { categories: { categories }, filtered } = this.props;
+    const { categories: { categories }, filtered, label } = this.props;
   
     const fiteredCategories = category => {
       const { filter } = this.props;
@@ -43,6 +43,7 @@ class ProductList extends React.Component {
                   <Product
                     key={category.name}
                     category={category}
+                    label={label}
                   />
                 )
                 :
@@ -61,6 +62,7 @@ const mapStateToProps = state => ({
   categories: state.product.categories,
   loading: state.loading,
   filtered: state.filter,
+  label: state.product.label
 });
 
 // const mapStateToProps = state => {

@@ -15,7 +15,7 @@ import {
 
 class Product extends React.Component {
   render() {
-    const { category, label='USD' } = this.props;
+    const { category, label } = this.props;
 
     const handleAddToCart = id => {
       const { addProductsToCart } = this.props;

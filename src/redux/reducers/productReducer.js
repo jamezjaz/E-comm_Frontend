@@ -1,6 +1,7 @@
 import {
   ADD_QUANTITY,
   ADD_TO_CART,
+  CHANGE_LABEL,
   FETCH_PRODUCTS_FAILURE,
   FETCH_PRODUCTS_REQUEST,
   FETCH_PRODUCTS_SUCCESS,
@@ -14,6 +15,7 @@ const initialState = {
   error: '',
   addedProducts: [],
   total: 0,
+  label: 'USD',
 };
 
 const productReducer = (state = initialState, action) => {
@@ -37,93 +39,88 @@ const productReducer = (state = initialState, action) => {
         error: action.payload,
       };
     case ADD_TO_CART: {
-      console.log('Action ID:', action.id, 'Action Type:', action.type);
+      // console.log('Action ID:', action.id, 'Action Type:', action.type);
       const addedProduct = state.categories.categories[0].products.find(product => product.id === action.id);
-      console.log('State', state);
-      console.log('Added Product', addedProduct);
 
       // check if the action id exists in the addedProducts
       const existedProduct = state.addedProducts.find(product => action.id === product.id);
-      console.log('Total State', state.total);
-
-      const addedProdPrice = addedProduct.prices.map(price => {
-        return price.amount;
-      });
-      console.log('addedProdPrice', addedProdPrice);
+      // calculating the total
+      const addedProductPrice = addedProduct.prices.find(price => price.currency.label === state.label);
       if (existedProduct) {
         // if (state.addedProducts.quantity) {
           addedProduct.quantity += 1;
+          const newTotal = state.total + addedProductPrice.amount;
           return {
             ...state,
-            // total: state.total + parseFloat(addedProduct.price),
-            total: state.total + addedProdPrice,
+            // total: state.total + addedProductPrice.amount,
+            total: Math.round((newTotal + Number.EPSILON) * 100) / 100,
           }
         // }
       }
       addedProduct.quantity = 1;
-      // const newTotal = state.total + parseFloat(addedProduct.price);
-      const newTotal = state.total + addedProdPrice;
+      const newTotal = state.total + addedProductPrice.amount;
       return {
         ...state,
         addedProducts: [...state.addedProducts, addedProduct],
-        total: newTotal,
+        total: Math.round((newTotal + Number.EPSILON) * 100) / 100,
       }
     }
     case REMOVE_FROM_CART: {
       const newProducts = state.addedProducts.filter(prod => action.id !== prod.id);
       const removedProduct = state.addedProducts.find(prod => action.id === prod.id);
       // calculating the total
-      const removedProdPrice = removedProduct.prices.map(price => {
-        return price.amount;
-      });
-      const newTotal = state.total + removedProdPrice;
+      const removedProdPrice = removedProduct.prices.find(price => price.currency.label === state.label);
+      const newTotal = state.total - removedProdPrice.amount;
       return {
         ...state,
         addedProducts: newProducts,
-        total: newTotal,
+        total: Math.round((newTotal + Number.EPSILON) * 100) / 100,
       };
     }
     case ADD_QUANTITY: {
       const addedProduct = state.categories.categories[0].products.find(product => product.id === action.id);
-      addedProduct.quantity += 1;
-      console.log('Qty Added', addedProduct.quantity);
+      // addedProduct.quantity += 1;
 
-      const addedQtyPrice = addedProduct.prices.map(price => {
-        return price.amount;
-      });
-      const newTotal = state.total + addedQtyPrice;
+      const addedQtyPrice = addedProduct.prices.find(price => price.currency.label === state.label);
+      const newTotal = state.total + addedQtyPrice.amount;
+      console.log('Inc Qty', addedProduct.quantity)
       return {
         ...state,
-        total: newTotal,
+        addedProducts: [...state.addedProducts],
+        quantity: addedProduct.quantity += 1,
+        total: Math.round((newTotal + Number.EPSILON) * 100) / 100,
       };
     }
     case SUB_QUANTITY: {
       const addedProduct = state.categories.categories[0].products.find(product => product.id === action.id);
-      const newProducts = state.addedProducts.filter(product => product.id !== action.id);
       
-      const subQtyPrice = addedProduct.prices.map(price => {
-        return price.amount;
-      });
-      // if the quantity >= 1 then, it should be decreased
-      if (addedProduct.quantity >= 1) {
-        // const newProducts = state.addedProducts.filter(product => product.id !== action.id);
-        addedProduct.quantity -= 1;
+      const subQtyPrice = addedProduct.prices.find(price => price.currency.label === state.label);
+      // if the quantity === 1 then, it should be removed and not decreased
+      if (addedProduct.quantity === 1) {
+        const newProducts = state.addedProducts.filter(product => product.id !== action.id);
         console.log('Qty Sub', addedProduct.quantity);
-        console.log('Decreased', newProducts);
-        const newTotal = state.total + subQtyPrice;
+        const newTotal = state.total - subQtyPrice.amount;
+        console.log('Sub Qty price', subQtyPrice.amount);
+        console.log('New Total', newTotal);
         return {
           ...state,
           addedProducts: newProducts,
-          total: newTotal,
+          total: Math.round((newTotal + Number.EPSILON) * 100) / 100,
         };
       }
-      // addedProduct.quantity -= 1;
-      const newTotal = state.total + subQtyPrice;
+      addedProduct.quantity -= 1;
+      const newTotal = state.total - subQtyPrice.amount;
       return {
         ...state,
-        total: newTotal,
+        addedProducts: [...state.addedProducts],
+        total: Math.round((newTotal + Number.EPSILON) * 100) / 100,
       }
     }
+    case CHANGE_LABEL:
+      return {
+        ...state,
+        label: action.payload,
+      };
     default:
       return state;
   }

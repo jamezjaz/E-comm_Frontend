@@ -53,9 +53,9 @@ class Cart extends React.Component {
   }
 
   render() {
-    const { addedProducts, label='USD' } = this.props;
+    const { addedProducts, label } = this.props;
     const addedProductsLen = addedProducts.length;
-    console.log('New Pro:', addedProducts, 'Count:', addedProductsLen);
+    console.log('Label:', label);
 
     // cart image slider
     const slideIndex = this.state.slideIndex;
@@ -143,6 +143,7 @@ class Cart extends React.Component {
 
 const mapStateToProps = state => ({
   addedProducts: state.product.addedProducts,
+  label: state.product.label,
 });
 
 const mapDispatchToProps = dispatch => ({

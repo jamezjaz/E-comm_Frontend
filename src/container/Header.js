@@ -13,6 +13,7 @@ import {
   CartCounter,
 } from '../styles/Header.styled';
 import Overlay from '../components/Overlay';
+import { changeCurrencyLabel } from '../redux/actions/actionCreators';
 
 class Header extends React.Component {
   constructor() {
@@ -22,12 +23,20 @@ class Header extends React.Component {
     }
 
     this.handleChange = this.handleChange.bind(this);
+    this.changeLabel = this.changeLabel.bind(this);
   }
 
   handleChange(event) {
     const { handleFilter } = this.props;
     const { value } = event.target;
     handleFilter(value);
+  }
+
+  changeLabel(event) {
+    const { labelChanger } = this.props;
+    const { value } = event.target;
+    console.log('Val', value);
+    labelChanger(value);
   }
 
   render() {
@@ -41,7 +50,7 @@ class Header extends React.Component {
     //   }
     // }
 
-    const { allCategories, addedProducts } = this.props;
+    const { allCategories, addedProducts, label } = this.props;
     const categoryArray = [];
     const addedProductsLen = addedProducts.length;
 
@@ -68,12 +77,12 @@ class Header extends React.Component {
             </li>
           </ul>
           <div>
-            <Select>
+            <Select onChange={this.changeLabel}>
               <SelectOption disable="true" hidden>$</SelectOption>         
-              <SelectOption value="$">$ USD</SelectOption>
-              <SelectOption value="£">£ EUR</SelectOption>
-              <SelectOption value="A$">A$ AUD</SelectOption>
-              <SelectOption value="₽">₽ RUB</SelectOption>
+              <SelectOption value="USD">$ USD</SelectOption>
+              <SelectOption value="EUR">£ EUR</SelectOption>
+              <SelectOption value="AUD">A$ AUD</SelectOption>
+              <SelectOption value="RUB">₽ RUB</SelectOption>
             </Select>
             <>
               <CartCounter>{addedProductsLen > 0 ? addedProductsLen : null}</CartCounter>
@@ -105,6 +114,11 @@ class Header extends React.Component {
 const mapStateToProps = state => ({
   allCategories: state.product.categories.categories,
   addedProducts: state.product.addedProducts,
+  label: state.product.label,
 });
 
-export default connect(mapStateToProps, null)(Header);
+const mapDispatchToProps = dispatch => ({
+  labelChanger: label => dispatch(changeCurrencyLabel(label)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

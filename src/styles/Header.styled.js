@@ -58,6 +58,7 @@ export const CartIcon = styled.img`
   position: relative;
   top: 0.5rem;
   width: 2rem;
+  cursor: pointer;
 `;
 
 export const Select = styled.select`
