@@ -80,8 +80,9 @@ class Header extends React.Component {
             <Select onChange={this.changeLabel}>
               <SelectOption disable="true" hidden>$</SelectOption>         
               <SelectOption value="USD">$ USD</SelectOption>
-              <SelectOption value="EUR">£ EUR</SelectOption>
+              <SelectOption value="GBP">£ GBP</SelectOption>
               <SelectOption value="AUD">A$ AUD</SelectOption>
+              <SelectOption value="JPY">A¥ JPY</SelectOption>
               <SelectOption value="RUB">₽ RUB</SelectOption>
             </Select>
             <>
