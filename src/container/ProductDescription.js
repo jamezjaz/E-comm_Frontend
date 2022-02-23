@@ -28,7 +28,6 @@ class ProductDescription extends React.Component {
 
   render() {
     const { categories: {categories}, params, label, addProductsToCart } = this.props;
-    console.log('Desc Categoriezz', categories);
 
     const productId = params.id;
     // const { id } = params;
@@ -40,10 +39,8 @@ class ProductDescription extends React.Component {
       acc[item.id] = item
       return acc
     }, {});
-    console.log('Att', attributes);
 
     const addProductToCart = id => {
-      console.log('Added from description');
       addProductsToCart(id);
     };
 

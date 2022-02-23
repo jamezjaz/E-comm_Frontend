@@ -55,7 +55,6 @@ class Cart extends React.Component {
   render() {
     const { addedProducts, label } = this.props;
     const addedProductsLen = addedProducts.length;
-    console.log('Label:', label);
 
     // cart image slider
     const slideIndex = this.state.slideIndex;

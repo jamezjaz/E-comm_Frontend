@@ -31,7 +31,7 @@ class Product extends React.Component {
               <div key={product.id}>
                 <Link to={`/description/${product.id}`}>
                   <ProductCard>
-                    <h2>{console.log('All Products', category.products)}</h2>
+                    {/* <h2>{console.log('All Products', category.products)}</h2> */}
                     <Image src={product.gallery[0]} alt="Product Image" />
                     <p>{product.name}</p>
                     {/* {product.prices?.map((price, i) => ( */}

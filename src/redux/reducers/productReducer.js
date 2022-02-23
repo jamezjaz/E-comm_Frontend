@@ -83,7 +83,7 @@ const productReducer = (state = initialState, action) => {
 
       const addedQtyPrice = addedProduct.prices.find(price => price.currency.label === state.label);
       const newTotal = state.total + addedQtyPrice.amount;
-      console.log('Inc Qty', addedProduct.quantity)
+      // console.log('Inc Qty', addedProduct.quantity)
       return {
         ...state,
         addedProducts: [...state.addedProducts],
@@ -98,10 +98,8 @@ const productReducer = (state = initialState, action) => {
       // if the quantity === 1 then, it should be removed and not decreased
       if (addedProduct.quantity === 1) {
         const newProducts = state.addedProducts.filter(product => product.id !== action.id);
-        console.log('Qty Sub', addedProduct.quantity);
         const newTotal = state.total - subQtyPrice.amount;
-        console.log('Sub Qty price', subQtyPrice.amount);
-        console.log('New Total', newTotal);
+        // console.log('Sub Qty price', subQtyPrice.amount);
         return {
           ...state,
           addedProducts: newProducts,
