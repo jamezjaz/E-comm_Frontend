@@ -35,22 +35,11 @@ class Header extends React.Component {
   changeLabel(event) {
     const { labelChanger } = this.props;
     const { value } = event.target;
-    console.log('Val', value);
     labelChanger(value);
   }
 
   render() {
-    // Get the modal
-    // const modal = document.getElementById('myModal');
-
-    // // When the user clicks anywhere outside of the modal, close it
-    // window.onclick = function(event) {
-    //   if (event.target == modal) {
-    //     modal.style.display = 'none';
-    //   }
-    // }
-
-    const { allCategories, addedProducts, label } = this.props;
+    const { allCategories, addedProducts } = this.props;
     const categoryArray = [];
     const addedProductsLen = addedProducts.length;
 
@@ -92,7 +81,6 @@ class Header extends React.Component {
                 id='overlay'
                 alt='Cart Logo'
                 onClick={() => {
-                  console.log('Clicked!');
                   this.setState({overlay: true});
                 }}
               />
@@ -103,8 +91,8 @@ class Header extends React.Component {
         {/* Overlay component */}
         {this.state.overlay && (
           <Overlay
-            isopen={this.state.overlay}
-            // closeModal={() => this.setState({overlay: false})}
+            // isopen={this.state.overlay}
+            closeModal={() => this.setState({overlay: false})}
           />
         )}
       </>

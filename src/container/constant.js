@@ -52,3 +52,12 @@ export const withRouter = ProductDescription => props => {
     />
   )
 };
+
+// Currency symbols
+export const totalSymbol = {
+  USD: '$',
+  GBP: '£',
+  AUD: 'A$',
+  JPY: '¥',
+  RUB: '₽'
+};

@@ -25,8 +25,10 @@ export const Modal = styled.div`
   max-width: 30rem;
   height: 60%;
   overflow-y: auto;
-  position: absolute;
+  position: fixed;
+  top: 3.95rem;
 	right: 3.5rem;
+  z-index: 2;
 `;
 
 export const OverlayContent = styled.div`

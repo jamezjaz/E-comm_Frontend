@@ -25,7 +25,7 @@ import DisplayTotal from './DisplayTotal';
 
 class Overlay extends React.Component {
   render() {
-    const { addedProducts, label='USD' } = this.props;
+    const { addedProducts, label, closeModal } = this.props;
     const addedProductsLen = addedProducts.length;
 
     const handleAddQuantity = id => {
@@ -37,26 +37,13 @@ class Overlay extends React.Component {
       const { subtractQty } = this.props;
       subtractQty(id);
     };
-    // Get the modal
-    // const modal = document.getElementById('modal');
-     // // When the user clicks anywhere outside of the modal, close it
-    //  window.onclick = function(event) {
-    //     if (event.target === modal) {
-    //       console.log('Disappear');
-    //       modal.style.display = 'none';
-    //     }
-    //   }
-
-    const closeOverlay = () => {   
-      const modal = document.getElementById('modal');
-      modal.style.display = 'none';
-      console.log('Overlay closed');
-    //   modal.close();
-    };
 
     return(
-      <OverlayContainer id="modal" onClick={closeOverlay}>
-        <Modal isopen="true">
+     <>
+      <OverlayContainer onClick={closeModal}>
+
+      </OverlayContainer>
+      <Modal isopen="true">
           <p><b>My Bag, </b>{addedProductsLen} items</p>
           {addedProductsLen ?
             (
@@ -99,8 +86,6 @@ class Overlay extends React.Component {
             <h4>You have {addedProductsLen} item(s) on cart</h4>
           }
           <TotalContainer>
-            {/* <p>Total</p>
-            <p>$100.00</p> */}
             <DisplayTotal />
           </TotalContainer>
           <ButtonContainer>
@@ -114,13 +99,14 @@ class Overlay extends React.Component {
             </Link>
           </ButtonContainer>
         </Modal>
-      </OverlayContainer>
+     </>
     );
   }
 };
 
 const mapStateToProps = state => ({
   addedProducts: state.product.addedProducts,
+  label: state.product.label,
 });
 
 const mapDispatchToProps = dispatch => ({

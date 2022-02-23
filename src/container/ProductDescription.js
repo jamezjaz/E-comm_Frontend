@@ -18,9 +18,16 @@ import parse from 'html-react-parser';
 import { addToCart } from '../redux/actions/actionCreators';
 
 class ProductDescription extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      position: 0
+    }
+  };
 
   render() {
-    const { categories: {categories}, params, label='USD', addProductsToCart } = this.props;
+    const { categories: {categories}, params, label, addProductsToCart } = this.props;
     console.log('Desc Categoriezz', categories);
 
     const productId = params.id;
@@ -45,14 +52,21 @@ class ProductDescription extends React.Component {
         <Header />
           <DescriptionContainer>
             <MinorImageContainer>
-              {product.gallery.map(image => (
+              {product.gallery.map((image, index) => (
                 <div key={image}>
-                  <MinorImage src={image} alt={product.name} />
+                  <MinorImage
+                    src={image}
+                    alt={product.name}
+                    onClick={() => {this.setState({position: index})}}
+                  />
                 </div>
               ))}
             </MinorImageContainer>
             <MainImageContainer>
-              <MainImage src={product.gallery[0]} alt={product.name} />
+              <MainImage
+                src={product.gallery[this.state.position]}
+                alt={product.name}
+              />
             </MainImageContainer>
             <DetailsContainer>
             <h3>{product.brand}</h3>
@@ -73,6 +87,24 @@ class ProductDescription extends React.Component {
                       {attributes[key].items.map(techAttr => (
                         <OptionButton key={techAttr.id}>{techAttr.displayValue}</OptionButton>
                       ))}
+                      {/* {attributes[key].type === 'text' &&
+                        <>
+                          {attributes[key].items.map(capacity => (
+                            <>
+                              <OptionButton key={capacity.id}>{capacity.displayValue}</OptionButton>
+                            </>
+                          ))}
+                        </>
+                      } */}
+                      {/* {attributes[key].type === 'swatch' &&
+                        <>
+                          {attributes[key].items.map(color => (
+                            <>
+                              <OptionButton key={color.id}>{color.displayValue}</OptionButton>
+                            </>
+                          ))}
+                        </>
+                      } */}
                     </div>
                   }
                 </div>
@@ -97,6 +129,7 @@ class ProductDescription extends React.Component {
 
 const mapStateToProps = state => ({
   categories: state.product.categories,
+  label: state.product.label,
 });
 
 const mapDispatchToProps = dispatch => ({
