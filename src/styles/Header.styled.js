@@ -10,6 +10,7 @@ export const NavContainer = styled.nav`
   top: 0;
   width: 100%;
   background-color: #ffffff;
+  z-index: 2;
   
   ul {
     list-style-type: none;

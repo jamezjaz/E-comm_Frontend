@@ -76,13 +76,13 @@ class Overlay extends React.Component {
                     <OverlayRight>
                       <ButtonsContainer>
                         <QtyButton
-                          onClick={() => { handleAddQuantity(item.id) }}
+                          onClick={() => { handleAddQuantity(item.id); }}
                         >
                           +
                         </QtyButton>
                         <Count>{item.quantity}</Count>
                         <QtyButton
-                          onClick={() => handleSubQuantity(item.id)}
+                          onClick={() => { handleSubQuantity(item.id); }}
                         >
                           -
                         </QtyButton>

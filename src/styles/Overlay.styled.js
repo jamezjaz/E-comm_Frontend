@@ -23,10 +23,9 @@ export const Modal = styled.div`
   background-color: #ffffff;
   padding: 0.5rem 0.8rem;
   max-width: 30rem;
-  height: auto;
-  /* border: 1px black solid; */
+  height: 60%;
+  overflow-y: auto;
   position: absolute;
-	/* top: 0; */
 	right: 3.5rem;
 `;
 
@@ -66,7 +65,6 @@ export const SubTitle = styled.p`
 
 export const OptionButton = styled.button`
   max-width: 5rem;
-  /* padding: 0.5rem; */
   height: 1.5rem;
   margin: 0 0.5rem 0.25rem 0;
   background-color: #ffffff;
@@ -77,12 +75,9 @@ export const OptionButton = styled.button`
 export const ButtonsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  /* margin-right: 1rem; */
 `;
 
 export const QtyButton = styled.button`
-  /* width: 2rem; */
-  /* height: 2rem; */
   margin-right: 0.25rem;
   background-color: #ffffff;
   cursor: pointer;

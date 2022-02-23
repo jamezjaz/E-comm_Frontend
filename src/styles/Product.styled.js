@@ -26,10 +26,10 @@ export const ProductContent = styled.div`
       left: 22rem;
       /* bottom: 5rem; */
       top: -7.5rem;
-      background: #5ECE7B;
-      max-width: 3rem;
-      max-height: 3rem;
-      padding: 0.5rem;
+      background: none;
+      max-width: 3.5rem;
+      max-height: 3.5rem;
+      /* padding: 0.5rem; */
       border: none;
       border-radius: 50%;
       /* margin-bottom: -5rem; */
@@ -71,4 +71,6 @@ export const Image = styled.img`
   height: 450px;
 `;
 
-export const CartIcon = styled.img``;
+export const CartIcon = styled.img`
+  width: 3rem;
+`;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import cart from '../assets/icons/cart.png';
+import cart from '../assets/icons/shopping-cart.svg';
 import { price } from '../container/constant';
 import { addToCart } from '../redux/actions/actionCreators';
 import {
