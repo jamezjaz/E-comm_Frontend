@@ -89,11 +89,44 @@ class Cart extends React.Component {
                     <SubTitle>{item.name}</SubTitle>
                     <p>{price(item.prices, label)}</p>
                     <div>
-                      {item.attributes.map(attr => attr.items.map(option => (
-                        <OptionButton key={option.id}>{option.displayValue}</OptionButton>
-                      )))}
-                      {/* <OptionButton>S</OptionButton> */}
-                      {/* <OptionButton>M</OptionButton> */}
+                      {item.category === 'clothes' &&
+                        <>
+                          {item.attributes.map(attr => attr.items.map(option => (
+                            <OptionButton key={option.id}>{option.displayValue}</OptionButton>
+                          )))}
+                        </>
+                      }
+                      {item.category === 'tech' &&
+                        <>
+                          {item.attributes.map(attr => (
+                            <>
+                              {attr.type === 'swatch' &&
+                                <>
+                                  {attr.items.map(color => (
+                                    <>
+                                      <OptionButton
+                                        key={color.id}
+                                        BgColor={color.displayValue}
+                                      >
+                                        {/* {color.displayValue} */}
+                                      </OptionButton>
+                                    </>
+                                  ))}
+                                </>
+                              }
+                              {attr.type === 'text' &&
+                                <>
+                                  {attr.items.map(capacity => (
+                                    <>
+                                      <OptionButton key={capacity.id}>{capacity.displayValue}</OptionButton>
+                                    </>
+                                  ))}
+                                </>
+                              }
+                            </>
+                          ))}
+                        </>
+                      }
                     </div>
                   </CartDetails>
                 </LeftContent>

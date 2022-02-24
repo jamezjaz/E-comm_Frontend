@@ -81,10 +81,24 @@ class ProductDescription extends React.Component {
                   }
                   {product.category === 'tech' &&
                     <div>
-                      {attributes[key].items.map(techAttr => (
+                      {/* {attributes[key].items.map(techAttr => (
                         <OptionButton key={techAttr.id}>{techAttr.displayValue}</OptionButton>
-                      ))}
-                      {/* {attributes[key].type === 'text' &&
+                      ))} */}
+                      {attributes[key].type === 'swatch' &&
+                        <>
+                          {attributes[key].items.map(color => (
+                            <>
+                              <OptionButton
+                                key={color.id}
+                                OptionColor={color.displayValue}
+                              >
+                                {/* {color.displayValue} */}
+                              </OptionButton>
+                            </>
+                          ))}
+                        </>
+                      }
+                      {attributes[key].type === 'text' &&
                         <>
                           {attributes[key].items.map(capacity => (
                             <>
@@ -92,16 +106,7 @@ class ProductDescription extends React.Component {
                             </>
                           ))}
                         </>
-                      } */}
-                      {/* {attributes[key].type === 'swatch' &&
-                        <>
-                          {attributes[key].items.map(color => (
-                            <>
-                              <OptionButton key={color.id}>{color.displayValue}</OptionButton>
-                            </>
-                          ))}
-                        </>
-                      } */}
+                      }
                     </div>
                   }
                 </div>

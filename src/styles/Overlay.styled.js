@@ -67,11 +67,17 @@ export const SubTitle = styled.p`
 
 export const OptionButton = styled.button`
   max-width: 5rem;
+  min-width: 2rem;
   height: 1.5rem;
   margin: 0 0.5rem 0.25rem 0;
-  background-color: #ffffff;
+  background-color: ${props => props.BgColor || '#ffffff'};
   font-size: 0.7rem;
   cursor: pointer;
+
+  &:focus {
+    color: #ffffff;
+    background-color: #1d1f22;
+  }
 `;
 
 export const ButtonsContainer = styled.div`

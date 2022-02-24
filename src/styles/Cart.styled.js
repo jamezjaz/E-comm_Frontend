@@ -40,10 +40,11 @@ export const SubTitle = styled.p`
 
 export const OptionButton = styled.button`
   max-width: 6rem;
+  min-width: 3rem;
   padding: 0.5rem;
-  height: 2.5rem;
+  height: 2rem;
   margin-right: 0.5rem;
-  background-color: #ffffff;
+  background-color: ${props => props.BgColor || '#ffffff'};
   cursor: pointer;
 
   &:focus {
