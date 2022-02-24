@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import logo from '../assets/icons/logo.png';
 import cartLogo from '../assets/icons/cart.png';
 import {
@@ -62,7 +63,7 @@ class Header extends React.Component {
           </FiterButtonContainer>
           <ul>
             <li>
-              <Image src={logo} alt='Logo' />
+              <Link to='/'><Image src={logo} alt='Logo' /></Link>
             </li>
           </ul>
           <div>
