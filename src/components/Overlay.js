@@ -55,7 +55,7 @@ class Overlay extends React.Component {
                       <SubTitle>{item.name}</SubTitle>
                       <p>{price(item.prices, label)}</p>
                       <div>
-                        {console.log('Item', item)}
+                        {/* {console.log('Item', item)} */}
                         {item.category === 'clothes' && 
                           <>
                             {item.attributes.map(attr => attr.items.map(option => (
