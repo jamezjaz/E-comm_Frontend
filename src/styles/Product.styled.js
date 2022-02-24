@@ -8,6 +8,7 @@ export const Container = styled.div`
 export const CategoryTitle = styled.h1`
   font-weight: normal;
   text-transform: capitalize;
+  margin-top: 5rem;
 `;
 
 export const ProductContent = styled.div`
