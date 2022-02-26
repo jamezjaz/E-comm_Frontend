@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import parse from 'html-react-parser';
 import Header from './Header';
 import {
   AddToCartButton,
@@ -14,8 +15,7 @@ import {
   SubTitle
 } from '../styles/ProductDescription.styled';
 import { price, withRouter } from './constant';
-import parse from 'html-react-parser';
-import { addToCart } from '../redux/actions/actionCreators';
+import { addToCart, selectAttributes } from '../redux/actions/actionCreators';
 
 class ProductDescription extends React.Component {
   constructor() {
@@ -27,7 +27,8 @@ class ProductDescription extends React.Component {
   };
 
   render() {
-    const { categories: {categories}, params, label, addProductsToCart } = this.props;
+    const { categories: {categories}, params, label, addProductsToCart, options } = this.props;
+    console.log('Options', options);
 
     const productId = params.id;
     // const { id } = params;
@@ -42,6 +43,11 @@ class ProductDescription extends React.Component {
 
     const addProductToCart = id => {
       addProductsToCart(id);
+    };
+
+    const selectOptions = option => {
+      const { selectAttr } = this.props;
+      selectAttr(option);
     };
 
     return(
@@ -75,15 +81,19 @@ class ProductDescription extends React.Component {
                   {product.category === 'clothes' &&
                     <div>
                       {attributes[key].items.map(clothAttr => (
-                        <OptionButton key={clothAttr.id}>{clothAttr.displayValue}</OptionButton>
+                        <>
+                          <OptionButton
+                            onClick={() => selectOptions({ clothes: clothAttr.displayValue })}
+                            key={clothAttr.id}
+                          >
+                            {clothAttr.displayValue}
+                          </OptionButton>
+                        </>
                       ))}
                     </div>
                   }
                   {product.category === 'tech' &&
                     <div>
-                      {/* {attributes[key].items.map(techAttr => (
-                        <OptionButton key={techAttr.id}>{techAttr.displayValue}</OptionButton>
-                      ))} */}
                       {attributes[key].type === 'swatch' &&
                         <>
                           {attributes[key].items.map(color => (
@@ -91,9 +101,8 @@ class ProductDescription extends React.Component {
                               <OptionButton
                                 key={color.id}
                                 OptionColor={color.displayValue}
-                              >
-                                {/* {color.displayValue} */}
-                              </OptionButton>
+                                onClick={() => selectOptions({ swatch: color.displayValue })}
+                              />
                             </>
                           ))}
                         </>
@@ -102,7 +111,12 @@ class ProductDescription extends React.Component {
                         <>
                           {attributes[key].items.map(capacity => (
                             <>
-                              <OptionButton key={capacity.id}>{capacity.displayValue}</OptionButton>
+                              <OptionButton
+                                key={capacity.id}
+                                onClick={() => selectOptions({ text: capacity.displayValue })}
+                              >
+                                {capacity.displayValue}
+                              </OptionButton>
                             </>
                           ))}
                         </>
@@ -117,7 +131,10 @@ class ProductDescription extends React.Component {
               <p>{price(product.prices, label)}</p>
             </div>
             <AddToCartButton
-              onClick={() => { addProductToCart(product.id); }}
+              onClick={() => { 
+                addProductToCart(product.id, options);
+                console.log('Test', options)
+              }}
             >
               ADD TO CART
             </AddToCartButton>
@@ -132,10 +149,12 @@ class ProductDescription extends React.Component {
 const mapStateToProps = state => ({
   categories: state.product.categories,
   label: state.product.label,
+  options: state.product.options
 });
 
 const mapDispatchToProps = dispatch => ({
-  addProductsToCart: id => dispatch(addToCart(id))
+  addProductsToCart: id => dispatch(addToCart(id)),
+  selectAttr: option => dispatch(selectAttributes(option))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(ProductDescription));

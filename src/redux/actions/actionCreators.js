@@ -7,7 +7,8 @@ import {
   ADD_QUANTITY,
   SUB_QUANTITY,
   REMOVE_FROM_CART,
-  CHANGE_LABEL
+  CHANGE_LABEL,
+  SELECT_ATTRIBUTES
 } from './actionTypes';
 
 export const productRequest = () => ({
@@ -52,4 +53,9 @@ export const subQuantity = id => ({
 export const changeCurrencyLabel = label => ({
   type: CHANGE_LABEL,
   payload: label,
+})
+
+export const selectAttributes = option => ({
+  type: SELECT_ATTRIBUTES,
+  payload: option,
 })

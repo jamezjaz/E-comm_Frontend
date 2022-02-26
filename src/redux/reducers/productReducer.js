@@ -6,6 +6,7 @@ import {
   FETCH_PRODUCTS_REQUEST,
   FETCH_PRODUCTS_SUCCESS,
   REMOVE_FROM_CART,
+  SELECT_ATTRIBUTES,
   SUB_QUANTITY
 } from '../actions/actionTypes';
 
@@ -16,6 +17,7 @@ const initialState = {
   addedProducts: [],
   total: 0,
   label: 'USD',
+  options: {}
 };
 
 const productReducer = (state = initialState, action) => {
@@ -118,6 +120,11 @@ const productReducer = (state = initialState, action) => {
       return {
         ...state,
         label: action.payload,
+      };
+      case SELECT_ATTRIBUTES:
+      return {
+        ...state,
+        options: { options: action.payload },
       };
     default:
       return state;

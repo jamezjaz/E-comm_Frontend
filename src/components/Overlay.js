@@ -25,7 +25,7 @@ import DisplayTotal from './DisplayTotal';
 
 class Overlay extends React.Component {
   render() {
-    const { addedProducts, label, closeModal } = this.props;
+    const { addedProducts, label, closeModal, options } = this.props;
     const addedProductsLen = addedProducts.length;
 
     const handleAddQuantity = id => {
@@ -54,43 +54,31 @@ class Overlay extends React.Component {
                       <h3>{item.brand}</h3>
                       <SubTitle>{item.name}</SubTitle>
                       <p>{price(item.prices, label)}</p>
-                      <div>
-                        {/* {console.log('Item', item)} */}
-                        {item.category === 'clothes' && 
-                          <>
-                            {item.attributes.map(attr => attr.items.map(option => (
-                              <OptionButton key={option.id}>{option.displayValue}</OptionButton>
-                            )))}
-                          </>
-                        }
-                        {item.category === 'tech' &&
-                          <>
-                            {item.attributes.map(attr => (
+                      <>
+                        {Object.keys(options).map((key, i) => (
+                          <div key={i}>
+                            {item.category === 'clothes' && 
+                              <OptionButton>{options[key].clothes}</OptionButton>
+                            }
+                            {item.category === 'tech' &&
                               <>
-                                {attr.type === 'swatch' &&
+                                {item.attributes.map(attr => (
                                   <>
-                                    {attr.items.map(color => (
+                                    {attr.type === 'swatch' &&   
                                       <OptionButton
-                                        key={color.id}
-                                        BgColor={color.displayValue}
-                                      >
-                                        {/* {color.displayValue} */}
-                                      </OptionButton>
-                                    ))}
+                                        BgColor={options[key].swatch}
+                                      />
+                                    }
+                                    {attr.type === 'text' &&
+                                      <OptionButton>{options[key].text}</OptionButton>
+                                    }
                                   </>
-                                }
-                                {attr.type === 'text' &&
-                                  <>
-                                    {attr.items.map(capacity => (
-                                      <OptionButton key={capacity.id}>{capacity.displayValue}</OptionButton>
-                                    ))}
-                                  </>
-                                }
+                                ))}
                               </>
-                            ))}
-                          </>
-                        }
-                      </div>
+                            }
+                          </div>
+                        ))}
+                      </>
                     </OverlayLeft>
                     <OverlayRight>
                       <ButtonsContainer>
@@ -139,6 +127,7 @@ class Overlay extends React.Component {
 const mapStateToProps = state => ({
   addedProducts: state.product.addedProducts,
   label: state.product.label,
+  options: state.product.options
 });
 
 const mapDispatchToProps = dispatch => ({
