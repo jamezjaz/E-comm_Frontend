@@ -21,7 +21,7 @@ import {
   ViewBagButton
 } from '../styles/Overlay.styled';
 import { addQuantity, subQuantity } from '../redux/actions/actionCreators';
-import DisplayTotal from './DisplayTotal';
+import DisplayTotal from '../components/DisplayTotal';
 
 class Overlay extends React.Component {
   render() {

@@ -53,8 +53,10 @@ class Cart extends React.Component {
   }
 
   render() {
-    const { addedProducts, label } = this.props;
+    const { addedProducts, label, options } = this.props;
     const addedProductsLen = addedProducts.length;
+
+    console.log('Options', options);
 
     // cart image slider
     const slideIndex = this.state.slideIndex;
@@ -89,44 +91,35 @@ class Cart extends React.Component {
                     <SubTitle>{item.name}</SubTitle>
                     <p>{price(item.prices, label)}</p>
                     <div>
-                      {item.category === 'clothes' &&
-                        <>
-                          {item.attributes.map(attr => attr.items.map(option => (
-                            <OptionButton key={option.id}>{option.displayValue}</OptionButton>
-                          )))}
-                        </>
-                      }
-                      {item.category === 'tech' &&
-                        <>
-                          {item.attributes.map(attr => (
+                      {Object.keys(options).map((key, i) => (
+                        <div key={i}>
+                          {item.category === 'clothes' &&
                             <>
-                              {attr.type === 'swatch' &&
+                              <OptionButton>{options[key].clothes}</OptionButton>
+                            </>
+                          }
+                          {item.category === 'tech' &&
+                            <>
+                              {item.attributes.map(attr => (
                                 <>
-                                  {attr.items.map(color => (
+                                  {attr.type === 'swatch' &&
                                     <>
                                       <OptionButton
-                                        key={color.id}
-                                        BgColor={color.displayValue}
-                                      >
-                                        {/* {color.displayValue} */}
-                                      </OptionButton>
+                                        BgColor={options[key].swatch}
+                                      />
                                     </>
-                                  ))}
-                                </>
-                              }
-                              {attr.type === 'text' &&
-                                <>
-                                  {attr.items.map(capacity => (
+                                  }
+                                  {attr.type === 'text' &&
                                     <>
-                                      <OptionButton key={capacity.id}>{capacity.displayValue}</OptionButton>
+                                      <OptionButton>{options[key].text}</OptionButton>
                                     </>
-                                  ))}
+                                  }
                                 </>
-                              }
+                              ))}
                             </>
-                          ))}
-                        </>
-                      }
+                          }
+                        </div>
+                      ))}
                     </div>
                   </CartDetails>
                 </LeftContent>
@@ -176,6 +169,7 @@ class Cart extends React.Component {
 const mapStateToProps = state => ({
   addedProducts: state.product.addedProducts,
   label: state.product.label,
+  options: state.product.options
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -13,7 +13,7 @@ import {
   FilterButton,
   CartCounter,
 } from '../styles/Header.styled';
-import Overlay from '../components/Overlay';
+import Overlay from '../modal/Overlay';
 import { changeCurrencyLabel } from '../redux/actions/actionCreators';
 
 class Header extends React.Component {

@@ -28,7 +28,6 @@ class ProductDescription extends React.Component {
 
   render() {
     const { categories: {categories}, params, label, addProductsToCart, options } = this.props;
-    console.log('Options', options);
 
     const productId = params.id;
     // const { id } = params;
@@ -133,7 +132,6 @@ class ProductDescription extends React.Component {
             <AddToCartButton
               onClick={() => { 
                 addProductToCart(product.id, options);
-                console.log('Test', options)
               }}
             >
               ADD TO CART
