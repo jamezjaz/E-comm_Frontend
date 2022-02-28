@@ -8,7 +8,8 @@ import {
   SUB_QUANTITY,
   REMOVE_FROM_CART,
   CHANGE_LABEL,
-  SELECT_ATTRIBUTES
+  SELECT_ATTRIBUTES,
+  CLEAR_OPTIONS
 } from './actionTypes';
 
 export const productRequest = () => ({
@@ -30,9 +31,10 @@ export const filterCategories = category => ({
   payload: category,
 });
 
-export const addToCart = id => ({
+export const addToCart = (id, options) => ({
   type: ADD_TO_CART,
   id,
+  options
 });
 
 export const removeFromCart = id => ({
@@ -59,3 +61,7 @@ export const selectAttributes = option => ({
   type: SELECT_ATTRIBUTES,
   payload: option,
 })
+
+export const clearOptions = () => ({
+  type: CLEAR_OPTIONS
+});

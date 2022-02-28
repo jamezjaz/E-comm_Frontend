@@ -8,3 +8,4 @@ export const ADD_QUANTITY = 'ADD_QUANTITY';
 export const SUB_QUANTITY = 'SUB_QUANTITY';
 export const CHANGE_LABEL = 'CHANGE_LABEL';
 export const SELECT_ATTRIBUTES = 'SELECT_ATTRIBUTES';
+export const CLEAR_OPTIONS = 'CLEAR_OPTIONS';

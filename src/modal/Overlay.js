@@ -25,7 +25,7 @@ import DisplayTotal from '../components/DisplayTotal';
 
 class Overlay extends React.Component {
   render() {
-    const { addedProducts, label, closeModal, options } = this.props;
+    const { addedProducts, label, closeModal } = this.props;
     const addedProductsLen = addedProducts.length;
 
     const handleAddQuantity = id => {
@@ -55,26 +55,13 @@ class Overlay extends React.Component {
                       <SubTitle>{item.name}</SubTitle>
                       <p>{price(item.prices, label)}</p>
                       <>
-                        {Object.keys(options).map((key, i) => (
+                        {item.options.map((option, i) => (
                           <div key={i}>
                             {item.category === 'clothes' && 
-                              <OptionButton>{options[key].clothes}</OptionButton>
+                              <OptionButton>{option.clothes}</OptionButton>
                             }
                             {item.category === 'tech' &&
-                              <>
-                                {item.attributes.map(attr => (
-                                  <>
-                                    {attr.type === 'swatch' &&   
-                                      <OptionButton
-                                        BgColor={options[key].swatch}
-                                      />
-                                    }
-                                    {attr.type === 'text' &&
-                                      <OptionButton>{options[key].text}</OptionButton>
-                                    }
-                                  </>
-                                ))}
-                              </>
+                              <OptionButton BgColor={option.swatch}>{option.text}</OptionButton>
                             }
                           </div>
                         ))}
@@ -126,8 +113,7 @@ class Overlay extends React.Component {
 
 const mapStateToProps = state => ({
   addedProducts: state.product.addedProducts,
-  label: state.product.label,
-  options: state.product.options
+  label: state.product.label
 });
 
 const mapDispatchToProps = dispatch => ({

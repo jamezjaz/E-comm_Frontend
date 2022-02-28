@@ -59,7 +59,6 @@ export const OptionButton = styled.button`
   padding: 0.5rem;
   height: 2.5rem;
   margin-right: 0.5rem;
-  /* background-color: #ffffff; */
   background-color: ${props => props.OptionColor || "white"};
   cursor: pointer;
 

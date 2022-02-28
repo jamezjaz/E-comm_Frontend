@@ -2,6 +2,7 @@ import {
   ADD_QUANTITY,
   ADD_TO_CART,
   CHANGE_LABEL,
+  CLEAR_OPTIONS,
   FETCH_PRODUCTS_FAILURE,
   FETCH_PRODUCTS_REQUEST,
   FETCH_PRODUCTS_SUCCESS,
@@ -17,7 +18,7 @@ const initialState = {
   addedProducts: [],
   total: 0,
   label: 'USD',
-  options: {}
+  options: []
 };
 
 const productReducer = (state = initialState, action) => {
@@ -61,9 +62,10 @@ const productReducer = (state = initialState, action) => {
       }
       addedProduct.quantity = 1;
       const newTotal = state.total + addedProductPrice.amount;
+      const options = action.options;
       return {
         ...state,
-        addedProducts: [...state.addedProducts, addedProduct],
+        addedProducts: [...state.addedProducts, {...addedProduct, options}],
         total: Math.round((newTotal + Number.EPSILON) * 100) / 100,
       }
     }
@@ -124,8 +126,13 @@ const productReducer = (state = initialState, action) => {
       case SELECT_ATTRIBUTES:
       return {
         ...state,
-        options: { options: action.payload },
+        options: [...state.options, action.payload],
       };
+    case CLEAR_OPTIONS:
+      return {
+        ...state,
+        options: []
+      }
     default:
       return state;
   }

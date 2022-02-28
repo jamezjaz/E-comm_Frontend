@@ -15,7 +15,11 @@ import {
   SubTitle
 } from '../styles/ProductDescription.styled';
 import { price, withRouter } from './constant';
-import { addToCart, selectAttributes } from '../redux/actions/actionCreators';
+import {
+  addToCart,
+  clearOptions,
+  selectAttributes
+} from '../redux/actions/actionCreators';
 
 class ProductDescription extends React.Component {
   constructor() {
@@ -27,7 +31,7 @@ class ProductDescription extends React.Component {
   };
 
   render() {
-    const { categories: {categories}, params, label, addProductsToCart, options } = this.props;
+    const { categories: {categories}, params, label, addProductsToCart, options, resetOption } = this.props;
 
     const productId = params.id;
     // const { id } = params;
@@ -40,8 +44,9 @@ class ProductDescription extends React.Component {
       return acc
     }, {});
 
-    const addProductToCart = id => {
-      addProductsToCart(id);
+    const addProductToCart = (id, options) => {
+      addProductsToCart(id, options);
+      resetOption();
     };
 
     const selectOptions = option => {
@@ -78,49 +83,45 @@ class ProductDescription extends React.Component {
                 <div key={i}>
                   <p>{attributes[key].name}:</p>
                   {product.category === 'clothes' &&
-                    <div>
+                    <>
                       {attributes[key].items.map(clothAttr => (
-                        <>
-                          <OptionButton
-                            onClick={() => selectOptions({ clothes: clothAttr.displayValue })}
-                            key={clothAttr.id}
-                          >
-                            {clothAttr.displayValue}
-                          </OptionButton>
-                        </>
+                        <OptionButton
+                          key={clothAttr.id}
+                          onClick={() => {
+                            selectOptions({ clothes: clothAttr.displayValue })
+                          }}
+                        >
+                          {clothAttr.displayValue}
+                        </OptionButton>
                       ))}
-                    </div>
+                    </>
                   }
                   {product.category === 'tech' &&
-                    <div>
+                    <>
                       {attributes[key].type === 'swatch' &&
-                        <>
+                        <div>
                           {attributes[key].items.map(color => (
-                            <>
-                              <OptionButton
-                                key={color.id}
-                                OptionColor={color.displayValue}
-                                onClick={() => selectOptions({ swatch: color.displayValue })}
-                              />
-                            </>
+                            <OptionButton
+                              key={color.id}
+                              onClick={() => selectOptions({ swatch: color.displayValue })}
+                              OptionColor={color.displayValue}
+                            />
                           ))}
-                        </>
+                        </div>
                       }
                       {attributes[key].type === 'text' &&
-                        <>
-                          {attributes[key].items.map(capacity => (
-                            <>
-                              <OptionButton
-                                key={capacity.id}
-                                onClick={() => selectOptions({ text: capacity.displayValue })}
-                              >
-                                {capacity.displayValue}
-                              </OptionButton>
-                            </>
+                        <div>
+                          {attributes[key].items.map(text => (
+                            <OptionButton
+                              key={text.id}
+                              onClick={() => selectOptions({ text: text.displayValue })}
+                            >
+                              {text.displayValue}
+                            </OptionButton>
                           ))}
-                        </>
+                        </div>
                       }
-                    </div>
+                    </>
                   }
                 </div>
               ))}
@@ -151,8 +152,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  addProductsToCart: id => dispatch(addToCart(id)),
-  selectAttr: option => dispatch(selectAttributes(option))
+  addProductsToCart: (id, options) => dispatch(addToCart(id, options)),
+  selectAttr: option => dispatch(selectAttributes(option)),
+  resetOption: () => dispatch(clearOptions())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(ProductDescription));

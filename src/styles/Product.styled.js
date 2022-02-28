@@ -22,6 +22,45 @@ export const ProductContent = styled.div`
       color: inherit;
     }
 
+    small {
+      margin: 0.25rem;
+      padding: 0.25rem;
+      font-size: 0.8rem;
+      font-weight: bold;
+      position: relative;
+      top: -4.2rem;
+      left: 7rem;
+      background-color: ${props => props.optionsColor || '#d6d3d3'};
+
+      &:active {
+        color: #ffffff;
+        background-color: #1d1f22;
+      }
+    }
+
+    small,
+    h6 {
+      max-width: 5rem;
+      min-width: 1.5rem;
+      display: none;
+      cursor: pointer;
+    }
+
+    h6 {
+      background-color: #ffffff;
+      margin: 0.15rem;
+      position: relative;
+      top: -3rem;
+      left: 12rem;
+    }
+
+      &:hover {
+        small,
+        h6 {
+          display: inline;
+        }
+      }
+
     button {
       position: relative;
       left: 22rem;
@@ -56,6 +95,11 @@ export const ProductCard = styled.div`
     box-shadow: 0px 4px 35px rgba(168, 172, 176, 0.19);
   }
 
+  div {
+    display: flex;
+    flex-direction: column;
+  }
+
   p {
     font-weight: 300;
   }
@@ -70,6 +114,17 @@ export const ProductCard = styled.div`
 export const Image = styled.img`
   width: 450px;
   height: 450px;
+`;
+
+export const Option = styled.span`
+  padding: 0.25rem 0.7rem;
+  background-color: ${props => props.OptionColor || '#d6d3d3'};
+  border: 1px solid black;
+  cursor: pointer;
+
+  &:active {
+    background-color: #d6d3d3;
+  }
 `;
 
 export const CartIcon = styled.img`
