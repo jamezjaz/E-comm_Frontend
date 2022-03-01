@@ -89,15 +89,22 @@ export const ProductCard = styled.div`
   max-width: 600px;
   margin: 1rem 3rem 1rem 0;
   padding: 0 1rem;
-
+  
+  // out of stock style props
+  opacity: ${props => props.Opacity };
+  pointer-events: ${props => props.PointerEvents};
+  
   &:hover {
     background: #ffffff;
     box-shadow: 0px 4px 35px rgba(168, 172, 176, 0.19);
   }
 
-  div {
-    display: flex;
-    flex-direction: column;
+  h2 {
+    position: relative;
+    top: 16rem;
+    margin-left: 8rem;
+    color: rgb(73, 72, 72);
+    font-weight: lighter;
   }
 
   p {
