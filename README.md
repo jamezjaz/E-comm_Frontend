@@ -1,70 +1,181 @@
-# Getting Started with Create React App
+<!--
+*** Thanks for checking out this README Template. If you have a suggestion that would
+*** make this better, please fork the repo and create a pull request or simply open
+*** an issue with the tag "enhancement".
+*** Thanks again! Now go create something AMAZING! :D
+-->
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<!-- PROJECT SHIELDS -->
+<!--
+*** I'm using markdown "reference style" links for readability.
+*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
+*** See the bottom of this document for the declaration of the reference variables
+*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
+*** https://www.markdownguide.org/basic-syntax/#reference-style-links
+-->
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
 
-## Available Scripts
 
-In the project directory, you can run:
+<!-- PROJECT LOGO -->
+<br />
+<p align="center">
+  <a href="https://github.com/jamezjaz/Robot_Market">
+    <img src="../junior-react-frontend/src/assets/icons/logo.png" alt="Logo" width="100" height="100">
+  </a>
 
-### `npm start`
+  <h3 align="center">Robots Markets</h3>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+  <p align="center">
+    This is the front-end repository of the Junior React Developer Position Test. It's an e-commerce application.
+    <br />
+    <a href="https://github.com/jamezjaz/Robot_Market"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://github.com/jamezjaz/Robot_Market/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/jamezjaz/Robot_Market/issues">Request Feature</a>
+  </p>
+</p>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<!-- TABLE OF CONTENTS -->
+## Table Of Contents
 
-### `npm test`
+* [About The Project](#about-the-project)
+* [Preview](#preview)
+* [Live Link](#live-link)
+* [Built With](#built-with)
+* [Getting Started](#getting-started)
+* [Author](#author)
+* [Acknowledgements](#acknowledgements)
+* [License](#license)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<!-- ABOUT THE PROJECT -->
+## About The Project
+  It's an e-commerce front-end application built with React, Redux, and Styled Components. It has product listing page - PLP, product description page -PDP, cart page, and cart overlay.
 
-### `npm run build`
+  A user can can hover over specific products to see the attributes (options) of the those products if such products have options. He/she can add products to cart either from the PLP page using the cart icon or from the PDP page using Add To Cart button. He/she can increment/decrement the quantity of the added products. He/she can also remove specific products from cart entirely using the remove button.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  A user can filter products based on their categories such as tech, clothes. All category render the entire products on the PLP page.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  A user can also exchange currencies using the currency exchanger on the header. Again, the cart icon on the header keeps count of the number of products added to cart.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  This project consumes a third party GraphQL API.
 
-### `npm run eject`
+## Preview
+![preview](https://user-images.githubusercontent.com/57812000/156348166-65470deb-b3bc-4e8c-87f7-eee0a6981c32.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Live Link
+Please, run the the server locally [here](https://github.com/scandiweb/junior-react-endpoint) then click on the [Live Link](https://james-odufu-entry-react-test.netlify.app/) to access the project live.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Built With
+This project was built using these technologies.
+* Create-React-App
+* React
+* Redux
+* JavaScript
+* GraphQL API
+* Axios
+* React-DOM
+* Redux-thunk
+* ES6
+* Styled Components
+* Redux Persist
+* HTML React Parser
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Getting Started
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+To get a local copy up and running follow these simple example steps.
 
-## Learn More
+### Prerequisites
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+ * [Node.js](https://nodejs.org/) is required to install dependencies and run scripts via npm.
+ * A modern browser
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Client
+### Clone
+* Clone this repo:
+  - Clone with SSH:
+  ```
+    git@github.com:jamezjaz/junior-react-frontend.git
+  ```
+  - Clone with HTTPS
+  ```
+    https://github.com/jamezjaz/junior-react-frontend.git
+  ```
+  - Clone with GitHub CLI
+  ```
+    gh repo clone jamezjaz/junior-react-frontend
+    
+ - cd to junior-react-frontend
 
-### Code Splitting
+### Setup
+To install dependencies:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Run ```$ npm install```
 
-### Analyzing the Bundle Size
+To start the local webserver and have the application run live on http://localhost:3000/:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Run ```$ npm start```
 
-### Making a Progressive Web App
+## Server
+### Clone
+* Clone this repo:
+  - Clone with SSH:
+  ```
+    git@github.com:scandiweb/junior-react-endpoint.git
+  ```
+  - Clone with HTTPS
+  ```
+    https://github.com/scandiweb/junior-react-endpoint.git
+  ```
+    
+ - cd to junior-react-endpoint
+ 
+### Setup
+Run ```$ npm install``` to install the dependencies
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Run ```$ npm start``` to start the server on http://localhost:4000/
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+<!-- CONTACT -->
+## Author
 
-### Deployment
+## 👤 Odufu James Chigozie
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+ [![Website](https://img.shields.io/badge/-Website-black?style=for-the-badge&logo=Julia&logoColor=white)](http://jamezjaz.com/)
+ [![LINKEDIN](https://img.shields.io/badge/-LINKEDIN-0077B5?style=for-the-badge&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/jamesgozieodufu/)
+ [![EMAIL](https://img.shields.io/badge/-EMAIL-D14836?style=for-the-badge&logo=Mail.Ru&logoColor=white)](mailto:jamezjaz@gmail.com)
+ [![TWITTER](https://img.shields.io/badge/-TWITTER-1DA1F2?style=for-the-badge&logo=Twitter&logoColor=white)](https://twitter.com/jamezjaz90)
 
-### `npm run build` fails to minify
+## 🤝 Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Contributions, issues and feature requests are welcome!
+
+Feel free to check the [issues page](https://github.com/jamezjaz/junior-react-frontend/issues).
+
+## Show your support
+
+Give a ✯ if you like this project!
+
+
+<!-- ACKNOWLEDGEMENTS -->
+## Acknowledgements
+* I acknowledge [Scandiweb](https://scandiweb.com//) for the opportunity to work on this project.
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[contributors-shield]: https://img.shields.io/github/contributors/jamezjaz/junior-react-frontend.svg?style=flat-square
+[contributors-url]: https://github.com/jamezjaz/junior-react-frontend/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/jamezjaz/junior-react-frontend.svg?style=flat-square
+[forks-url]: https://github.com/jamezjaz/junior-react-frontend/network/members
+[stars-shield]: https://img.shields.io/github/stars/jamezjaz/junior-react-frontend.svg?style=flat-square
+[stars-url]: https://github.com/jamezjaz/junior-react-frontend/stargazers
+[issues-shield]: https://img.shields.io/github/issues/jamezjaz/junior-react-frontend.svg?style=flat-square
+[issues-url]: https://github.com/jamezjaz/junior-react-frontend/issues
+
+## 📝 License
+
+This project is [MIT](https://opensource.org/licenses/MIT) licensed.

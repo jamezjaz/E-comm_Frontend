@@ -96,7 +96,6 @@ class Product extends React.Component {
                       <button
                         onClick={() => {
                           handleAddToCart(product.id, options);
-                          console.log('AddedI', options);
                         }}
                       >
                         <CartIcon src={cart} alt="Cart" />
