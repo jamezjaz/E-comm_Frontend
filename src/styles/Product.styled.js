@@ -28,7 +28,7 @@ export const ProductContent = styled.div`
       font-size: 0.8rem;
       font-weight: bold;
       position: relative;
-      top: -4.2rem;
+      top: -3rem;
       left: 7rem;
       background-color: ${props => props.optionsColor || '#d6d3d3'};
 
@@ -50,7 +50,7 @@ export const ProductContent = styled.div`
       background-color: #ffffff;
       margin: 0.15rem;
       position: relative;
-      top: -3rem;
+      top: -4.3rem;
       left: 12rem;
     }
 

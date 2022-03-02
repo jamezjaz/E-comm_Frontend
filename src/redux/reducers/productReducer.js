@@ -82,8 +82,8 @@ const productReducer = (state = initialState, action) => {
       };
     }
     case ADD_QUANTITY: {
-      const addedProduct = state.categories.categories[0].products.find(product => product.id === action.id);
-      // addedProduct.quantity += 1;
+      const addedProduct = state.addedProducts.find(product => product.id === action.id);
+      // console.log('Added State', action.id, addedProduct);
 
       const addedQtyPrice = addedProduct.prices.find(price => price.currency.label === state.label);
       const newTotal = state.total + addedQtyPrice.amount;
@@ -96,7 +96,7 @@ const productReducer = (state = initialState, action) => {
       };
     }
     case SUB_QUANTITY: {
-      const addedProduct = state.categories.categories[0].products.find(product => product.id === action.id);
+      const addedProduct = state.addedProducts.find(product => product.id === action.id);
       
       const subQtyPrice = addedProduct.prices.find(price => price.currency.label === state.label);
       // if the quantity === 1 then, it should be removed and not decreased
