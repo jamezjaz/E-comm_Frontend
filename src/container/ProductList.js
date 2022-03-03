@@ -24,18 +24,6 @@ class ProductList extends React.Component {
       <>
         <Header handleFilter={fiteredCategories} />
         <ContentContainer>
-          {/* {!categories ? 
-            (<h3>Loading...</h3>)
-          :  
-            <div>
-              {categories.map(category => (
-                <Product
-                  key={category.name}
-                  category={category}
-                />
-              ))}
-            </div>
-          } */}
           {categories?.map(category => (
             <div key={category.name}>
               {category.name === filtered ?

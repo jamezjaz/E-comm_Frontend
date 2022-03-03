@@ -45,7 +45,11 @@ class Product extends React.Component {
                     <Link to={`/description/${product.id}`}>
                       <ProductCard>
                         <Image src={product.gallery[0]} alt="Product Image" />
-                        <p>{product.name}</p>
+                        <p>
+                          {product.brand}
+                          {' '}
+                          {product.name}
+                        </p>
                         <span>{price(product.prices, label)}</span>
                       </ProductCard>
                     </Link>
@@ -102,15 +106,21 @@ class Product extends React.Component {
                       </button>
                   </>
                 :
-                  <ProductCard
-                    Opacity='0.4'
-                    PointerEvents='none'
-                  >
-                    <h2>OUT OF STOCK</h2>
-                    <Image src={product.gallery[0]} alt="Product Image" />
-                    <p>{product.name}</p>
-                    <span>{price(product.prices, label)}</span>
-                  </ProductCard>
+                  <Link to={`/description/${product.id}`}>
+                    <ProductCard
+                      Opacity='0.4'
+                      PointerEvents='none'
+                    >
+                      <h2>OUT OF STOCK</h2>
+                      <Image src={product.gallery[0]} alt="Product Image" />
+                      <p>
+                        {product.brand}
+                        {' '}
+                        {product.name}
+                      </p>
+                      <span>{price(product.prices, label)}</span>
+                    </ProductCard>
+                  </Link>
                 }
               </div>
             ))}
