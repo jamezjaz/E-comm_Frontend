@@ -6,7 +6,6 @@ import {
   FETCH_PRODUCTS_FAILURE,
   FETCH_PRODUCTS_REQUEST,
   FETCH_PRODUCTS_SUCCESS,
-  REMOVE_FROM_CART,
   SELECT_ATTRIBUTES,
   SUB_QUANTITY
 } from '../actions/actionTypes';
@@ -68,18 +67,6 @@ const productReducer = (state = initialState, action) => {
         addedProducts: [...state.addedProducts, {...addedProduct, options}],
         total: Math.round((newTotal + Number.EPSILON) * 100) / 100,
       }
-    }
-    case REMOVE_FROM_CART: {
-      const newProducts = state.addedProducts.filter(prod => action.id !== prod.id);
-      const removedProduct = state.addedProducts.find(prod => action.id === prod.id);
-      // calculating the total
-      const removedProdPrice = removedProduct.prices.find(price => price.currency.label === state.label);
-      const newTotal = state.total - removedProdPrice.amount;
-      return {
-        ...state,
-        addedProducts: newProducts,
-        total: Math.round((newTotal + Number.EPSILON) * 100) / 100,
-      };
     }
     case ADD_QUANTITY: {
       const addedProduct = state.addedProducts.find(product => product.id === action.id);

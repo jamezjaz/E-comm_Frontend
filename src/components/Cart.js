@@ -14,13 +14,11 @@ import {
   OptionButton,
   SubTitle,
   Title,
-  RemoveProduct,
   EmptyCartHeader
 } from '../styles/Cart.styled';
 import { price } from '../container/constant';
 import {
   addQuantity,
-  removeFromCart,
   subQuantity
 } from '../redux/actions/actionCreators';
 // image slider
@@ -33,14 +31,8 @@ class Cart extends React.Component {
 
     this.handleAddQuantity = this.handleAddQuantity.bind(this);
     this.handleSubQuantity = this.handleSubQuantity.bind(this);
-    this.handleRemoveProduct = this.handleRemoveProduct.bind(this);
     this.state = { slideIndex : 1 };
   }
-
-  handleRemoveProduct(id) {
-    const { removedProduct } = this.props;
-    removedProduct(id);
-  };
 
   handleAddQuantity(id) {
     const { addQty } = this.props;
@@ -129,11 +121,6 @@ class Cart extends React.Component {
                         <SliderBtn moveSlide={prevSlide} direction={"prev"} />
                       </div>
                     ))}
-                    <RemoveProduct
-                      onClick={() => { this.handleRemoveProduct(item.id); }}
-                    >
-                      Remove
-                    </RemoveProduct>
                   </ImageContainer>
                 </RightContent>
               </CartContainer>
@@ -153,7 +140,6 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  removedProduct: id => dispatch(removeFromCart(id)),
   addQty: id => dispatch(addQuantity(id)),
   subtractQty: id => dispatch(subQuantity(id)),
 });

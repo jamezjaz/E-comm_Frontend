@@ -6,7 +6,6 @@ import {
   ADD_TO_CART,
   ADD_QUANTITY,
   SUB_QUANTITY,
-  REMOVE_FROM_CART,
   CHANGE_LABEL,
   SELECT_ATTRIBUTES,
   CLEAR_OPTIONS
@@ -35,11 +34,6 @@ export const addToCart = (id, options) => ({
   type: ADD_TO_CART,
   id,
   options
-});
-
-export const removeFromCart = id => ({
-  type: REMOVE_FROM_CART,
-  id
 });
 
 export const addQuantity = id => ({
