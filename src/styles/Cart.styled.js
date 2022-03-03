@@ -46,6 +46,7 @@ export const OptionButton = styled.button`
   margin-right: 0.5rem;
   background-color: ${props => props.BgColor || '#ffffff'};
   cursor: pointer;
+  font-family: 'Source Sans Pro', sans-serif;
 
   &:focus {
     color: #ffffff;

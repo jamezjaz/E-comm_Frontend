@@ -53,7 +53,16 @@ export const SubTitle = styled.p`
   margin-top: -2rem;
 `;
 
+export const OptionName = styled.p`
+  @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+
+  text-transform: uppercase;
+  font-family: 'Roboto Condensed', sans-serif;
+`;
+
 export const OptionButton = styled.button`
+  @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+
   max-width: 6rem;
   min-width: 3rem;
   padding: 0.5rem;
@@ -61,11 +70,18 @@ export const OptionButton = styled.button`
   margin-right: 0.5rem;
   background-color: ${props => props.OptionColor || "white"};
   cursor: pointer;
+  font-family: 'Roboto Condensed', sans-serif;
 
   &:focus {
     color: #ffffff;
     background-color: #1d1f22;
   }
+`;
+
+export const PriceContainer = styled.div`
+  @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+
+  font-family: 'Roboto Condensed', sans-serif;
 `;
 
 export const AddToCartButton = styled.button`
@@ -82,5 +98,15 @@ export const AddToCartButton = styled.button`
 `;
 
 export const Description = styled.div`
-  color: #1d1f22;;
+  @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
+
+  color: #1d1f22;
+  padding: 1rem 0;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+
+  h1,
+  p {
+    font-weight: 400 !important;
+  }
 `;

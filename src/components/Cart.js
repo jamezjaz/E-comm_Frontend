@@ -53,7 +53,7 @@ class Cart extends React.Component {
   }
 
   render() {
-    const { addedProducts, label, options } = this.props;
+    const { addedProducts, label } = this.props;
     const addedProductsLen = addedProducts.length;
 
     // cart image slider
@@ -89,32 +89,15 @@ class Cart extends React.Component {
                     <SubTitle>{item.name}</SubTitle>
                     <p>{price(item.prices, label)}</p>
                     <div>
-                      {Object.keys(options).map((key, i) => (
+                      {item.options.map((option, i) => (
                         <div key={i}>
                           {item.category === 'clothes' &&
                             <>
-                              <OptionButton>{options[key].clothes}</OptionButton>
+                              <OptionButton>{option.clothes}</OptionButton>
                             </>
                           }
                           {item.category === 'tech' &&
-                            <>
-                              {item.attributes.map(attr => (
-                                <>
-                                  {attr.type === 'swatch' &&
-                                    <>
-                                      <OptionButton
-                                        BgColor={options[key].swatch}
-                                      />
-                                    </>
-                                  }
-                                  {attr.type === 'text' &&
-                                    <>
-                                      <OptionButton>{options[key].text}</OptionButton>
-                                    </>
-                                  }
-                                </>
-                              ))}
-                            </>
+                            <OptionButton BgColor={option.swatch}>{option.text}</OptionButton>
                           }
                         </div>
                       ))}
@@ -166,8 +149,7 @@ class Cart extends React.Component {
 
 const mapStateToProps = state => ({
   addedProducts: state.product.addedProducts,
-  label: state.product.label,
-  options: state.product.options
+  label: state.product.label
 });
 
 const mapDispatchToProps = dispatch => ({

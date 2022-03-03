@@ -12,6 +12,8 @@ import {
   MinorImage,
   MinorImageContainer,
   OptionButton,
+  OptionName,
+  PriceContainer,
   SubTitle
 } from '../styles/ProductDescription.styled';
 import { price, withRouter } from './constant';
@@ -81,7 +83,7 @@ class ProductDescription extends React.Component {
             <div>
               {Object.keys(attributes).map((key, i) => (
                 <div key={i}>
-                  <p>{attributes[key].name}:</p>
+                  <OptionName>{attributes[key].name}:</OptionName>
                   {product.category === 'clothes' &&
                     <>
                       {attributes[key].items.map(clothAttr => (
@@ -126,10 +128,10 @@ class ProductDescription extends React.Component {
                 </div>
               ))}
             </div>
-            <div>
+            <PriceContainer>
               <p>PRICE:</p>
               <p>{price(product.prices, label)}</p>
-            </div>
+            </PriceContainer>
             <AddToCartButton
               onClick={() => { 
                 addProductToCart(product.id, options);
