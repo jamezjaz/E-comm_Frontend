@@ -13,6 +13,7 @@ import {
   CategoryTitle,
   Container,
   Image,
+  ImageContainer,
   Option,
   ProductCard,
   ProductContent
@@ -44,7 +45,9 @@ class Product extends React.Component {
                   <>
                     <Link to={`/description/${product.id}`}>
                       <ProductCard>
-                        <Image src={product.gallery[0]} alt="Product Image" />
+                        <ImageContainer>
+                          <Image src={product.gallery[0]} alt="Product Image" />
+                        </ImageContainer>
                         <p>
                           {product.brand}
                           {' '}
@@ -106,21 +109,25 @@ class Product extends React.Component {
                       </button>
                   </>
                 :
-                  <Link to={`/description/${product.id}`}>
-                    <ProductCard
-                      Opacity='0.4'
-                      PointerEvents='none'
-                    >
-                      <h2>OUT OF STOCK</h2>
-                      <Image src={product.gallery[0]} alt="Product Image" />
-                      <p>
-                        {product.brand}
-                        {' '}
-                        {product.name}
-                      </p>
-                      <span>{price(product.prices, label)}</span>
-                    </ProductCard>
-                  </Link>
+                  <ProductContent>
+                    <Link to={`/description/${product.id}`}>
+                      <ProductCard
+                        Opacity='0.4'
+                        PointerEvents='none'
+                      >
+                        <h2>OUT OF STOCK</h2>
+                        <ImageContainer>
+                          <Image src={product.gallery[0]} alt="Product Image" />
+                        </ImageContainer>
+                        <p>
+                          {product.brand}
+                          {' '}
+                          {product.name}
+                        </p>
+                        <span>{price(product.prices, label)}</span>
+                      </ProductCard>
+                    </Link>
+                  </ProductContent>
                 }
               </div>
             ))}

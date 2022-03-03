@@ -97,11 +97,15 @@ export const Count = styled.p`
   margin: 1.5rem 0;
 `;
 
-export const ImageContainer = styled.div``;
-
-export const Image = styled.img`
+export const ImageContainer = styled.div`
   width: 10.5rem;
   height: 7rem;
+`;
+
+export const Image = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 `;
 
 export const TotalContainer = styled(OverlayContent)`

@@ -80,11 +80,14 @@ export const Count = styled.p`
 
 export const ImageContainer = styled.div`
   display: flex;
+  width: 10rem;
+  height: 10.5rem;
 `;
 
 export const Image = styled.img`
-  width: 10rem;
-  height: 10.5rem;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 `;
 
 export const RemoveProduct = styled.button`

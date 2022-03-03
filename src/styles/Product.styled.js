@@ -64,15 +64,12 @@ export const ProductContent = styled.div`
     button {
       position: relative;
       left: 22rem;
-      /* bottom: 5rem; */
       top: -7.5rem;
       background: none;
       max-width: 3.5rem;
       max-height: 3.5rem;
-      /* padding: 0.5rem; */
       border: none;
       border-radius: 50%;
-      /* margin-bottom: -5rem; */
       cursor: pointer;
       display: none;
     }
@@ -100,11 +97,11 @@ export const ProductCard = styled.div`
   }
 
   h2 {
-    position: relative;
-    top: 16rem;
-    margin-left: 8rem;
+    position: absolute;
+    margin: 12rem 0 0 8rem;
     color: rgb(73, 72, 72);
     font-weight: lighter;
+    z-index: 999;
   }
 
   p {
@@ -118,9 +115,15 @@ export const ProductCard = styled.div`
   }
 `;
 
-export const Image = styled.img`
+export const ImageContainer = styled.div`
   width: 450px;
-  height: 450px;
+  height: 500px;
+`;
+
+export const Image = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 `;
 
 export const Option = styled.span`
