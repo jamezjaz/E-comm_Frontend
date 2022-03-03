@@ -28,8 +28,8 @@ export const ProductContent = styled.div`
       font-size: 0.8rem;
       font-weight: bold;
       position: relative;
-      top: -3rem;
-      left: 7rem;
+      top: -5.2rem;
+      left: 6.5rem;
       background-color: ${props => props.optionsColor || '#d6d3d3'};
 
       &:active {
@@ -50,7 +50,7 @@ export const ProductContent = styled.div`
       background-color: #ffffff;
       margin: 0.15rem;
       position: relative;
-      top: -4.3rem;
+      top: -6.4rem;
       left: 12rem;
     }
 
@@ -64,7 +64,7 @@ export const ProductContent = styled.div`
     button {
       position: relative;
       left: 22rem;
-      top: -7.5rem;
+      top: -8rem;
       background: none;
       max-width: 3.5rem;
       max-height: 3.5rem;
@@ -85,7 +85,7 @@ export const ProductContent = styled.div`
 export const ProductCard = styled.div`
   max-width: 600px;
   margin: 1rem 3rem 1rem 0;
-  padding: 0 1rem;
+  padding: 0 1rem 3rem 1rem ;
   
   // out of stock style props
   opacity: ${props => props.Opacity };

@@ -109,25 +109,23 @@ class Product extends React.Component {
                       </button>
                   </>
                 :
-                  <ProductContent>
-                    <Link to={`/description/${product.id}`}>
-                      <ProductCard
-                        Opacity='0.4'
-                        PointerEvents='none'
-                      >
-                        <h2>OUT OF STOCK</h2>
-                        <ImageContainer>
-                          <Image src={product.gallery[0]} alt="Product Image" />
-                        </ImageContainer>
-                        <p>
-                          {product.brand}
-                          {' '}
-                          {product.name}
-                        </p>
-                        <span>{price(product.prices, label)}</span>
-                      </ProductCard>
-                    </Link>
-                  </ProductContent>
+                  <Link to={`/description/${product.id}`}>
+                    <ProductCard
+                      Opacity='0.4'
+                      PointerEvents='none'
+                    >
+                      <h2>OUT OF STOCK</h2>
+                      <ImageContainer>
+                        <Image src={product.gallery[0]} alt="Product Image" />
+                      </ImageContainer>
+                      <p>
+                        {product.brand}
+                        {' '}
+                        {product.name}
+                      </p>
+                      <span>{price(product.prices, label)}</span>
+                    </ProductCard>
+                  </Link>
                 }
               </div>
             ))}
