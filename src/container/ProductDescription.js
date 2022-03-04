@@ -136,6 +136,8 @@ class ProductDescription extends React.Component {
               onClick={() => { 
                 addProductToCart(product.id, options);
               }}
+              disabled={product.inStock === false}
+              style={{ backgroundColor: product.inStock === false ? '#31a14f' : '' }}
             >
               ADD TO CART
             </AddToCartButton>

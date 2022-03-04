@@ -8,7 +8,6 @@ import {
   Image,
   CartIcon,
   Select,
-  SelectOption,
   FiterButtonContainer,
   FilterButton,
   CartCounter,
@@ -40,7 +39,7 @@ class Header extends React.Component {
   }
 
   render() {
-    const { allCategories, addedProducts } = this.props;
+    const { allCategories, addedProducts, currency } = this.props;
     const categoryArray = [];
     const addedProductsLen = addedProducts.length;
 
@@ -67,13 +66,16 @@ class Header extends React.Component {
             </li>
           </ul>
           <div>
-            <Select onChange={this.changeLabel}>
-              <SelectOption disable="true" hidden>$</SelectOption>         
-              <SelectOption value="USD">$ USD</SelectOption>
-              <SelectOption value="GBP">£ GBP</SelectOption>
-              <SelectOption value="AUD">A$ AUD</SelectOption>
-              <SelectOption value="JPY">A¥ JPY</SelectOption>
-              <SelectOption value="RUB">₽ RUB</SelectOption>
+            <Select onChange={this.changeLabel} className="select">
+              <option disable="true" hidden>$</option>
+              {currency.map(price => (
+                <option
+                  key={price.currency.symbol}
+                  value={price.currency.label}
+                >
+                  {`${price.currency.symbol} ${price.currency.label}`}
+                </option>
+              ))}
             </Select>
             <>
               <CartCounter>{addedProductsLen > 0 ? addedProductsLen : null}</CartCounter>
@@ -105,6 +107,7 @@ const mapStateToProps = state => ({
   allCategories: state.product.categories.categories,
   addedProducts: state.product.addedProducts,
   label: state.product.label,
+  currency: state.product.categories.categories[0].products[0].prices
 });
 
 const mapDispatchToProps = dispatch => ({

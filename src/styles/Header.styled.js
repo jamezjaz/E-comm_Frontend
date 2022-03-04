@@ -66,15 +66,11 @@ export const Select = styled.select`
   margin-right: 1rem;
   width: 2.5rem;
   border: none;
-  background-color: #ffffff;
-`;
-
-export const SelectOption = styled.option`
-  border: none;
   outline: none;
+  background-color: #ffffff;
+  box-shadow: none;
 
   &:hover {
-    background-color: #ffffff;
     outline: none;
   }
 `;
