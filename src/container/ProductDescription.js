@@ -133,8 +133,13 @@ class ProductDescription extends React.Component {
               <p>{price(product.prices, label)}</p>
             </PriceContainer>
             <AddToCartButton
-              onClick={() => { 
-                addProductToCart(product.id, options);
+              onClick={() => {
+                product.attributes.length === options.length ?
+                  addProductToCart(product.id, options)
+                :
+                  alert('Select all product attributes');
+                  resetOption();
+                  console.log('Oppp', options);
               }}
               disabled={product.inStock === false}
               style={{ backgroundColor: product.inStock === false ? '#31a14f' : '' }}

@@ -48,20 +48,26 @@ const productReducer = (state = initialState, action) => {
       const existedProduct = state.addedProducts.find(product => action.id === product.id);
       // calculating the total
       const addedProductPrice = addedProduct.prices.find(price => price.currency.label === state.label);
-      if (existedProduct) {
-        // if (state.addedProducts.quantity) {
-          addedProduct.quantity += 1;
-          const newTotal = state.total + addedProductPrice.amount;
-          return {
-            ...state,
-            // total: state.total + addedProductPrice.amount,
-            total: Math.round((newTotal + Number.EPSILON) * 100) / 100,
-          }
-        // }
+      const options = action.options;
+
+      // console.log('Existed Option', existedProduct ? existedProduct.options : 'Nil');
+      // console.log('Added Option', addedProduct ? addedProduct.options : 'Nil');
+      // console.log('State', state.addedProducts[0]);
+      // console.log('Options', options);
+      if (existedProduct && JSON.stringify(existedProduct.options) === JSON.stringify(options)) {
+        addedProduct.quantity += 1;
+
+        const newTotal = state.total + addedProductPrice.amount;
+        return {
+          ...state,
+          // total: state.total + addedProductPrice.amount,
+          total: Math.round((newTotal + Number.EPSILON) * 100) / 100,
+          // quantity: addedProduct.quantity += 1
+        }
       }
       addedProduct.quantity = 1;
       const newTotal = state.total + addedProductPrice.amount;
-      const options = action.options;
+      // const options = action.options;
       return {
         ...state,
         addedProducts: [...state.addedProducts, {...addedProduct, options}],

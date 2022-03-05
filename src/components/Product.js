@@ -102,7 +102,11 @@ class Product extends React.Component {
                       ))}
                       <button
                         onClick={() => {
-                          handleAddToCart(product.id, options);
+                          product.attributes.length === options.length ?
+                            handleAddToCart(product.id, options)
+                            :
+                            alert('Select all products attributes');
+                            resetOption();
                         }}
                       >
                         <CartIcon src={cart} alt="Cart" />

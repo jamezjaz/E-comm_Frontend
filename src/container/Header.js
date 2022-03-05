@@ -51,7 +51,7 @@ class Header extends React.Component {
     //   return price;
     // });
 
-    console.log('Curr', currency);
+    // console.log('Curr', currency);
 
     // const prices = currency.slice(0, 5);
     // console.log('AAAA', prices);
@@ -79,15 +79,14 @@ class Header extends React.Component {
           <div>
             <Select onChange={this.changeLabel} className="select">
               <option disable="true" hidden>$</option>
-              {currency.map(price => (
+              {/* {currency.map(price => (
                 <option
                   key={price.currency.symbol}
                   value={price.currency.label}
                 >
                   {`${price.currency.symbol} ${price.currency.label}`}
-                  {console.log('SSS', price)}
                 </option>
-              ))}
+              ))} */}
             </Select>
             <>
               <CartCounter>{addedProductsLen > 0 ? addedProductsLen : null}</CartCounter>
@@ -119,7 +118,7 @@ const mapStateToProps = state => ({
   allCategories: state.product.categories.categories,
   addedProducts: state.product.addedProducts,
   label: state.product.label,
-  currency: state.product.categories.categories[0].products[0].prices
+  // currency: state.product.categories.categories[0]?.products[0]?.prices
 });
 
 // const mapStateToProps = state => {
