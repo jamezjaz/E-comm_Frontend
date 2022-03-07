@@ -8,8 +8,8 @@ import {
   Image,
   CartIcon,
   Select,
-  FiterButtonContainer,
-  FilterButton,
+  NavLinksContainer,
+  NavLinks,
   CartCounter,
 } from '../styles/Header.styled';
 import Overlay from '../modal/Overlay';
@@ -22,14 +22,7 @@ class Header extends React.Component {
       overlay: false
     }
 
-    this.handleChange = this.handleChange.bind(this);
     this.changeLabel = this.changeLabel.bind(this);
-  }
-
-  handleChange(event) {
-    const { handleFilter } = this.props;
-    const { value } = event.target;
-    handleFilter(value);
   }
 
   changeLabel(event) {
@@ -45,23 +38,24 @@ class Header extends React.Component {
 
     // pushes category properties of products to categories var
     allCategories?.map(cate => categoryArray.push(cate.name));
-
-    console.log('Load', loading);
     
     return(
       <>
         <NavContainer>
-          <FiterButtonContainer>
-           {categoryArray.map((category, i) => (
-              <FilterButton
+          <NavLinksContainer>
+            {categoryArray.map((category, i) => (
+              <Link
+                to={category === 'all' ? '/' : `/${category}`}
                 key={i}
-                value={category}
-                onClick={this.handleChange}
               >
-                {category}
-              </FilterButton>
-           ))}
-          </FiterButtonContainer>
+                <NavLinks
+                  value={category}
+                >
+                  {category}  
+                </NavLinks>  
+              </Link>
+            ))}
+          </NavLinksContainer>
           <ul>
             <li>
               <Link to='/'><Image src={logo} alt='Logo' /></Link>
@@ -71,7 +65,7 @@ class Header extends React.Component {
             <Select onChange={this.changeLabel} className="select">
               <option disable="true" hidden>$</option>
               {loading === false ?
-                currency?.map(price => (
+                currency?.products[0].prices.map(price => (
                   <option
                     key={price.currency.symbol}
                     value={price.currency.label}
@@ -113,7 +107,7 @@ const mapStateToProps = state => ({
   allCategories: state.product.categories.categories,
   addedProducts: state.product.addedProducts,
   label: state.product.label,
-  currency: state.product.categories.categories[0].products[0].prices,
+  currency: state.product.categories.categories[2],
   loading: state.product.loading
 });
 

@@ -2,7 +2,6 @@ import {
   FETCH_PRODUCTS_FAILURE,
   FETCH_PRODUCTS_REQUEST,
   FETCH_PRODUCTS_SUCCESS,
-  FILTER_PRODUCTS,
   ADD_TO_CART,
   ADD_QUANTITY,
   SUB_QUANTITY,
@@ -23,11 +22,6 @@ export const productRequestSuccess = products => ({
 export const productRequestFailure = error => ({
   type: FETCH_PRODUCTS_FAILURE,
   payload: error,
-});
-
-export const filterCategories = category => ({
-  type: FILTER_PRODUCTS,
-  payload: category,
 });
 
 export const addToCart = (id, options) => ({

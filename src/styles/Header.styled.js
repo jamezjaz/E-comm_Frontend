@@ -17,12 +17,13 @@ export const NavContainer = styled.nav`
   }
 `;
 
-export const FiterButtonContainer = styled.div`
+export const NavLinksContainer = styled.div`
   display: flex;
   margin: 0 2.5rem;
+  padding-top: 1rem;
 `;
 
-export const FilterButton = styled.button`
+export const NavLinks = styled.button`
   text-transform: uppercase;
   background-color: #ffffff;
   border: none;

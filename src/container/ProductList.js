@@ -4,7 +4,6 @@ import Header from './Header';
 import Product from '../components/Product';
 import { ContentContainer } from '../styles/ProductList.styled';
 import fetchProducts from '../apiRequest/apiRequest';
-import { filterCategories } from '../redux/actions/actionCreators';
 
 class ProductList extends React.Component { 
   componentDidMount() {
@@ -13,32 +12,17 @@ class ProductList extends React.Component {
   };
 
   render() {
-    const { categories: { categories }, filtered, label } = this.props;
-  
-    const fiteredCategories = category => {
-      const { filter } = this.props;
-      filter(category);
-    };
+    const { all } = this.props;
+
+    console.log('All', all);
 
     return(
       <>
-        <Header handleFilter={fiteredCategories} />
+        <Header />
         <ContentContainer>
-          {categories?.map(category => (
-            <div key={category.name}>
-              {category.name === filtered ?
-                (
-                  <Product
-                    key={category.name}
-                    category={category}
-                    label={label}
-                  />
-                )
-                :
-                (<></>)
-              }
-            </div>
-          ))}
+          <Product
+            allCategory={all}
+          />
         </ContentContainer>
       </>
     );
@@ -47,15 +31,11 @@ class ProductList extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  categories: state.product.categories,
-  loading: state.loading,
-  filtered: state.filter,
-  label: state.product.label
+  all: state.product?.categories?.categories[0]
 });
 
 const mapDispatchToProps = dispatch => ({
   fetchedProducts: () => dispatch(fetchProducts()),
-  filter: category => dispatch(filterCategories(category)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductList);

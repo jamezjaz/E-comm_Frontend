@@ -21,7 +21,7 @@ import {
 
 class Product extends React.Component {
   render() {
-    const { category, label, options, resetOption } = this.props;
+    const { allCategory, label, options, resetOption } = this.props;
 
     const handleAddToCart = (id, options) => {
       const { addProductsToCart } = this.props;
@@ -37,9 +37,9 @@ class Product extends React.Component {
     return(
       <>
         <Container>
-          <CategoryTitle>{category.name}</CategoryTitle>
+          <CategoryTitle>{allCategory.name}</CategoryTitle>
           <ProductContent>
-            {category.products?.map(product => (
+            {allCategory.products?.map(product => (
               <div key={product.id}>
                 {product.inStock === true ?
                   <>
@@ -141,7 +141,8 @@ class Product extends React.Component {
 };
 
 const mapStateToProps = state => ({
-  options: state.product.options
+  options: state.product.options,
+  label: state.product.label
 })
 
 const mapDispatchToProps = dispatch => ({
