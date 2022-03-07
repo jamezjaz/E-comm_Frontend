@@ -4,6 +4,7 @@ import Cart from '../components/Cart';
 import ClothesList from '../container/ClothesList';
 import ProductDescription from '../container/ProductDescription';
 import ProductList from '../container/ProductList';
+import TechList from '../container/TechList';
 
 class MyRoutes extends React.Component {
   render() {
@@ -15,6 +16,7 @@ class MyRoutes extends React.Component {
             <Route path="/description/:id" element={<ProductDescription />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/clothes" element={<ClothesList />} />
+            <Route path="/tech" element={<TechList />} />
           </Routes>
         </Router>
       </>

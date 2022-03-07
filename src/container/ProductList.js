@@ -14,8 +14,6 @@ class ProductList extends React.Component {
   render() {
     const { all } = this.props;
 
-    console.log('All', all);
-
     return(
       <>
         <Header />
