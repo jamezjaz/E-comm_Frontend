@@ -53,10 +53,6 @@ const mapStateToProps = state => ({
   label: state.product.label
 });
 
-// const mapStateToProps = state => {
-//   console.log('State', state);
-// };
-
 const mapDispatchToProps = dispatch => ({
   fetchedProducts: () => dispatch(fetchProducts()),
   filter: category => dispatch(filterCategories(category)),

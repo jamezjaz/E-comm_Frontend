@@ -33,12 +33,12 @@ class ProductDescription extends React.Component {
   };
 
   render() {
-    const { categories: {categories}, params, label, addProductsToCart, options, resetOption } = this.props;
+    const { categories, params, label, addProductsToCart, options, resetOption } = this.props;
 
     const productId = params.id;
     // const { id } = params;
 
-    const [product] = categories[0].products?.filter(prod => prod.id === productId);
+    const [product] = categories[0]?.products?.filter(prod => prod.id === productId);
 
     // reduces attributes array to an obj
     const attributes = product.attributes.reduce((acc, item) => {
@@ -139,7 +139,6 @@ class ProductDescription extends React.Component {
                 :
                   alert('Select all product attributes');
                   resetOption();
-                  console.log('Oppp', options);
               }}
               disabled={product.inStock === false}
               style={{ backgroundColor: product.inStock === false ? '#31a14f' : '' }}
@@ -155,7 +154,7 @@ class ProductDescription extends React.Component {
 };
 
 const mapStateToProps = state => ({
-  categories: state.product.categories,
+  categories: state.product.categories.categories,
   label: state.product.label,
   options: state.product.options
 });
