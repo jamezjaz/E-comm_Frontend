@@ -6,7 +6,6 @@ import Header from './Header';
 class ClothesList extends React.Component {
   render() {
     const { clothes } = this.props;
-    console.log('Cloth', clothes);
 
     return(
       <>

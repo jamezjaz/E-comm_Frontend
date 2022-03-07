@@ -31,6 +31,10 @@ export const ClothContent = styled.div`
       top: -5.2rem;
       left: 6.5rem;
       background-color: ${props => props.optionsColor || '#d6d3d3'};
+      max-width: 5rem;
+      min-width: 1.5rem;
+      display: none;
+      cursor: pointer;
 
       &:active {
         color: #ffffff;
@@ -38,25 +42,8 @@ export const ClothContent = styled.div`
       }
     }
 
-    small,
-    h6 {
-      max-width: 5rem;
-      min-width: 1.5rem;
-      display: none;
-      cursor: pointer;
-    }
-
-    h6 {
-      background-color: #ffffff;
-      margin: 0.15rem;
-      position: relative;
-      top: -6.4rem;
-      left: 12rem;
-    }
-
       &:hover {
-        small,
-        h6 {
+        small {
           display: inline;
         }
       }
@@ -124,17 +111,6 @@ export const Image = styled.img`
   width: 100%;
   height: 100%;
   object-fit: contain;
-`;
-
-export const Option = styled.span`
-  padding: 0.25rem 0.7rem;
-  background-color: ${props => props.OptionColor || '#d6d3d3'};
-  border: 1px solid black;
-  cursor: pointer;
-
-  &:active {
-    background-color: #d6d3d3;
-  }
 `;
 
 export const CartIcon = styled.img`

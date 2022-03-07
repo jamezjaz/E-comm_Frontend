@@ -14,7 +14,6 @@ import {
   Container,
   Image,
   ImageContainer,
-  Option,
   ClothCard,
   ClothContent
 } from '../styles/Clothes.styled';
@@ -59,7 +58,7 @@ class Clothes extends React.Component {
                       </Link>
                       {product.attributes.map(attr => (
                         <div key={attr.id}>
-                          {product.clothes === 'clothes' &&
+                          {clothes.name === 'clothes' &&
                             <>
                               {attr.items.map(clothAttr => (
                                 <small
@@ -69,34 +68,6 @@ class Clothes extends React.Component {
                                   {clothAttr.displayValue}
                                 </small>
                               ))}
-                            </>
-                          }
-                          {product.clothes === 'tech' &&
-                            <>
-                              {attr.type === 'swatch' &&
-                                <>
-                                  {attr.items.map(color => (
-                                    <h6 key={color.id}>
-                                      <Option
-                                        OptionColor={color.displayValue}
-                                        onClick={() => selectOptions({ swatch: color.displayValue })}
-                                      />
-                                    </h6>
-                                  ))}
-                                </>
-                              }
-                              {attr.type === 'text' &&
-                                <>
-                                  {attr.items.map(capacity => (
-                                    <small
-                                      key={capacity.id}
-                                      onClick={() => selectOptions({ text: capacity.displayValue })}
-                                    >
-                                      {capacity.displayValue}
-                                    </small>
-                                  ))}
-                                </>
-                              }
                             </>
                           }
                         </div>
