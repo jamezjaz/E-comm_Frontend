@@ -98,19 +98,19 @@ class Product extends React.Component {
                             }
                           </div>
                         }
-                        </div>
-                      ))}
-                      <button
-                        onClick={() => {
-                          product.attributes.length === options.length ?
-                            handleAddToCart(product.id, options)
-                            :
-                            alert('Select all products attributes');
-                            resetOption();
-                        }}
-                      >
-                        <CartIcon src={cart} alt="Cart" />
-                      </button>
+                      </div>
+                    ))}
+                    <button
+                      onClick={() => {
+                        product.attributes.length === options.length ?
+                          handleAddToCart(product.id, options)
+                          :
+                          alert('Select all products attributes');
+                          resetOption();
+                      }}
+                    >
+                      <CartIcon src={cart} alt="Cart" />
+                    </button>
                   </>
                 :
                   <Link to={`/description/${product.id}`}>

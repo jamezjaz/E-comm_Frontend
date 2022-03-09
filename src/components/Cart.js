@@ -73,8 +73,8 @@ class Cart extends React.Component {
         <Title>CART</Title>
         {addedProductsLen ?
           (
-            addedProducts.map(item => (
-              <CartContainer key={item.id}>
+            addedProducts.map((item, idx) => (
+              <CartContainer key={idx}>
                 <LeftContent>
                   <CartDetails>
                     <h3>{item.brand}</h3>

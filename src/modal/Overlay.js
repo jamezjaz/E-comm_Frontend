@@ -47,8 +47,8 @@ class Overlay extends React.Component {
           <p><b>My Bag, </b>{addedProductsLen} items</p>
           {addedProductsLen ?
             (
-              addedProducts.map(item => (
-                <div key={item.id}>
+              addedProducts.map((item, i) => (
+                <div key={i}>
                   <OverlayContent>
                     <OverlayLeft>
                       <h3>{item.brand}</h3>
