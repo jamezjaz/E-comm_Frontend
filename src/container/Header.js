@@ -34,10 +34,17 @@ class Header extends React.Component {
   render() {
     const { allCategories, addedProducts, currency, loading } = this.props;
     const categoryArray = [];
-    const addedProductsLen = addedProducts.length;
 
     // pushes category properties of products to categories var
     allCategories?.map(cate => categoryArray.push(cate.name));
+
+    // extracts the quantity array of nums
+    const quantityArr = addedProducts.map(addedProd => {
+      return addedProd.quantity;
+    });
+
+    // sums up the quantity array
+    const qty = quantityArr.reduce((a,b) => a + b, 0);
     
     return(
       <>
@@ -78,7 +85,8 @@ class Header extends React.Component {
               }
             </Select>
             <>
-              <CartCounter>{addedProductsLen > 0 ? addedProductsLen : null}</CartCounter>
+              {/* <CartCounter>{addedProductsLen > 0 ? addedProductsLen : null}</CartCounter> */}
+              <CartCounter>{qty > 0 ? qty : null}</CartCounter>
               <CartIcon
                 src={cartLogo}
                 id='overlay'
