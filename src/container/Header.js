@@ -19,7 +19,8 @@ class Header extends React.Component {
   constructor() {
     super();
     this.state = {
-      overlay: false
+      overlay: false,
+      loading: true
     }
 
     this.changeLabel = this.changeLabel.bind(this);
@@ -32,6 +33,11 @@ class Header extends React.Component {
   }
 
   render() {
+    setTimeout(() => {
+      this.setState({loading: false})
+    }, 2000);
+    console.log('Loader State', this.state.loading);
+
     const { allCategories, addedProducts, currency, loading } = this.props;
     const categoryArray = [];
 
@@ -45,7 +51,7 @@ class Header extends React.Component {
 
     // sums up the quantity array
     const qty = quantityArr.reduce((a,b) => a + b, 0);
-    
+
     return(
       <>
         <NavContainer>
@@ -71,8 +77,8 @@ class Header extends React.Component {
           <div>
             <Select onChange={this.changeLabel} className="select">
               <option disable="true" hidden>$</option>
-              {loading === false ?
-                currency?.products[0].prices.map(price => (
+              {this.state.loading === false ?
+                currency?.categories[0]?.products[0]?.prices.map(price => (
                   <option
                     key={price.currency.symbol}
                     value={price.currency.label}
@@ -80,7 +86,7 @@ class Header extends React.Component {
                     {`${price.currency.symbol} ${price.currency.label}`}
                   </option>
                 ))
-                :
+              :
                 null
               }
             </Select>
@@ -115,7 +121,7 @@ const mapStateToProps = state => ({
   allCategories: state.product.categories.categories,
   addedProducts: state.product.addedProducts,
   label: state.product.label,
-  currency: state.product.categories.categories[2],
+  currency: state.product.categories,
   loading: state.product.loading
 });
 

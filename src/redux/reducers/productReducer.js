@@ -50,10 +50,6 @@ const productReducer = (state = initialState, action) => {
       const addedProductPrice = addedProduct.prices.find(price => price.currency.label === state.label);
       const options = action.options;
 
-      // console.log('Existed Option', existedProduct ? existedProduct.options : 'Nil');
-      // console.log('Added Option', addedProduct ? addedProduct.options : 'Nil');
-      // console.log('State', state.addedProducts[0]);
-      // console.log('Options', options);
       if (existedProduct && JSON.stringify(existedProduct.options) === JSON.stringify(options)) {
         addedProduct.quantity += 1;
 
@@ -65,17 +61,19 @@ const productReducer = (state = initialState, action) => {
           // quantity: addedProduct.quantity += 1
         }
       }
+      // injects random ids into added products so that I could increment/decrement product with diff attributes
+      const cartId = {cartId: Math.floor(Math.random() * 10)};
       addedProduct.quantity = 1;
       const newTotal = state.total + addedProductPrice.amount;
-      // const options = action.options;
+      // console.log('CartId', cartId)
       return {
         ...state,
-        addedProducts: [...state.addedProducts, {...addedProduct, options}],
+        addedProducts: [...state.addedProducts, {...addedProduct, options, cartId}],
         total: Math.round((newTotal + Number.EPSILON) * 100) / 100,
       }
     }
     case ADD_QUANTITY: {
-      const addedProduct = state.addedProducts.find(product => product.id === action.id);
+      const addedProduct = state.addedProducts.find(product => product.cartId === action.cartId);
       // console.log('Added State', action.id, addedProduct);
 
       const addedQtyPrice = addedProduct.prices.find(price => price.currency.label === state.label);
@@ -89,12 +87,12 @@ const productReducer = (state = initialState, action) => {
       };
     }
     case SUB_QUANTITY: {
-      const addedProduct = state.addedProducts.find(product => product.id === action.id);
+      const addedProduct = state.addedProducts.find(product => product.cartId === action.cartId);
       
       const subQtyPrice = addedProduct.prices.find(price => price.currency.label === state.label);
       // if the quantity === 1 then, it should be removed and not decreased
       if (addedProduct.quantity === 1) {
-        const newProducts = state.addedProducts.filter(product => product.id !== action.id);
+        const newProducts = state.addedProducts.filter(product => product.cartId !== action.cartId);
         const newTotal = state.total - subQtyPrice.amount;
         // console.log('Sub Qty price', subQtyPrice.amount);
         return {

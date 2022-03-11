@@ -30,14 +30,14 @@ export const addToCart = (id, options) => ({
   options
 });
 
-export const addQuantity = id => ({
+export const addQuantity = cartId => ({
   type: ADD_QUANTITY,
-  id,
+  cartId,
 });
 
-export const subQuantity = id => ({
+export const subQuantity = cartId => ({
   type: SUB_QUANTITY,
-  id,
+  cartId,
 });
 
 export const changeCurrencyLabel = label => ({

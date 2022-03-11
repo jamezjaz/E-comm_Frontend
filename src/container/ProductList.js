@@ -5,22 +5,37 @@ import Product from '../components/Product';
 import { ContentContainer } from '../styles/ProductList.styled';
 import fetchProducts from '../apiRequest/apiRequest';
 
-class ProductList extends React.Component { 
+class ProductList extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      loading: true
+    }
+  }
   componentDidMount() {
     const { fetchedProducts } = this.props;
     fetchedProducts();
   };
 
   render() {
+    setTimeout(() => {
+      this.setState({loading: false})
+    }, 2000);
+
     const { all } = this.props;
 
     return(
       <>
         <Header />
         <ContentContainer>
-          <Product
-            allCategory={all}
-          />
+          {this.state.loading === false ?
+            <Product
+              allCategory={all.categories[0]}
+            />
+          :
+            <h4>Loading...</h4>   
+          }
         </ContentContainer>
       </>
     );
@@ -29,7 +44,7 @@ class ProductList extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  all: state.product?.categories?.categories[0]
+  all: state.product.categories
 });
 
 const mapDispatchToProps = dispatch => ({

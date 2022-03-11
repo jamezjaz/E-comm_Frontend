@@ -3,6 +3,10 @@ import styled from 'styled-components';
 export const Container = styled.div`
   margin: 2rem 4rem 2rem 4rem;
   color: #1d1f22;
+
+  h4 {
+    margin-top: 5rem;
+  }
 `;
 
 export const CategoryTitle = styled.h1`

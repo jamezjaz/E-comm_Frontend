@@ -7,7 +7,7 @@ import axios from 'axios';
 import * as constants from '../container/constant';
 
 const fetchProducts = () => dispatch => {
-  dispatch(productRequest);
+  dispatch(productRequest());
   axios.post(
     constants.GRAPHQL_API, {
     query: constants.GET_PRODUCTS_QUERY

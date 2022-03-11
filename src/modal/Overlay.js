@@ -28,14 +28,14 @@ class Overlay extends React.Component {
     const { addedProducts, label, closeModal } = this.props;
     const addedProductsLen = addedProducts.length;
 
-    const handleAddQuantity = id => {
+    const handleAddQuantity = cartId => {
       const { addQty } = this.props;
-      addQty(id);
+      addQty(cartId);
     };
 
-    const handleSubQuantity = id => {
+    const handleSubQuantity = cartId => {
       const { subtractQty } = this.props;
-      subtractQty(id);
+      subtractQty(cartId);
     };
 
     return(
@@ -70,13 +70,13 @@ class Overlay extends React.Component {
                     <OverlayRight>
                       <ButtonsContainer>
                         <QtyButton
-                          onClick={() => { handleAddQuantity(item.id); }}
+                          onClick={() => { handleAddQuantity(item.cartId); }}
                         >
                           +
                         </QtyButton>
                         <Count>{item.quantity}</Count>
                         <QtyButton
-                          onClick={() => { handleSubQuantity(item.id); }}
+                          onClick={() => { handleSubQuantity(item.cartId); }}
                         >
                           -
                         </QtyButton>
@@ -117,8 +117,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  addQty: id => dispatch(addQuantity(id)),
-  subtractQty: id => dispatch(subQuantity(id)),
+  addQty: cartId => dispatch(addQuantity(cartId)),
+  subtractQty: cartId => dispatch(subQuantity(cartId)),
 });
   
 export default connect(mapStateToProps, mapDispatchToProps)(Overlay);

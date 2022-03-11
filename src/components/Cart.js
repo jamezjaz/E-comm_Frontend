@@ -117,8 +117,14 @@ class Cart extends React.Component {
                         className={this.state.slideIndex === index + 1 ? "slide active-anim" : "slide"}
                       >
                         <Image src={img} alt='Product' />
-                        <SliderBtn moveSlide={nextSlide} direction={"next"} />
-                        <SliderBtn moveSlide={prevSlide} direction={"prev"} />
+                        {item.gallery.length > 1 ?
+                          <>
+                            <SliderBtn moveSlide={nextSlide} direction={"next"} />
+                            <SliderBtn moveSlide={prevSlide} direction={"prev"} />
+                          </>
+                        :
+                          null
+                        }
                       </div>
                     ))}
                   </ImageContainer>
