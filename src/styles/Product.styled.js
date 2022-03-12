@@ -47,7 +47,6 @@ export const ProductContent = styled.div`
     }
 
       &:hover {
-        overflow: hidden;
         small {
           display: inline;
         }

@@ -41,7 +41,7 @@ class Product extends React.Component {
       <>
         {loading === true ?
           <Container>
-            <h4>Loading...</h4>
+            <h4>Please wait...</h4>
           </Container>
         :
           <Container>
@@ -72,7 +72,9 @@ class Product extends React.Component {
                                 {attr.items.map(clothAttr => (
                                   <small
                                     key={clothAttr.id}
-                                    onClick={() => selectOptions({ clothes: clothAttr.displayValue })}
+                                    onClick={() => {
+                                      selectOptions({ clothes: clothAttr.displayValue });
+                                    }}
                                   >
                                     {clothAttr.displayValue}
                                   </small>

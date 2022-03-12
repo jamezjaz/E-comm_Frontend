@@ -56,6 +56,12 @@ class ProductDescription extends React.Component {
       selectAttr(option);
     };
 
+    const changeBtnColor = index => {
+      const btn = document.getElementById(index);
+      btn.style.background = 'black';
+      btn.style.color = 'white';
+    };
+
     return(
       <>
         <Header />
@@ -86,11 +92,13 @@ class ProductDescription extends React.Component {
                   <OptionName>{attributes[key].name}:</OptionName>
                   {product.category === 'clothes' &&
                     <>
-                      {attributes[key].items.map(clothAttr => (
+                      {attributes[key].items.map((clothAttr, index) => (
                         <OptionButton
                           key={clothAttr.id}
+                          id={index}
                           onClick={() => {
-                            selectOptions({ clothes: clothAttr.displayValue })
+                            selectOptions({ clothes: clothAttr.displayValue });
+                            changeBtnColor(index);
                           }}
                         >
                           {clothAttr.displayValue}
@@ -105,7 +113,10 @@ class ProductDescription extends React.Component {
                           {attributes[key].items.map(color => (
                             <OptionButton
                               key={color.id}
-                              onClick={() => selectOptions({ swatch: color.displayValue })}
+                              onClick={() => {
+                                selectOptions({ swatch: color.displayValue });
+                                alert(`${color.displayValue} color selected`);
+                              }}
                               OptionColor={color.displayValue}
                             />
                           ))}
@@ -113,10 +124,14 @@ class ProductDescription extends React.Component {
                       }
                       {attributes[key].type === 'text' &&
                         <div>
-                          {attributes[key].items.map(text => (
+                          {attributes[key].items.map((text, idx) => (
                             <OptionButton
                               key={text.id}
-                              onClick={() => selectOptions({ text: text.displayValue })}
+                              id={idx}
+                              onClick={() => {
+                                selectOptions({ text: text.displayValue });
+                                changeBtnColor(idx);
+                              }}
                             >
                               {text.displayValue}
                             </OptionButton>

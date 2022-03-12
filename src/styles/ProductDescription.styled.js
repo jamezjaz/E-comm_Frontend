@@ -72,10 +72,10 @@ export const OptionButton = styled.button`
   cursor: pointer;
   font-family: 'Roboto Condensed', sans-serif;
 
-  &:focus {
+  /* &:focus {
     color: #ffffff;
     background-color: #1d1f22;
-  }
+  } */
 `;
 
 export const PriceContainer = styled.div`
