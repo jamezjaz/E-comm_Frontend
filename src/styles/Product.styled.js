@@ -32,9 +32,13 @@ export const ProductContent = styled.div`
       font-size: 0.8rem;
       font-weight: bold;
       position: relative;
-      top: -5.2rem;
-      left: 6.5rem;
+      top: -4.2rem;
+      left: 4.5rem;
       background-color: ${props => props.optionsColor || '#d6d3d3'};
+      max-width: 5rem;
+      min-width: 1.5rem;
+      display: none;
+      cursor: pointer;
 
       &:active {
         color: #ffffff;
@@ -42,45 +46,35 @@ export const ProductContent = styled.div`
       }
     }
 
-    small,
-    h6 {
-      max-width: 5rem;
-      min-width: 1.5rem;
-      display: none;
-      cursor: pointer;
-    }
-
-    h6 {
-      background-color: #ffffff;
-      margin: 0.15rem;
-      position: relative;
-      top: -6.4rem;
-      left: 12rem;
-    }
-
       &:hover {
-        small,
-        h6 {
+        overflow: hidden;
+        small {
           display: inline;
         }
       }
 
     button {
-      position: relative;
-      left: 22rem;
-      top: -8rem;
-      background: none;
-      max-width: 3.5rem;
-      max-height: 3.5rem;
+      position: absolute; 
+      width: 3rem;
+      height: 3rem;
       border: none;
+      background-color: #ffffff;
       border-radius: 50%;
       cursor: pointer;
       display: none;
     }
 
     &:hover {
-      button {
+      button,
+      .cartBtnContainer {
         display: block;
+      }
+
+      .optionContainer,
+      .subOptionSwatch,
+      .subOptionText,
+      .text {
+        display: inline;
       }
     }
   }
@@ -130,8 +124,26 @@ export const Image = styled.img`
   object-fit: contain;
 `;
 
+export const OptionContainer = styled.div`
+  position: absolute;
+  display: none;
+
+  .subOptionSwatch {
+    position: relative;
+    top: -4rem;
+    left: 10rem;
+  }
+
+  .text {
+    position: relative;
+    top: -4rem;
+    left: 2rem;
+  }
+`;
+
 export const Option = styled.span`
   padding: 0.25rem 0.7rem;
+  margin: 0.15rem;
   background-color: ${props => props.OptionColor || '#d6d3d3'};
   border: 1px solid black;
   cursor: pointer;
@@ -139,6 +151,30 @@ export const Option = styled.span`
   &:active {
     background-color: #d6d3d3;
   }
+`;
+
+export const OptionText = styled.span`
+  margin: 0.25rem;
+  padding: 0.25rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+  background-color: ${props => props.optionsColor || '#d6d3d3'};
+  max-width: 5rem;
+  min-width: 1.5rem;
+  cursor: pointer;
+
+  &:active {
+    color: #ffffff;
+    background-color: #1d1f22;
+  }
+`;
+
+export const CartBtnContainer = styled.div`
+  position: relative;
+  left: 22rem;
+  top: -8rem;
+  background: none;
+  display: none;
 `;
 
 export const CartIcon = styled.img`

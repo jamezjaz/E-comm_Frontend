@@ -9,12 +9,15 @@ import {
   clearOptions
 } from '../redux/actions/actionCreators';
 import {
+  CartBtnContainer,
   CartIcon,
   CategoryTitle,
   Container,
   Image,
   ImageContainer,
   Option,
+  OptionContainer,
+  OptionText,
   ProductCard,
   ProductContent
 } from '../styles/Product.styled';
@@ -63,7 +66,7 @@ class Product extends React.Component {
                           </ProductCard>
                         </Link>
                         {product.attributes.map(attr => (
-                          <div key={attr.id}>
+                          <OptionContainer key={attr.id} className='optionContainer'>
                             {product.category === 'clothes' &&
                               <>
                                 {attr.items.map(clothAttr => (
@@ -76,47 +79,55 @@ class Product extends React.Component {
                                 ))}
                               </>
                             }
-                              {product.category === 'tech' &&
+                            {product.category === 'tech' &&
                               <div>
                                 {attr.type === 'swatch' &&
                                   <>
                                     {attr.items.map(color => (
-                                      <h6 key={color.id}>
+                                      <div key={color.id} className='subOptionSwatch'>
                                         <Option
+                                          className='option'
                                           OptionColor={color.displayValue}
                                           onClick={() => selectOptions({ swatch: color.displayValue })}
                                         />
-                                      </h6>
+                                      </div>
                                     ))}
                                   </>
                                 }
                                 {attr.type === 'text' &&
                                   <>
                                     {attr.items.map(capacity => (
-                                      <small
+                                      <div
                                         key={capacity.id}
-                                        onClick={() => selectOptions({ text: capacity.displayValue })}
+                                        className='subOptionText'
                                       >
-                                        {capacity.displayValue}
-                                      </small>
+                                        <OptionText
+                                          onClick={() => selectOptions({ text: capacity.displayValue })}
+                                          className='text'
+                                        >
+                                          {capacity.displayValue}
+                                        </OptionText>
+                                      </div>
                                     ))}
                                   </>
                                 }
                               </div>
                             }
-                          </div>
+                          </OptionContainer>
                         ))}
-                        <button
-                          onClick={() => {
-                            product.attributes.length === options.length ?
-                              handleAddToCart(product.id, options)
-                              :
-                              alert('Select all products attributes');
-                              resetOption();
-                          }}
-                        >
-                          <CartIcon src={cart} alt="Cart" />
-                        </button>
+                        <CartBtnContainer className='cartBtnContainer'>
+                          <button
+                            onClick={() => {
+                              product.attributes.length === options.length ?
+                                handleAddToCart(product.id, options)
+                                :
+                                alert('Select all products attributes');
+                                resetOption();
+                            }}
+                          >
+                            <CartIcon src={cart} alt="Cart" />
+                          </button>
+                        </CartBtnContainer>
                       </>
                     :
                       <Link to={`/description/${product.id}`}>

@@ -36,9 +36,8 @@ class Header extends React.Component {
     setTimeout(() => {
       this.setState({loading: false})
     }, 2000);
-    console.log('Loader State', this.state.loading);
 
-    const { allCategories, addedProducts, currency, loading } = this.props;
+    const { allCategories, addedProducts, currency } = this.props;
     const categoryArray = [];
 
     // pushes category properties of products to categories var
