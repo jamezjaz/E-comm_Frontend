@@ -6,6 +6,8 @@ import { ContentContainer } from '../styles/ProductList.styled';
 import fetchProducts from '../apiRequest/apiRequest';
 
 class ProductList extends React.Component {
+  _isMounted = false;
+
   constructor() {
     super();
 
@@ -14,13 +16,19 @@ class ProductList extends React.Component {
     }
   }
   componentDidMount() {
+    this._isMounted = true;
+  
     const { fetchedProducts } = this.props;
     fetchedProducts();
   };
 
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
+
   render() {
     setTimeout(() => {
-      this.setState({loading: false})
+      if (this._isMounted) this.setState({loading: false})
     }, 2000);
 
     const { all } = this.props;

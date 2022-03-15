@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import parse from 'html-react-parser';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Header from './Header';
 import {
   AddToCartButton,
@@ -62,9 +64,17 @@ class ProductDescription extends React.Component {
       btn.style.color = 'white';
     };
 
+    const alertMsg = option => {
+      toast.success(`${option} color selected. Click on Add To Cart button`);
+    };
+
     return(
       <>
         <Header />
+          <ToastContainer
+            position="top-center"
+            autoClose={2000}
+          />
           <DescriptionContainer>
             <MinorImageContainer>
               {product.gallery.map((image, index) => (
@@ -115,7 +125,8 @@ class ProductDescription extends React.Component {
                               key={color.id}
                               onClick={() => {
                                 selectOptions({ swatch: color.displayValue });
-                                alert(`${color.displayValue} color selected`);
+                                // alert(`${color.displayValue} color selected`);
+                                alertMsg(color.displayValue);
                               }}
                               OptionColor={color.displayValue}
                             />

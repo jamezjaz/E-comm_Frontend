@@ -16,6 +16,8 @@ import Overlay from '../modal/Overlay';
 import { changeCurrencyLabel } from '../redux/actions/actionCreators';
 
 class Header extends React.Component {
+  _isMounted = false;
+
   constructor() {
     super();
     this.state = {
@@ -26,15 +28,23 @@ class Header extends React.Component {
     this.changeLabel = this.changeLabel.bind(this);
   }
 
+  componentDidMount() {
+    this._isMounted = true;
+  };
+
   changeLabel(event) {
     const { labelChanger } = this.props;
     const { value } = event.target;
     labelChanger(value);
   }
 
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
+
   render() {
     setTimeout(() => {
-      this.setState({loading: false})
+      if (this._isMounted) this.setState({loading: false})
     }, 2000);
 
     const { allCategories, addedProducts, currency } = this.props;

@@ -55,7 +55,7 @@ class Overlay extends React.Component {
                       <SubTitle>{item.name}</SubTitle>
                       <p>{price(item.prices, label)}</p>
                       <>
-                        {item.options.map((option, i) => (
+                        {item.options?.map((option, i) => (
                           <div key={i}>
                             {item.category === 'clothes' && 
                               <OptionButton>{option.clothes}</OptionButton>
