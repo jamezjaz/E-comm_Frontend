@@ -71,11 +71,6 @@ export const OptionButton = styled.button`
   background-color: ${props => props.OptionColor || "white"};
   cursor: pointer;
   font-family: 'Roboto Condensed', sans-serif;
-
-  /* &:focus {
-    color: #ffffff;
-    background-color: #1d1f22;
-  } */
 `;
 
 export const PriceContainer = styled.div`

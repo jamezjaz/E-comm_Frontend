@@ -30,7 +30,8 @@ class ProductDescription extends React.Component {
     super();
 
     this.state = {
-      position: 0
+      position: 0,
+      selectedBtn: null
     }
   };
 
@@ -56,12 +57,6 @@ class ProductDescription extends React.Component {
     const selectOptions = option => {
       const { selectAttr } = this.props;
       selectAttr(option);
-    };
-
-    const changeBtnColor = index => {
-      const btn = document.getElementById(index);
-      btn.style.background = 'black';
-      btn.style.color = 'white';
     };
 
     const alertMsg = option => {
@@ -105,10 +100,10 @@ class ProductDescription extends React.Component {
                       {attributes[key].items.map((clothAttr, index) => (
                         <OptionButton
                           key={clothAttr.id}
-                          id={index}
+                          className={this.state.selectedBtn === index ? 'active' : ''}
                           onClick={() => {
                             selectOptions({ clothes: clothAttr.displayValue });
-                            changeBtnColor(index);
+                            this.setState({selectedBtn: index});
                           }}
                         >
                           {clothAttr.displayValue}
@@ -125,7 +120,6 @@ class ProductDescription extends React.Component {
                               key={color.id}
                               onClick={() => {
                                 selectOptions({ swatch: color.displayValue });
-                                // alert(`${color.displayValue} color selected`);
                                 alertMsg(color.displayValue);
                               }}
                               OptionColor={color.displayValue}
@@ -138,10 +132,10 @@ class ProductDescription extends React.Component {
                           {attributes[key].items.map((text, idx) => (
                             <OptionButton
                               key={text.id}
-                              id={idx}
+                              className={this.state.selectedBtn === idx ? 'active' : ''}
                               onClick={() => {
                                 selectOptions({ text: text.displayValue });
-                                changeBtnColor(idx);
+                                this.setState({selectedBtn: idx});
                               }}
                             >
                               {text.displayValue}
