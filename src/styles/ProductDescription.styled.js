@@ -45,6 +45,11 @@ export const DetailsContainer = styled.div`
   p:nth-child(2) {
     font-weight: bold;
   }
+
+  .active {
+    background-color: black;
+    color: white;
+  }
 `;
 
 export const SubTitle = styled.p`

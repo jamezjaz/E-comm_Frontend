@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import cart from '../assets/icons/shopping-cart.svg';
 import { price } from '../container/constant';
 import {
@@ -17,7 +19,6 @@ import {
   ImageContainer,
   Option,
   OptionContainer,
-  OptionText,
   ProductCard,
   ProductContent
 } from '../styles/Product.styled';
@@ -36,9 +37,17 @@ class Product extends React.Component {
       const { selectAttr } = this.props;
       selectAttr(option);
     };
+
+    const alertMsg = option => {
+      toast.success(`${option} selected!`);
+    };
     
     return(
       <>
+        <ToastContainer
+          position="top-center"
+          autoClose={2000}
+        />
         {loading === true ?
           <Container>
             <h4>Please wait...</h4>
@@ -74,6 +83,7 @@ class Product extends React.Component {
                                     key={clothAttr.id}
                                     onClick={() => {
                                       selectOptions({ clothes: clothAttr.displayValue });
+                                      alertMsg(clothAttr.displayValue);
                                     }}
                                   >
                                     {clothAttr.displayValue}
@@ -86,30 +96,30 @@ class Product extends React.Component {
                                 {attr.type === 'swatch' &&
                                   <>
                                     {attr.items.map(color => (
-                                      <div key={color.id} className='subOptionSwatch'>
-                                        <Option
-                                          className='option'
-                                          OptionColor={color.displayValue}
-                                          onClick={() => selectOptions({ swatch: color.displayValue })}
-                                        />
-                                      </div>
+                                      <Option
+                                        key={color.id}
+                                        OptionColor={color.displayValue}
+                                        onClick={() => {
+                                          selectOptions({ swatch: color.displayValue });
+                                          alertMsg(color.displayValue);
+                                        }}
+                                      />
                                     ))}
                                   </>
                                 }
                                 {attr.type === 'text' &&
                                   <>
                                     {attr.items.map(capacity => (
-                                      <div
+                                      <small
                                         key={capacity.id}
-                                        className='subOptionText'
+                                        className='capacity'
+                                        onClick={() => {
+                                          selectOptions({ text: capacity.displayValue });
+                                          alertMsg(capacity.displayValue);
+                                        }}
                                       >
-                                        <OptionText
-                                          onClick={() => selectOptions({ text: capacity.displayValue })}
-                                          className='text'
-                                        >
-                                          {capacity.displayValue}
-                                        </OptionText>
-                                      </div>
+                                        {capacity.displayValue}
+                                      </small>
                                     ))}
                                   </>
                                 }
