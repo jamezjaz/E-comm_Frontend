@@ -63,15 +63,52 @@ export const CartIcon = styled.img`
   cursor: pointer;
 `;
 
-export const Select = styled.select`
-  margin-right: 1rem;
-  width: 2.5rem;
-  border: none;
-  outline: none;
-  background-color: #ffffff;
-  box-shadow: none;
+// export const Select = styled.select`
+//   margin-right: 1rem;
+//   width: 2.5rem;
+//   border: none;
+//   outline: none;
+//   background-color: #ffffff;
+//   box-shadow: none;
 
-  &:hover {
-    outline: none;
+//   &:hover {
+//     outline: none;
+//   }
+// `;
+
+export const DropDownContainer = styled.div`
+  position: absolute;
+  right: 7rem;
+  top: 1.3rem;
+  font-size: 1.125rem;
+  line-height: 150%;
+  color: #1d1f22;
+  cursor: pointer;
+`;
+
+export const DropDownHeader = styled.div`
+  span {
+    position: relative;
+    top: 0.5rem;
+    font-size: 1.5rem;
+  }
+`;
+
+export const DropDownListContainer = styled.div`
+  position: absolute;
+  left: -3rem;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 0.3);
+  padding-right: 1.2rem;
+`;
+
+export const DropDownList = styled.ul`
+  list-style-type: none;
+`;
+
+export const ListItem = styled.li`
+  display: flex;
+
+  span:first-child {
+    margin-right: 0.5rem;
   }
 `;

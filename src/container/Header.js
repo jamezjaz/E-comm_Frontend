@@ -7,10 +7,14 @@ import {
   NavContainer,
   Image,
   CartIcon,
-  Select,
   NavLinksContainer,
   NavLinks,
   CartCounter,
+  DropDownContainer,
+  DropDownHeader,
+  DropDownListContainer,
+  DropDownList,
+  ListItem,
 } from '../styles/Header.styled';
 import Overlay from '../modal/Overlay';
 import { changeCurrencyLabel } from '../redux/actions/actionCreators';
@@ -22,7 +26,9 @@ class Header extends React.Component {
     super();
     this.state = {
       overlay: false,
-      loading: true
+      loading: true,
+      isOpen: false,
+      selectedOption: '$'
     }
 
     this.changeLabel = this.changeLabel.bind(this);
@@ -32,9 +38,10 @@ class Header extends React.Component {
     this._isMounted = true;
   };
 
-  changeLabel(event) {
+  changeLabel(value) {
     const { labelChanger } = this.props;
-    const { value } = event.target;
+    // const { value } = event.target;
+    this.setState({isOpen: false})
     labelChanger(value);
   }
 
@@ -61,6 +68,9 @@ class Header extends React.Component {
     // sums up the quantity array
     const qty = quantityArr.reduce((a,b) => a + b, 0);
 
+    // toggles select dropdown
+    const toggling = () => this.setState({isOpen: !this.state.isOpen});
+
     return(
       <>
         <NavContainer>
@@ -84,7 +94,7 @@ class Header extends React.Component {
             </li>
           </ul>
           <div>
-            <Select onChange={this.changeLabel} className="select">
+            {/* <Select onChange={this.changeLabel} className="select">
               <option disable="true" hidden>$</option>
               {this.state.loading === false ?
                 currency?.categories[0]?.products[0]?.prices.map(price => (
@@ -98,7 +108,34 @@ class Header extends React.Component {
               :
                 null
               }
-            </Select>
+            </Select> */}
+            <DropDownContainer>
+              <DropDownHeader onClick={toggling}>
+              {`${this.state.selectedOption}` || '$'} <span>⌃</span> 
+              </DropDownHeader>
+              {this.state.isOpen && (
+                <DropDownListContainer>
+                  <DropDownList>
+                    {this.state.loading === false ?
+                      currency?.categories[0]?.products[0]?.prices.map(price => (
+                        <ListItem
+                          onClick={() => {
+                            this.changeLabel(price.currency.label);
+                            this.setState({selectedOption: price.currency.symbol});
+                          }}
+                          key={price.currency.symbol}
+                        >
+                          <span>{`${price.currency.symbol}`}</span> 
+                          <span>{`${price.currency.label}`}</span>
+                        </ListItem>
+                      ))
+                    :
+                      null
+                    }
+                  </DropDownList>
+                </DropDownListContainer>
+              )}
+            </DropDownContainer>
             <>
               {/* <CartCounter>{addedProductsLen > 0 ? addedProductsLen : null}</CartCounter> */}
               <CartCounter>{qty > 0 ? qty : null}</CartCounter>
