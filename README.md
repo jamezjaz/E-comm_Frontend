@@ -68,7 +68,8 @@
 ![preview](https://user-images.githubusercontent.com/57812000/156348166-65470deb-b3bc-4e8c-87f7-eee0a6981c32.png)
 
 ## Live Link
-Please, run the the server locally [here](https://github.com/scandiweb/junior-react-endpoint) then click on the [Live Link](https://james-odufu-entry-react-test.netlify.app/) to access the project live.
+Please, run the the server locally [here](https://github.com/scandiweb/junior-react-endpoint)
+The frontend is deployed on [Vercel](https://james-odufu-junior-react-frontend.vercel.app/) and [Netlify](https://james-odufu-entry-react-test.netlify.app/)
 
 ### Built With
 This project was built using these technologies.
@@ -135,7 +136,7 @@ Run ```$ npm start```
  - cd to junior-react-endpoint
  
 ### Setup
-Run ```$ npm install``` to install the dependencies
+Run ```$ yarn build``` to install the dependencies
 
 Run ```$ npm start``` to start the server on http://localhost:4000/
 
