@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Clothes from '../components/Clothes';
-import Header from './Header';
+import Product from '../components/Product';
 
 class ClothesList extends React.Component {
   render() {
@@ -9,9 +8,8 @@ class ClothesList extends React.Component {
 
     return(
       <>
-        <Header />
-        <Clothes
-          clothes={clothes}
+        <Product
+          products={clothes}
         />
       </>
     );
@@ -19,7 +17,7 @@ class ClothesList extends React.Component {
 };
 
 const mapStateToProps = state => ({
-  clothes: state.product.categories.categories[1]
+  clothes: state.product.categories.clothes
 });
 
 export default connect(mapStateToProps, null)(ClothesList);

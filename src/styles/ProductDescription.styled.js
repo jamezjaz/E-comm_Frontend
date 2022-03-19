@@ -4,6 +4,11 @@ export const DescriptionContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 5rem;
+
+  // out of stock styles
+  .outOfStock {
+    opacity: 0.4;
+  }
 `;
 
 export const MinorImageContainer = styled.div`
@@ -19,6 +24,14 @@ export const MinorImage = styled.img`
 export const MainImageContainer = styled.div`
   width: 38rem;
   margin-left: -10rem;
+
+  h2 {
+    position: absolute;
+    margin: 12rem 0 0 8rem;
+    color: rgb(73, 72, 72);
+    font-weight: lighter;
+    z-index: 999;
+  }
 
   @media (max-width: 1600px) {
     margin: 0 3rem;

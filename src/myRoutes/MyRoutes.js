@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Cart from '../components/Cart';
 import ClothesList from '../container/ClothesList';
 import ProductDescription from '../container/ProductDescription';
-import ProductList from '../container/ProductList';
+import AllProductList from '../container/AllProductList';
 import TechList from '../container/TechList';
 
 class MyRoutes extends React.Component {
@@ -12,7 +12,7 @@ class MyRoutes extends React.Component {
       <>
         <Router>
           <Routes>
-            <Route exact path="/" element={<ProductList />} />
+            <Route exact path="/" element={<AllProductList />} />
             <Route path="/description/:id" element={<ProductDescription />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/clothes" element={<ClothesList />} />

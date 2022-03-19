@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Tech from '../components/Tech';
-import Header from './Header';
+import Product from '../components/Product';
 
 class TechList extends React.Component {
   render() {
@@ -9,9 +8,8 @@ class TechList extends React.Component {
 
     return(
       <>
-        <Header />
-        <Tech
-          tech={tech}
+        <Product
+          products={tech}
         />
       </>
     );
@@ -19,7 +17,7 @@ class TechList extends React.Component {
 };
 
 const mapStateToProps = state => ({
-  tech: state.product.categories.categories[2]
+  tech: state.product.categories.tech
 });
 
 export default connect(mapStateToProps, null)(TechList);

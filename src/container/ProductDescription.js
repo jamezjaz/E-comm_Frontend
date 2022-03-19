@@ -1,8 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import parse from 'html-react-parser';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import Header from './Header';
 import {
   AddToCartButton,
@@ -36,12 +34,12 @@ class ProductDescription extends React.Component {
   };
 
   render() {
-    const { categories, params, label, addProductsToCart, options, resetOption } = this.props;
+    const { all, params, label, addProductsToCart, options, resetOption } = this.props;
 
     const productId = params.id;
     // const { id } = params;
 
-    const [product] = categories[0]?.products?.filter(prod => prod.id === productId);
+    const [product] = all?.products?.filter(prod => prod.id === productId);
 
     // reduces attributes array to an obj
     const attributes = product.attributes.reduce((acc, item) => {
@@ -59,19 +57,13 @@ class ProductDescription extends React.Component {
       selectAttr(option);
     };
 
-    const alertMsg = option => {
-      toast.success(`${option} color selected. Click on Add To Cart button`);
-    };
-
     return(
       <>
         <Header />
-          <ToastContainer
-            position="top-center"
-            autoClose={2000}
-          />
           <DescriptionContainer>
-            <MinorImageContainer>
+            <MinorImageContainer
+              className={product.inStock === false ? 'outOfStock' : ''}
+            >
               {product.gallery.map((image, index) => (
                 <div key={image}>
                   <MinorImage
@@ -82,7 +74,12 @@ class ProductDescription extends React.Component {
                 </div>
               ))}
             </MinorImageContainer>
-            <MainImageContainer>
+            <MainImageContainer
+              className={product.inStock === false ? 'outOfStock' : ''}
+            >
+              {product.inStock === false &&
+                <h2>OUT OF STOCK</h2>
+              }
               <MainImage
                 src={product.gallery[this.state.position]}
                 alt={product.name}
@@ -120,7 +117,6 @@ class ProductDescription extends React.Component {
                               key={color.id}
                               onClick={() => {
                                 selectOptions({ swatch: color.displayValue });
-                                alertMsg(color.displayValue);
                               }}
                               OptionColor={color.displayValue}
                             />
@@ -153,15 +149,20 @@ class ProductDescription extends React.Component {
               <p>{price(product.prices, label)}</p>
             </PriceContainer>
             <AddToCartButton
-              onClick={() => {
+              onClick={() => 
+              {
+                this.setState({selectedBtn: null});
                 product.attributes.length === options.length ?
-                  addProductToCart(product.id, options)
+                  (addProductToCart(product.id, options))
                 :
                   alert('Select all product attributes');
                   resetOption();
               }}
               disabled={product.inStock === false}
-              style={{ backgroundColor: product.inStock === false ? '#31a14f' : '' }}
+              style={{
+                backgroundColor: product.inStock === false ? '#8cc99d' : '',
+                pointerEvents: product.inStock === false ? 'none' : ''
+              }}
             >
               ADD TO CART
             </AddToCartButton>
@@ -174,7 +175,7 @@ class ProductDescription extends React.Component {
 };
 
 const mapStateToProps = state => ({
-  categories: state.product.categories.categories,
+  all: state.product.categories.all,
   label: state.product.label,
   options: state.product.options
 });

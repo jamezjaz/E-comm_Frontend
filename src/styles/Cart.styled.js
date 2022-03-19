@@ -38,7 +38,24 @@ export const SubTitle = styled.p`
   margin-top: -1.5rem;
 `;
 
+export const OptionContainer = styled.div`
+  .optionBtnTech {
+    top: -5rem;
+  }
+`;
+
+export const OptionName = styled.p`
+  @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+
+  text-transform: uppercase;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: lighter !important;
+`;
+
 export const OptionButton = styled.button`
+  position: relative;
+  top: -2rem;
+  left: 10rem;
   max-width: 6rem;
   min-width: 3rem;
   padding: 0.5rem;

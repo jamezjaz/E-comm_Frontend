@@ -11,10 +11,12 @@ import {
   QtyButton,
   LeftContent,
   RightContent,
-  OptionButton,
   SubTitle,
   Title,
-  EmptyCartHeader
+  EmptyCartHeader,
+  OptionName,
+  OptionContainer,
+  OptionButton
 } from '../styles/Cart.styled';
 import { price } from '../container/constant';
 import {
@@ -34,14 +36,14 @@ class Cart extends React.Component {
     this.state = { slideIndex : 1 };
   }
 
-  handleAddQuantity(id) {
+  handleAddQuantity(cartId) {
     const { addQty } = this.props;
-    addQty(id);
+    addQty(cartId);
   };
 
-  handleSubQuantity(id) {
+  handleSubQuantity(cartId) {
     const { subtractQty } = this.props;
-    subtractQty(id);
+    subtractQty(cartId);
   }
 
   render() {
@@ -80,32 +82,42 @@ class Cart extends React.Component {
                     <h3>{item.brand}</h3>
                     <SubTitle>{item.name}</SubTitle>
                     <p>{price(item.prices, label)}</p>
-                    <div>
+                    <OptionContainer>
+                      {item.attributes.map(attr => (
+                        <OptionName key={attr.id}>{attr.name}</OptionName>
+                      ))}
                       {item.options.map((option, i) => (
                         <div key={i}>
                           {item.category === 'clothes' &&
                             <>
-                              <OptionButton>{option.clothes}</OptionButton>
+                              <OptionButton>
+                                {option.clothes}
+                              </OptionButton>
                             </>
                           }
                           {item.category === 'tech' &&
-                            <OptionButton BgColor={option.swatch}>{option.text}</OptionButton>
+                            <OptionButton
+                              BgColor={option.swatch}
+                              className='optionBtnTech'
+                            >
+                              {option.text}
+                            </OptionButton>
                           }
                         </div>
                       ))}
-                    </div>
+                    </OptionContainer>
                   </CartDetails>
                 </LeftContent>
                 <RightContent>
                   <ButtonsContainer>
                     <QtyButton
-                      onClick={() => { this.handleAddQuantity(item.id); }}
+                      onClick={() => { this.handleAddQuantity(item.cartId); }}
                     >
                       +
                     </QtyButton>
                     <Count>{item.quantity}</Count>
                     <QtyButton
-                      onClick={() => { this.handleSubQuantity(item.id); }}
+                      onClick={() => { this.handleSubQuantity(item.cartId); }}
                     >
                       -
                     </QtyButton>
@@ -146,8 +158,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  addQty: id => dispatch(addQuantity(id)),
-  subtractQty: id => dispatch(subQuantity(id)),
+  addQty: cartId => dispatch(addQuantity(cartId)),
+  subtractQty: cartId => dispatch(subQuantity(cartId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);

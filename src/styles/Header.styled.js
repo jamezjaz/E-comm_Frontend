@@ -96,17 +96,30 @@ export const DropDownHeader = styled.div`
 
 export const DropDownListContainer = styled.div`
   position: absolute;
-  left: -3rem;
+  left: -2rem;
   box-shadow: 0 2px 5px rgb(0 0 0 / 0.3);
-  padding-right: 1.2rem;
+  /* padding-right: 1.2rem; */
+`;
+
+export const DropdownDismiss = styled.div`
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 `;
 
 export const DropDownList = styled.ul`
   list-style-type: none;
+  padding: 0 1rem;
 `;
 
 export const ListItem = styled.li`
   display: flex;
+
+  &:hover {
+    background-color: rgba(194, 197, 199, 0.953);
+  }
 
   span:first-child {
     margin-right: 0.5rem;

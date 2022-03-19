@@ -1,11 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Header from './Header';
 import Product from '../components/Product';
 import { ContentContainer } from '../styles/ProductList.styled';
 import fetchProducts from '../apiRequest/apiRequest';
 
-class ProductList extends React.Component {
+class AllProductList extends React.Component {
   _isMounted = false;
 
   constructor() {
@@ -35,11 +34,10 @@ class ProductList extends React.Component {
 
     return(
       <>
-        <Header />
         <ContentContainer>
           {this.state.loading === false ?
             <Product
-              allCategory={all.categories[0]}
+              products={all}
             />
           :
             <h4>Loading...</h4>   
@@ -52,11 +50,11 @@ class ProductList extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  all: state.product.categories
+  all: state.product.categories.all
 });
 
 const mapDispatchToProps = dispatch => ({
   fetchedProducts: () => dispatch(fetchProducts()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProductList);
+export default connect(mapStateToProps, mapDispatchToProps)(AllProductList);

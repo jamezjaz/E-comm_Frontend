@@ -15,6 +15,7 @@ import {
   DropDownListContainer,
   DropDownList,
   ListItem,
+  DropdownDismiss,
 } from '../styles/Header.styled';
 import Overlay from '../modal/Overlay';
 import { changeCurrencyLabel } from '../redux/actions/actionCreators';
@@ -54,22 +55,22 @@ class Header extends React.Component {
       if (this._isMounted) this.setState({loading: false})
     }, 2000);
 
-    const { allCategories, addedProducts, currency } = this.props;
+    const { allCategories, addedProducts, currency, isOpen } = this.props;
     const categoryArray = [];
 
     // pushes category properties of products to categories var
     allCategories?.map(cate => categoryArray.push(cate.name));
 
     // extracts the quantity array of nums
-    const quantityArr = addedProducts.map(addedProd => {
+    const quantityArr = addedProducts?.map(addedProd => {
       return addedProd.quantity;
     });
 
     // sums up the quantity array
-    const qty = quantityArr.reduce((a,b) => a + b, 0);
+    const qty = quantityArr?.reduce((a,b) => a + b, 0);
 
     // toggles select dropdown
-    const toggling = () => this.setState({isOpen: !this.state.isOpen});
+    const toggle = () => this.setState({isOpen: !this.state.isOpen});
 
     return(
       <>
@@ -99,41 +100,47 @@ class Header extends React.Component {
               {this.state.loading === false ?
                 currency?.categories[0]?.products[0]?.prices.map(price => (
                   <option
-                    key={price.currency.symbol}
-                    value={price.currency.label}
+                  key={price.currency.symbol}
+                  value={price.currency.label}
                   >
-                    {`${price.currency.symbol} ${price.currency.label}`}
+                  {`${price.currency.symbol} ${price.currency.label}`}
                   </option>
-                ))
-              :
-                null
-              }
-            </Select> */}
+                  ))
+                  :
+                  null
+                }
+              </Select> */}
+
             <DropDownContainer>
-              <DropDownHeader onClick={toggling}>
+              <DropDownHeader onClick={toggle}>
               {`${this.state.selectedOption}` || '$'} <span>⌃</span> 
               </DropDownHeader>
               {this.state.isOpen && (
-                <DropDownListContainer>
-                  <DropDownList>
-                    {this.state.loading === false ?
-                      currency?.categories[0]?.products[0]?.prices.map(price => (
-                        <ListItem
-                          onClick={() => {
-                            this.changeLabel(price.currency.label);
-                            this.setState({selectedOption: price.currency.symbol});
-                          }}
-                          key={price.currency.symbol}
-                        >
-                          <span>{`${price.currency.symbol}`}</span> 
-                          <span>{`${price.currency.label}`}</span>
-                        </ListItem>
-                      ))
-                    :
-                      null
-                    }
-                  </DropDownList>
-                </DropDownListContainer>
+                <>
+                  <DropdownDismiss onClick={toggle}>
+          
+                  </DropdownDismiss>
+                  <DropDownListContainer>
+                    <DropDownList>
+                      {this.state.loading === false ?
+                        currency?.map(curr => (
+                          <ListItem
+                            key={curr.symbol}
+                            onClick={() => {
+                              this.changeLabel(curr.label);
+                              this.setState({selectedOption: curr.symbol});
+                            }}
+                          >
+                            <span>{`${curr.symbol}`}</span> 
+                            <span>{`${curr.label}`}</span>
+                          </ListItem>
+                        ))
+                      :
+                        null
+                      }
+                    </DropDownList>
+                  </DropDownListContainer>
+                </>
               )}
             </DropDownContainer>
             <>
@@ -167,7 +174,7 @@ const mapStateToProps = state => ({
   allCategories: state.product.categories.categories,
   addedProducts: state.product.addedProducts,
   label: state.product.label,
-  currency: state.product.categories,
+  currency: state.product.categories.currencies,
   loading: state.product.loading
 });
 

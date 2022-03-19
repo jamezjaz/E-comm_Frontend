@@ -114,41 +114,6 @@ export const Image = styled.img`
   object-fit: contain;
 `;
 
-export const OptionContainer = styled.div`
-  /* position: absolute; */
-  display: inline;
-
-  .capacity {
-    margin: 0.25rem;
-    padding: 0.25rem;
-    font-size: 0.8rem;
-    font-weight: bold;
-    position: relative;
-    top: -5.8rem;
-    left: 7rem;
-    background-color: ${props => props.optionsColor || '#d6d3d3'};
-    max-width: 5rem;
-    min-width: 1.5rem;
-    cursor: pointer;
-  }
-
-  .active {
-    background-color: #000000;
-    color: #ffffff;
-  }
-`;
-
-export const Option = styled.span`
-  position: relative;
-  top: -6.8rem;
-  left: 12rem;
-  padding: 0.25rem 0.7rem;
-  margin: 0.15rem;
-  background-color: ${props => props.OptionColor || '#d6d3d3'};
-  border: 1px solid black;
-  cursor: pointer;
-`;
-
 export const CartBtnContainer = styled.div`
   position: relative;
   left: 22rem;

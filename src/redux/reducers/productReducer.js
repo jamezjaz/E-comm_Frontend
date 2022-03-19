@@ -42,11 +42,11 @@ const productReducer = (state = initialState, action) => {
       };
     case ADD_TO_CART: {
       // console.log('Action ID:', action.id, 'Action Type:', action.type);
-       const addedProduct = state.categories.categories[0].products.find(product => product.id === action.id);
-      // check if the action id exists in the addedProducts
-      const existedProduct = state.addedProducts.find(product => (action.id === product.id) && (action.options[0].clothes === product.options[0].clothes));
+      const addedProduct = state.categories.all.products.find(product => product.id === action.id);
+       // check if the action id exists in the addedProducts
       // debugger
-      const existedProduct2 = state.addedProducts.find(product => (action.id === product.id) && (action.options[0].text === product.options[0].text) && (action.options[0].swatch === product.options[0].swatch));
+      const existedProduct = state.addedProducts.find(product => (action.id === product.id) && (action.options[0]?.clothes === product.options[0]?.clothes));
+      const existedProduct2 = state.addedProducts.find(product => (action.id === product.id) && (action.options[0]?.text === product.options[0]?.text) && (action.options[0]?.swatch === product.options[0]?.swatch));
       
       const existed = existedProduct ? existedProduct : existedProduct2;
       // calculating the total
