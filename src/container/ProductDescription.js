@@ -29,7 +29,8 @@ class ProductDescription extends React.Component {
 
     this.state = {
       position: 0,
-      selectedBtn: null
+      selectedBtn: null,
+      selectedSwatch: null
     }
   };
 
@@ -56,6 +57,8 @@ class ProductDescription extends React.Component {
       const { selectAttr } = this.props;
       selectAttr(option);
     };
+
+    let uid = (new Date().getTime()).toString(36);
 
     return(
       <>
@@ -112,11 +115,13 @@ class ProductDescription extends React.Component {
                     <>
                       {attributes[key].type === 'swatch' &&
                         <div>
-                          {attributes[key].items.map(color => (
+                          {attributes[key].items.map((color, idx) => (
                             <OptionButton
                               key={color.id}
+                              className={this.state.selectedSwatch === idx ? 'activeSwatch' : ''}
                               onClick={() => {
                                 selectOptions({ swatch: color.displayValue });
+                                this.setState({selectedSwatch: idx});
                               }}
                               OptionColor={color.displayValue}
                             />
@@ -125,13 +130,14 @@ class ProductDescription extends React.Component {
                       }
                       {attributes[key].type === 'text' &&
                         <div>
-                          {attributes[key].items.map((text, idx) => (
+                          {attributes[key].items.map(text => (
                             <OptionButton
                               key={text.id}
-                              className={this.state.selectedBtn === idx ? 'active' : ''}
+                              className={this.state.selectedBtn === text.id ? 'active' : ''}
                               onClick={() => {
                                 selectOptions({ text: text.displayValue });
-                                this.setState({selectedBtn: idx});
+                                this.setState({selectedBtn: text.id ? text.id+=uid : text.id});
+                                // console.log('IDx', text.id);
                               }}
                             >
                               {text.displayValue}
@@ -152,6 +158,7 @@ class ProductDescription extends React.Component {
               onClick={() => 
               {
                 this.setState({selectedBtn: null});
+                this.setState({selectedSwatch: null});
                 product.attributes.length === options.length ?
                   (addProductToCart(product.id, options))
                 :

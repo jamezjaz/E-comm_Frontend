@@ -13,7 +13,6 @@ import {
   RightContent,
   SubTitle,
   Title,
-  EmptyCartHeader,
   OptionName,
   OptionContainer,
   OptionButton
@@ -31,9 +30,11 @@ class Cart extends React.Component {
   constructor() {
     super();
 
+    this.state = {
+      position: 0
+    };
     this.handleAddQuantity = this.handleAddQuantity.bind(this);
     this.handleSubQuantity = this.handleSubQuantity.bind(this);
-    this.state = { slideIndex : 1 };
   }
 
   handleAddQuantity(cartId) {
@@ -47,55 +48,46 @@ class Cart extends React.Component {
   }
 
   render() {
-    const { addedProducts, label } = this.props;
+    const { product, addedProducts, label } = this.props;
     const addedProductsLen = addedProducts.length;
 
     // cart image slider
-    const slideIndex = this.state.slideIndex;
+    const { position } = this.state;
 
     const nextSlide = () => {
-      if(slideIndex !== addedProductsLen) {
-        this.setState({slideIndex: slideIndex + 1});
-      } else if (slideIndex === addedProductsLen) {
-        this.setState({slideIndex: 1})
-      }
+      const newPosition = position === addedProductsLen - 1 ? 0 : position + 1;
+      this.setState({ position: newPosition });
     };
-
+    
     const prevSlide = () => {
-      if(slideIndex !== 1) {
-        this.setState({slideIndex: slideIndex - 1})
-      } else if (slideIndex === 1) {
-        this.setState({slideIndex: addedProductsLen})
-      }
+      const newPosition = position === 0 ? addedProductsLen - 1 : position - 1;
+      this.setState({ position: newPosition });
     };
     
     return(
       <>
         <Header />
         <Title>CART</Title>
-        {addedProductsLen ?
-          (
-            addedProducts.map((item, idx) => (
-              <CartContainer key={idx}>
+              <CartContainer>
                 <LeftContent>
                   <CartDetails>
-                    <h3>{item.brand}</h3>
-                    <SubTitle>{item.name}</SubTitle>
-                    <p>{price(item.prices, label)}</p>
+                    <h3>{product.brand}</h3>
+                    <SubTitle>{product.name}</SubTitle>
+                    <p>{price(product.prices, label)}</p>
                     <OptionContainer>
-                      {item.attributes.map(attr => (
+                      {product.attributes.map(attr => (
                         <OptionName key={attr.id}>{attr.name}</OptionName>
                       ))}
-                      {item.options.map((option, i) => (
+                      {product.options.map((option, i) => (
                         <div key={i}>
-                          {item.category === 'clothes' &&
+                          {product.category === 'clothes' &&
                             <>
                               <OptionButton>
                                 {option.clothes}
                               </OptionButton>
                             </>
                           }
-                          {item.category === 'tech' &&
+                          {product.category === 'tech' &&
                             <OptionButton
                               BgColor={option.swatch}
                               className='optionBtnTech'
@@ -111,42 +103,32 @@ class Cart extends React.Component {
                 <RightContent>
                   <ButtonsContainer>
                     <QtyButton
-                      onClick={() => { this.handleAddQuantity(item.cartId); }}
+                      onClick={() => { this.handleAddQuantity(product.cartId); }}
                     >
                       +
                     </QtyButton>
-                    <Count>{item.quantity}</Count>
+                    <Count>{product.quantity}</Count>
                     <QtyButton
-                      onClick={() => { this.handleSubQuantity(item.cartId); }}
+                      onClick={() => { this.handleSubQuantity(product.cartId); }}
                     >
                       -
                     </QtyButton>
                   </ButtonsContainer>
                   <ImageContainer>
-                    {item.gallery.map((img, index) => (
-                      <div
-                        key={index}
-                        className={this.state.slideIndex === index + 1 ? "slide active-anim" : "slide"}
-                      >
-                        <Image src={img} alt='Product' />
-                        {item.gallery.length > 1 ?
-                          <>
-                            <SliderBtn moveSlide={nextSlide} direction={"next"} />
-                            <SliderBtn moveSlide={prevSlide} direction={"prev"} />
-                          </>
-                        :
-                          null
-                        }
-                      </div>
-                    ))}
+                    <div>
+                      <Image src={product.gallery[this.state.position]} alt='Product' />
+                      {product.gallery.length > 1 ?
+                        <>
+                          <SliderBtn moveSlide={nextSlide} direction={"next"} />
+                          <SliderBtn moveSlide={prevSlide} direction={"prev"} />
+                        </>
+                      :
+                        null
+                      }
+                    </div>
                   </ImageContainer>
                 </RightContent>
               </CartContainer>
-            ))
-          )
-          :
-          <EmptyCartHeader>You have added nothing on cart!</EmptyCartHeader>
-        }
       </>
     );
   }
@@ -154,7 +136,6 @@ class Cart extends React.Component {
 
 const mapStateToProps = state => ({
   addedProducts: state.product.addedProducts,
-  label: state.product.label
 });
 
 const mapDispatchToProps = dispatch => ({

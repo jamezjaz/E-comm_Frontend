@@ -63,6 +63,10 @@ export const DetailsContainer = styled.div`
     background-color: black;
     color: white;
   }
+
+  .activeSwatch {
+    border: 3px red solid;
+  }
 `;
 
 export const SubTitle = styled.p`

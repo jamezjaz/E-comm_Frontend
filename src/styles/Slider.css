@@ -12,9 +12,9 @@
   
 .btn-slide {
   background: none;
-  color: #ffffff;
+  color: #9e9a9a;
   border: none;
-  position: absolute;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,13 +22,13 @@
 }
   
 .prev {
-  top: 50%;
-  left: 20px;
+  top: -60%;
+  right: -0.5rem;
   transform: translateY(-60%);
 }
 
 .next {
-  top: 50%;
-  right: 20px;
+  top: -50%;
+  left: 6.5rem;
   transform: translateY(-60%);
 }

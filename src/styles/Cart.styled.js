@@ -40,7 +40,7 @@ export const SubTitle = styled.p`
 
 export const OptionContainer = styled.div`
   .optionBtnTech {
-    top: -5rem;
+    top: -5.5rem;
   }
 `;
 
@@ -103,7 +103,7 @@ export const ImageContainer = styled.div`
 `;
 
 export const Image = styled.img`
-  width: 100%;
+  width: 8.5rem;
   height: 100%;
   object-fit: contain;
 `;

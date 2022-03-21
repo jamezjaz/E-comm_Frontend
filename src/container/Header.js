@@ -55,7 +55,7 @@ class Header extends React.Component {
       if (this._isMounted) this.setState({loading: false})
     }, 2000);
 
-    const { allCategories, addedProducts, currency, isOpen } = this.props;
+    const { allCategories, addedProducts, currency } = this.props;
     const categoryArray = [];
 
     // pushes category properties of products to categories var
