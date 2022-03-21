@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Product from '../components/Product';
-import { ContentContainer } from '../styles/ProductList.styled';
+import { ContentContainer } from '../styles/AllProductList.styled';
 import fetchProducts from '../apiRequest/apiRequest';
+import Loader from '../loader/Loader';
 
 class AllProductList extends React.Component {
   _isMounted = false;
@@ -40,7 +41,7 @@ class AllProductList extends React.Component {
               products={all}
             />
           :
-            <h4>Loading...</h4>   
+            <Loader /> 
           }
         </ContentContainer>
       </>
