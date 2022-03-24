@@ -72,8 +72,8 @@ export const OptionName = styled.p`
 `;
 
 export const OptionButton = styled.button`
-  max-width: 5rem;
-  min-width: 2rem;
+  max-width: 3rem;
+  min-width: 2.8rem;
   height: 1.5rem;
   margin: 0 0.5rem 0.25rem 0;
   background-color: ${props => props.BgColor || "#ffffff"};
