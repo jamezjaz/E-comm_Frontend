@@ -12,17 +12,12 @@ export const OverlayContainer = styled.div`
 	-webkit-transition: opacity 400ms ease-in;
 	-moz-transition: opacity 400ms ease-in;
 	transition: opacity 400ms ease-in;
-
-  h4 {
-    text-align: center;
-    padding: 1rem;
-  }
 `;
 
 export const Modal = styled.div`
   background-color: #ffffff;
   padding: 0.5rem 0.8rem;
-  max-width: 30rem;
+  max-width: 25rem;
   height: 60%;
   overflow-y: auto;
   position: fixed;
@@ -40,16 +35,21 @@ export const OverlayLeft = styled.div`
   margin: 0 0.5rem 0.7rem 0;
 
   h3 {
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 300;
     color: #414142;
     margin-top: -0.25rem;
   }
 
   p:nth-child(3) {
+    font-size: 0.7rem;
     font-weight: bold;
     margin-top: -0.5rem;
     margin-bottom: -0.01rem;
+  }
+
+  .optionBtnTech {
+    top: -3rem;
   }
 `;
 
@@ -59,10 +59,16 @@ export const OverlayRight = styled.div`
 `;
 
 export const SubTitle = styled.p`
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   color: #414142;
   font-weight: 300;
   margin-top: -1rem;
+`;
+
+export const OptionName = styled.p`
+  font-size: 0.6rem;
+  margin-top: 1rem;
+  line-height: 0.25rem;
 `;
 
 export const OptionButton = styled.button`
@@ -71,7 +77,10 @@ export const OptionButton = styled.button`
   height: 1.5rem;
   margin: 0 0.5rem 0.25rem 0;
   background-color: ${props => props.BgColor || "#ffffff"};
-  font-size: 0.7rem;
+  font-size: 0.6rem;
+  position: relative;
+  top: -1.5rem;
+  left: 5.8rem;
   cursor: pointer;
 
   &:focus {
@@ -94,12 +103,12 @@ export const QtyButton = styled.button`
 export const Count = styled.p`
   font-weight: bold;
   text-align: center;
-  margin: 1.5rem 0;
+  margin: 1rem 0;
 `;
 
 export const ImageContainer = styled.div`
-  width: 10.5rem;
-  height: 7rem;
+  width: 8rem;
+  height: 6rem;
 `;
 
 export const Image = styled.img`
@@ -121,7 +130,7 @@ export const ButtonContainer = styled.div`
 `;
 
 export const ViewBagButton = styled.button`
-  padding: 1rem 3rem;
+  padding: 0.8rem 3rem;
   font-size: 0.7rem;
   color: #1d1f22;
   background-color: #ffffff;

@@ -9,6 +9,11 @@ export const DescriptionContainer = styled.div`
   .outOfStock {
     opacity: 0.4;
   }
+
+  .mainImg {
+    position: relative;
+    left: 5rem;
+  }
 `;
 
 export const MinorImageContainer = styled.div`
@@ -17,17 +22,17 @@ export const MinorImageContainer = styled.div`
 `;
 
 export const MinorImage = styled.img`
-  width: 7rem;
+  width: 5rem;
   margin-bottom: 2rem;
 `;
 
 export const MainImageContainer = styled.div`
-  width: 38rem;
+  width: 25rem;
   margin-left: -10rem;
 
   h2 {
     position: absolute;
-    margin: 12rem 0 0 8rem;
+    margin: 8rem 0 0 5rem;
     color: rgb(73, 72, 72);
     font-weight: lighter;
     z-index: 999;
@@ -51,7 +56,7 @@ export const DetailsContainer = styled.div`
   max-width: 35rem;
   h3 {
     color: #1d1f22;
-    font-size: 2.5rem;
+    font-size: 1.7rem;
   }
 
   p:nth-child(1),
@@ -70,7 +75,7 @@ export const DetailsContainer = styled.div`
 `;
 
 export const SubTitle = styled.p`
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 300 !important;
   margin-top: -2rem;
 `;
@@ -85,11 +90,11 @@ export const OptionName = styled.p`
 export const OptionButton = styled.button`
   @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
 
-  max-width: 6rem;
+  max-width: 5rem;
   min-width: 3rem;
-  padding: 0.5rem;
-  height: 2.5rem;
-  margin-right: 0.5rem;
+  padding: 0.25rem;
+  height: 2rem;
+  margin-right: 0.25rem;
   background-color: ${props => props.OptionColor || "white"};
   cursor: pointer;
   font-family: 'Roboto Condensed', sans-serif;
@@ -102,7 +107,7 @@ export const PriceContainer = styled.div`
 `;
 
 export const AddToCartButton = styled.button`
-  padding: 1rem 5rem;
+  padding: 0.8rem 4.5rem;
   color: #ffffff;
   background-color: #5ece7b;
   border: none;

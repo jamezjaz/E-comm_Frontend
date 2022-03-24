@@ -68,67 +68,67 @@ class Cart extends React.Component {
       <>
         <Header />
         <Title>CART</Title>
-              <CartContainer>
-                <LeftContent>
-                  <CartDetails>
-                    <h3>{product.brand}</h3>
-                    <SubTitle>{product.name}</SubTitle>
-                    <p>{price(product.prices, label)}</p>
-                    <OptionContainer>
-                      {product.attributes.map(attr => (
-                        <OptionName key={attr.id}>{attr.name}</OptionName>
-                      ))}
-                      {product.options.map((option, i) => (
-                        <div key={i}>
-                          {product.category === 'clothes' &&
-                            <>
-                              <OptionButton>
-                                {option.clothes}
-                              </OptionButton>
-                            </>
-                          }
-                          {product.category === 'tech' &&
-                            <OptionButton
-                              BgColor={option.swatch}
-                              className='optionBtnTech'
-                            >
-                              {option.text}
-                            </OptionButton>
-                          }
-                        </div>
-                      ))}
-                    </OptionContainer>
-                  </CartDetails>
-                </LeftContent>
-                <RightContent>
-                  <ButtonsContainer>
-                    <QtyButton
-                      onClick={() => { this.handleAddQuantity(product.cartId); }}
-                    >
-                      +
-                    </QtyButton>
-                    <Count>{product.quantity}</Count>
-                    <QtyButton
-                      onClick={() => { this.handleSubQuantity(product.cartId); }}
-                    >
-                      -
-                    </QtyButton>
-                  </ButtonsContainer>
-                  <ImageContainer>
-                    <div>
-                      <Image src={product.gallery[this.state.position]} alt='Product' />
-                      {product.gallery.length > 1 ?
+          <CartContainer>
+            <LeftContent>
+              <CartDetails>
+                <h3>{product.brand}</h3>
+                <SubTitle>{product.name}</SubTitle>
+                <p>{price(product.prices, label)}</p>
+                <OptionContainer>
+                  {product.attributes.map(attr => (
+                    <OptionName key={attr.id}>{attr.name}</OptionName>
+                  ))}
+                  {product.options.map((option, i) => (
+                    <div key={i}>
+                      {product.category === 'clothes' &&
                         <>
-                          <SliderBtn moveSlide={nextSlide} direction={"next"} />
-                          <SliderBtn moveSlide={prevSlide} direction={"prev"} />
+                          <OptionButton>
+                            {option.clothes}
+                          </OptionButton>
                         </>
-                      :
-                        null
+                      }
+                      {product.category === 'tech' &&
+                        <OptionButton
+                          BgColor={option.swatch}
+                          className='optionBtnTech'
+                        >
+                          {option.text}
+                        </OptionButton>
                       }
                     </div>
-                  </ImageContainer>
-                </RightContent>
-              </CartContainer>
+                  ))}
+                </OptionContainer>
+              </CartDetails>
+            </LeftContent>
+            <RightContent>
+              <ButtonsContainer>
+                <QtyButton
+                  onClick={() => { this.handleAddQuantity(product.cartId); }}
+                >
+                  +
+                </QtyButton>
+                <Count>{product.quantity}</Count>
+                <QtyButton
+                  onClick={() => { this.handleSubQuantity(product.cartId); }}
+                >
+                  -
+                </QtyButton>
+              </ButtonsContainer>
+              <ImageContainer>
+                <div>
+                  <Image src={product.gallery[this.state.position]} alt='Product' />
+                  {product.gallery.length > 1 ?
+                    <>
+                      <SliderBtn moveSlide={nextSlide} direction={"next"} />
+                      <SliderBtn moveSlide={prevSlide} direction={"prev"} />
+                    </>
+                  :
+                    null
+                  }
+                </div>
+              </ImageContainer>
+            </RightContent>
+          </CartContainer>
       </>
     );
   }

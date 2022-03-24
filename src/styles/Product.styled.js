@@ -71,7 +71,7 @@ export const ProductContent = styled.div`
 `;
 
 export const ProductCard = styled.div`
-  max-width: 600px;
+  /* max-width: 800px; */
   margin: 1rem 3rem 1rem 0;
   padding: 0 1rem 3rem 1rem ;
   
@@ -86,7 +86,7 @@ export const ProductCard = styled.div`
 
   h2 {
     position: absolute;
-    margin: 12rem 0 0 8rem;
+    margin: 8rem 0 0 5rem;
     color: rgb(73, 72, 72);
     font-weight: lighter;
     z-index: 999;
@@ -104,8 +104,8 @@ export const ProductCard = styled.div`
 `;
 
 export const ImageContainer = styled.div`
-  width: 450px;
-  height: 500px;
+  width: 325px;
+  height: 300px;
 `;
 
 export const Image = styled.img`
@@ -116,7 +116,7 @@ export const Image = styled.img`
 
 export const CartBtnContainer = styled.div`
   position: relative;
-  left: 22rem;
+  left: 16rem;
   top: -8rem;
   background: none;
   display: none;

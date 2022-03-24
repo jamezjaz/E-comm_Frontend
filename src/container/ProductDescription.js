@@ -78,7 +78,7 @@ class ProductDescription extends React.Component {
               ))}
             </MinorImageContainer>
             <MainImageContainer
-              className={product.inStock === false ? 'outOfStock' : ''}
+              className={product.inStock === false ? 'outOfStock mainImg' : ''}
             >
               {product.inStock === false &&
                 <h2>OUT OF STOCK</h2>
@@ -88,7 +88,9 @@ class ProductDescription extends React.Component {
                 alt={product.name}
               />
             </MainImageContainer>
-            <DetailsContainer>
+            <DetailsContainer
+              className={product.inStock === false ? 'outOfStock mainImg' : ''}
+            >
             <h3>{product.brand}</h3>
             <SubTitle>{product.name}</SubTitle>
             <div>

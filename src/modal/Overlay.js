@@ -18,7 +18,8 @@ import {
   OptionButton,
   SubTitle,
   TotalContainer,
-  ViewBagButton
+  ViewBagButton,
+  OptionName
 } from '../styles/Overlay.styled';
 import { addQuantity, subQuantity } from '../redux/actions/actionCreators';
 import DisplayTotal from '../components/DisplayTotal';
@@ -55,13 +56,21 @@ class Overlay extends React.Component {
                       <SubTitle>{item.name}</SubTitle>
                       <p>{price(item.prices, label)}</p>
                       <>
+                        {item.attributes.map(attr => (
+                          <OptionName key={attr.id}>{attr.name}</OptionName>
+                        ))}
                         {item.options?.map((option, i) => (
                           <div key={i}>
                             {item.category === 'clothes' && 
                               <OptionButton>{option.clothes}</OptionButton>
                             }
                             {item.category === 'tech' &&
-                              <OptionButton BgColor={option.swatch}>{option.text}</OptionButton>
+                              <OptionButton
+                                BgColor={option.swatch}
+                                className='optionBtnTech'
+                              >
+                                {option.text}
+                              </OptionButton>
                             }
                           </div>
                         ))}

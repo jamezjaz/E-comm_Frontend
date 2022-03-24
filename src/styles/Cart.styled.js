@@ -2,12 +2,13 @@ import styled from 'styled-components';
 
 export const Title = styled.h1`
   margin-left: 4.5rem;
+  font-size: 1.5rem;
 `;
 
 export const CartContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  margin: 3rem 5rem 0 4.5rem;
+  margin: 1rem 5rem 0 4.5rem;
   border-top: 1px #f2f2f2 solid;
   max-width: 1400px;
 
@@ -23,24 +24,25 @@ export const LeftContent = styled.div`
 export const CartDetails = styled.div`
   h3 {
     color: #1d1f22;
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 500;
     margin-top: -0.01rem;
   }
 
   p:nth-child(3) {
     font-weight: bold;
+    font-size: 0.8rem;
   }
 `;
 
 export const SubTitle = styled.p`
-  font-size: 1.5rem;
+  font-size: 1rem;
   margin-top: -1.5rem;
 `;
 
 export const OptionContainer = styled.div`
   .optionBtnTech {
-    top: -5.5rem;
+    top: -4.5rem;
   }
 `;
 
@@ -50,16 +52,17 @@ export const OptionName = styled.p`
   text-transform: uppercase;
   font-family: 'Roboto Condensed', sans-serif;
   font-weight: lighter !important;
+  font-size: 0.8rem;
 `;
 
 export const OptionButton = styled.button`
   position: relative;
   top: -2rem;
   left: 10rem;
-  max-width: 6rem;
+  max-width: 5rem;
   min-width: 3rem;
-  padding: 0.5rem;
-  height: 2rem;
+  padding: 0.25rem;
+  height: 1.8rem;
   margin-right: 0.5rem;
   background-color: ${props => props.BgColor || '#ffffff'};
   cursor: pointer;
@@ -83,8 +86,8 @@ export const ButtonsContainer = styled.div`
 `;
 
 export const QtyButton = styled.button`
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2rem;
+  height: 2rem;
   /* margin-right: 0.5rem; */
   background-color: #ffffff;
   cursor: pointer;
@@ -93,38 +96,19 @@ export const QtyButton = styled.button`
 export const Count = styled.p`
   font-weight: bold;
   text-align: center;
-  margin: 2rem 0;
+  margin: 1.5rem 0;
 `;
 
 export const ImageContainer = styled.div`
   display: flex;
-  width: 10rem;
-  height: 10.5rem;
+  width: 8rem;
+  height: 8rem;
 `;
 
 export const Image = styled.img`
-  width: 8.5rem;
+  width: 7rem;
   height: 100%;
   object-fit: contain;
-`;
-
-export const RemoveProduct = styled.button`
-  color: #ffffff;
-  background-color: rgb(156, 9, 9);
-  font-weight: bold;
-  height: 2rem;
-  /* margin-left: 0.5rem; */
-  position: relative;
-  /* right: -10.5rem; */
-  bottom: -6.5rem;
-  border: none;
-  border-radius: 2rem;
-  align-self: center;
-  cursor: pointer;
-
-  &:hover {
-    background-color: red;
-  }
 `;
 
 export const EmptyCartHeader = styled.h2`
