@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom';
 
-export const GRAPHQL_API = 'http://localhost:4000/';
+// export const GRAPHQL_API = 'http://localhost:4000/';
+export const GRAPHQL_API = 'https://e-commm-backend.herokuapp.com/';
 
 export const GET_PRODUCTS_QUERY = `
   query categories {
