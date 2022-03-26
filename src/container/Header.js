@@ -89,7 +89,7 @@ class Header extends React.Component {
               </Link>
             ))}
           </NavLinksContainer>
-          <ul>
+          <ul className='logoContainer'>
             <li>
               <Link to='/'><Image src={logo} alt='Logo' /></Link>
             </li>

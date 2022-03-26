@@ -14,6 +14,12 @@ export const NavContainer = styled.nav`
   
   ul {
     list-style-type: none;
+
+    @media (max-width: 600px) {
+      position: absolute;
+      max-width: 5rem;
+      left: -2rem;
+    }
   }
 `;
 

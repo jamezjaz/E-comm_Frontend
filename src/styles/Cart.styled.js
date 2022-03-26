@@ -77,6 +77,10 @@ export const OptionButton = styled.button`
 export const RightContent = styled.div`
   display: flex;
   margin-top: 1.5rem;
+
+  @media (max-width:868px) {
+    margin-top: 0;
+  }
 `;
 
 export const ButtonsContainer = styled.div`

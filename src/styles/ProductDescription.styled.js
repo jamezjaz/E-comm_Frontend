@@ -14,6 +14,14 @@ export const DescriptionContainer = styled.div`
     position: relative;
     left: 5rem;
   }
+
+  .outOfStockSm {
+    @media (max-width: 658px) {
+      position: relative;
+      top: 14rem;
+      left: -8rem;
+    }
+  }
 `;
 
 export const MinorImageContainer = styled.div`
@@ -36,6 +44,11 @@ export const MainImageContainer = styled.div`
     color: rgb(73, 72, 72);
     font-weight: lighter;
     z-index: 999;
+
+    @media (max-width: 1322px) {
+      font-size: 1rem;
+      margin: 5rem 0 0 2rem;
+    }
   }
 
   @media (max-width: 1600px) {
@@ -71,6 +84,12 @@ export const DetailsContainer = styled.div`
 
   .activeSwatch {
     border: 3px red solid;
+  }
+
+  @media (max-width: 658px) {
+    position: relative;
+    top: 17rem;
+    left: -12rem;
   }
 `;
 
@@ -116,6 +135,12 @@ export const AddToCartButton = styled.button`
 
   &:hover {
     background-color: #31a14f;
+  }
+
+  @media (max-width: 658px) {
+    font-size: 0.6rem;
+    min-width: 11rem;
+    padding: 0.8rem 3rem;
   }
 `;
 
