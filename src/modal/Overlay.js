@@ -105,14 +105,14 @@ class Overlay extends React.Component {
             <DisplayTotal />
           </TotalContainer>
           <ButtonContainer>
-            <ViewBagButton>VIEW BAG</ViewBagButton>
             <Link
               to='/cart'
             >
-              <CheckOutButton>
-                CHECK OUT
-              </CheckOutButton>
+              <ViewBagButton>
+                VIEW BAG
+              </ViewBagButton>
             </Link>
+            <CheckOutButton>CHECK OUT</CheckOutButton>
           </ButtonContainer>
         </Modal>
      </>
